@@ -21,8 +21,8 @@
 
 DROP TABLE IF EXISTS `admins`;
 CREATE TABLE `admins` (
-  `Admin` varchar(50) NOT NULL,
-  `PassWord` varchar(50) NOT NULL,
+  `Admin` varchar(50) character set utf8 NOT NULL,
+  `PassWord` varchar(50) character set utf8 NOT NULL,
   PRIMARY KEY  (`Admin`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
@@ -42,12 +42,13 @@ UNLOCK TABLES;
 DROP TABLE IF EXISTS `songs`;
 CREATE TABLE `songs` (
   `SongID` int(11) NOT NULL,
-  `SongName` varchar(50) NOT NULL,
-  `SongType` varchar(50) NOT NULL,
+  `SongName` varchar(50) character set utf8 NOT NULL,
+  `SongType` varchar(50) character set utf8 NOT NULL,
   `SoNumber` int(50) NOT NULL,
-  `SoPinYin` varchar(50) NOT NULL,
+  `SoPinYin` varchar(50) character set utf8 NOT NULL,
   `StarID` int(11) NOT NULL,
-  PRIMARY KEY  (`SongID`)
+  PRIMARY KEY  (`SongID`),
+  KEY `SongName` (`SongName`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
@@ -56,6 +57,7 @@ CREATE TABLE `songs` (
 
 LOCK TABLES `songs` WRITE;
 /*!40000 ALTER TABLE `songs` DISABLE KEYS */;
+INSERT INTO `songs` VALUES (1,'花开的声音','流行歌曲',5,'HUAKAIDESHENGYIN',1),(2,'祝福','经典老歌',2,'ZHUFU',2),(3,'忘情水','经典老歌',3,'WANGQINGSHUI',3),(4,'吻别','经典老歌',2,'WENBIE',2),(5,'青花瓷','流行歌曲',3,'QINGHUACI',4),(6,'千里之外','流行歌曲',4,'QIANLIZHIWAI',4),(7,'跨时代','流行歌曲',3,'KUASHIDAI',4),(8,'谢谢你的爱','经典老歌',5,'XIEXIENIDEAI',3),(9,'我相信','流行歌曲',3,'WOXIANGXIN ',1),(10,'传奇','流行歌曲',2,'CHUANQI',5),(11,'容易受伤的女人','流行歌曲',7,'RONGYISHOUSHANGDENVREN',5),(12,'爱','经典老歌',1,'AI',6),(13,'真心英雄','经典老歌',4,'ZHENXINYINGXIONG',7);
 /*!40000 ALTER TABLE `songs` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -66,11 +68,10 @@ UNLOCK TABLES;
 DROP TABLE IF EXISTS `stars`;
 CREATE TABLE `stars` (
   `StarID` int(11) NOT NULL,
-  `StarName` varchar(255) NOT NULL,
-  `SongName` varchar(255) NOT NULL,
+  `StarName` varchar(255) character set utf8 NOT NULL,
   `Gender` bit(1) NOT NULL,
-  `StConeFrom` varchar(255) NOT NULL,
-  `StTeam` varchar(255) NOT NULL,
+  `StConeFrom` varchar(255) character set utf8 NOT NULL,
+  `StTeam` varchar(255) character set utf8 NOT NULL,
   PRIMARY KEY  (`StarID`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
@@ -80,6 +81,7 @@ CREATE TABLE `stars` (
 
 LOCK TABLES `stars` WRITE;
 /*!40000 ALTER TABLE `stars` DISABLE KEYS */;
+INSERT INTO `stars` VALUES (1,'张靓颖','\0','内地','无'),(2,'张学友','','香港','无'),(3,'刘德华','','香港','无'),(4,'周杰伦','','台湾','无'),(5,'王菲','\0','内地','无'),(6,'小虎队','','台湾','小虎队'),(7,'成龙','','香港','无');
 /*!40000 ALTER TABLE `stars` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -90,13 +92,13 @@ UNLOCK TABLES;
 DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users` (
   `UserID` int(11) NOT NULL,
-  `UserName` varchar(50) NOT NULL,
-  `PassWord` varchar(50) NOT NULL,
-  `RealName` varchar(50) default NULL,
-  `Email` varchar(50) default NULL,
+  `UserName` varchar(50) character set utf8 NOT NULL,
+  `PassWord` varchar(50) character set utf8 NOT NULL,
+  `RealName` varchar(50) character set utf8 default NULL,
+  `Email` varchar(50) character set utf8 default NULL,
   `Gender` bit(1) default NULL,
-  `Interest` varchar(50) default NULL,
-  `Brithday` varchar(50) default NULL,
+  `Interest` varchar(50) character set utf8 default NULL,
+  `Brithday` varchar(50) character set utf8 default NULL,
   PRIMARY KEY  (`UserID`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
@@ -118,4 +120,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2010-09-18  0:59:20
+-- Dump completed on 2010-09-18  2:23:11
