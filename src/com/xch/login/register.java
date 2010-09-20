@@ -8,12 +8,15 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 import javax.swing.WindowConstants;
 import javax.swing.SwingUtilities;
-import com.xch.obj.User;
+import com.xch.obj.UserData;
+import com.xch.db.dbConnect;
+import com.xch.login.MD5;
 
 /**
 * This code was edited or generated using CloudGarden's Jigloo
@@ -29,7 +32,7 @@ import com.xch.obj.User;
 */
 public class register extends javax.swing.JFrame {
 	private JLabel jLabel1;
-	private JTextField jUserId;
+	private JTextField jUserName;
 	private JLabel jLabel2;
 	private JLabel jLabel4;
 	private JButton jCancel;
@@ -44,7 +47,6 @@ public class register extends javax.swing.JFrame {
 	private JPasswordField jPasswordRepeat;
 	private JPasswordField jPassword;
 	private JLabel jLabel3;
-	private User uInfo;
 
 	/**
 	* Auto-generated main method to display this JFrame
@@ -78,9 +80,9 @@ public class register extends javax.swing.JFrame {
 				jLabel1.setBounds(74, 33, 80, 15);
 			}
 			{
-				jUserId = new JTextField();
-				getContentPane().add(jUserId);
-				jUserId.setBounds(158, 29, 70, 22);
+				jUserName = new JTextField();
+				getContentPane().add(jUserName);
+				jUserName.setBounds(158, 29, 70, 22);
 			}
 			{
 				jLabel2 = new JLabel();
@@ -178,9 +180,53 @@ public class register extends javax.swing.JFrame {
 	}
 	
 	private void jConfirmActionPerformed(ActionEvent evt) {
-		System.out.println("jConfirm.actionPerformed, event="+evt);
+		//System.out.println("jConfirm.actionPerformed, event="+evt);
 		//TODO add your code for jConfirm.actionPerformed
+		UserData user=new UserData();
+		if(jUserName.getText().length()==0)
+		{
+			JOptionPane.showMessageDialog(null, "用户名不能为空！");
+			return;
+		}
+		if(dbConnect.checkUserName(jUserName.getText()))
+		{
+			JOptionPane.showMessageDialog(null, "用户名已经被使用！");
+			return;
+		}
+		if(jPassword.getText().length()==0||jPasswordRepeat.getText().length()==0)
+		{
+			JOptionPane.showMessageDialog(null, "密码不能为空！");
+			jPassword.setText("");
+			jPasswordRepeat.setText("");
+			return;
+		}
+		if(jPassword.getText().length()==0||jPasswordRepeat.getText().length()==0)
+		{
+			JOptionPane.showMessageDialog(null, "密码不能为空！");
+			jPassword.setText("");
+			jPasswordRepeat.setText("");
+			return;
+		}
+		if(jPassword.getText().compareTo(jPasswordRepeat.getText())!=0)
+		{
+			JOptionPane.showMessageDialog(null, "两次密码输入不匹配，请重新输入！");
+			jPassword.setText("");
+			jPasswordRepeat.setText("");
+			return;
+		}
+		MD5 md5=new MD5(jPassword.getText());
+		user.setUserID(dbConnect.getUserMaxID()+1);
+		user.setUserName(jUserName.getText());
+		user.setPassword(md5.get());
+		user.setEmail(jEmail.getText());
+		user.setGender(jGender.getSelectedIndex());
+		user.setRealName(jRealName.getText());
+		user.setInterest(jInterest.getText());
 		
+		dbConnect.addUserData(user);
+		//JOptionPane.showMessageDialog(null, "OK");
 	}
+
+
 
 }

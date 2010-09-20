@@ -1,71 +1,71 @@
 package com.xch.obj;
 
-public class User {
+public class UserData {
 	private int UserID;
 	private String UserName;
 	private String Password;
 	private String RealName;
 	private String Email;
-	private int Gender;
+	private int Gender;    //0Ϊ�У�1ΪŮ
 	private String Interest;
 
-	void setUserID(int indata)
+	public void setUserID(int indata)
 	{
 		UserID=indata;
 	}
-	void setUserName(String indata)
+	public void setUserName(String indata)
 	{
 		UserName=indata;
 	}
 	
-	void setPassword(String indata)
+	public void setPassword(String indata)
 	{
 		Password=indata;
 	}
-	void setRealName(String indata)
+	public void setRealName(String indata)
 	{
 		RealName=indata;
 	}
-	void setEmail(String indata)
+	public void setEmail(String indata)
 	{
 		Email=indata;
 	}
-	void setGender(int indata)
+	public void setGender(int indata)
 	{
 		Gender=indata;
 	}
-	void setInterest(String indata)
+	public void setInterest(String indata)
 	{
 		Interest=indata;
 	}
 	
-	int getUserID()
+	public int getUserID()
 	{
 		return UserID;
 	}
 	
-	String getUserName()
+	public String getUserName()
 	{
 		return UserName;
 	}
 	
-	String getPassword()
+	public String getPassword()
 	{
 		return Password;
 	}
-	String getRealName()
+	public String getRealName()
 	{
 		return RealName;
 	}
-	String getEmail()
+	public String getEmail()
 	{
 		return Email;
 	}
-	int getGender()
+	public int getGender()
 	{
 		return Gender;
 	}
-	String getInterest()
+	public String getInterest()
 	{
 		return Interest;
 	}
