@@ -13,7 +13,7 @@ import javax.swing.JTextField;
 
 import javax.swing.WindowConstants;
 import javax.swing.SwingUtilities;
-
+import com.xch.obj.User;
 
 /**
 * This code was edited or generated using CloudGarden's Jigloo
@@ -34,13 +34,6 @@ public class register extends javax.swing.JFrame {
 	private JLabel jLabel4;
 	private JButton jCancel;
 	private JButton jConfirm;
-	private JLabel jLabel8;
-	private JLabel jLabel11;
-	private JComboBox jDay;
-	private JLabel jLabel10;
-	private JComboBox jMonth;
-	private JLabel jLabel9;
-	private JComboBox jYear;
 	private JTextField jInterest;
 	private JLabel jLabel7;
 	private JComboBox jGender;
@@ -51,6 +44,7 @@ public class register extends javax.swing.JFrame {
 	private JPasswordField jPasswordRepeat;
 	private JPasswordField jPassword;
 	private JLabel jLabel3;
+	private User uInfo;
 
 	/**
 	* Auto-generated main method to display this JFrame
@@ -159,63 +153,10 @@ public class register extends javax.swing.JFrame {
 				jInterest.setBounds(158, 191, 139, 22);
 			}
 			{
-				jLabel8 = new JLabel();
-				getContentPane().add(jLabel8);
-				jLabel8.setText("\u751f\u65e5");
-				jLabel8.setBounds(74, 222, 80, 15);
-			}
-			{
-				ComboBoxModel jYearModel = 
-					new DefaultComboBoxModel(
-							new String[] { "1989", "1990" });
-				jYear = new JComboBox();
-				getContentPane().add(jYear);
-				jYear.setModel(jYearModel);
-				jYear.setBounds(158, 218, 61, 22);
-			}
-			{
-				jLabel9 = new JLabel();
-				getContentPane().add(jLabel9);
-				jLabel9.setText("\u5e74");
-				jLabel9.setBounds(225, 222, 17, 15);
-			}
-			{
-				ComboBoxModel jMonthModel = 
-					new DefaultComboBoxModel(
-							new String[] { "1", "2","3","4","5","6","7","8","9","10","11","12" });
-				jMonth = new JComboBox();
-				getContentPane().add(jMonth);
-				jMonth.setModel(jMonthModel);
-				jMonth.setBounds(242, 218, 41, 22);
-			}
-			{
-				jLabel10 = new JLabel();
-				getContentPane().add(jLabel10);
-				jLabel10.setText("\u6708");
-				jLabel10.setBounds(289, 222, 14, 15);
-			}
-			{
-				ComboBoxModel jDayModel = 
-					new DefaultComboBoxModel(
-							new String[] { "1", "2","3","4","5","6","7","8","9","10", 
-									"11", "12","13","14","15","16","17","18","19","20", 
-									"21", "22","23","24","25","26","27","28","29","30","31" });
-				jDay = new JComboBox();
-				getContentPane().add(jDay);
-				jDay.setModel(jDayModel);
-				jDay.setBounds(303, 218, 44, 22);
-			}
-			{
-				jLabel11 = new JLabel();
-				getContentPane().add(jLabel11);
-				jLabel11.setText("\u65e5");
-				jLabel11.setBounds(353, 222, 19, 15);
-			}
-			{
 				jConfirm = new JButton();
 				getContentPane().add(jConfirm);
 				jConfirm.setText("\u786e\u8ba4");
-				jConfirm.setBounds(112, 258, 60, 22);
+				jConfirm.setBounds(106, 244, 60, 22);
 				jConfirm.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent evt) {
 						jConfirmActionPerformed(evt);
@@ -226,10 +167,10 @@ public class register extends javax.swing.JFrame {
 				jCancel = new JButton();
 				getContentPane().add(jCancel);
 				jCancel.setText("\u53d6\u6d88");
-				jCancel.setBounds(205, 258, 61, 22);
+				jCancel.setBounds(205, 244, 61, 22);
 			}
 			pack();
-			this.setSize(419, 334);
+			this.setSize(385, 324);
 		} catch (Exception e) {
 		    //add your error handling code here
 			e.printStackTrace();

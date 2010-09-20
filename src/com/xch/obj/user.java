@@ -1,6 +1,6 @@
-package cheng.xch.obj;
+package com.xch.obj;
 
-public class user {
+public class User {
 	private int UserID;
 	private String UserName;
 	private String Password;
@@ -8,7 +8,7 @@ public class user {
 	private String Email;
 	private int Gender;
 	private String Interest;
-	//DateFormat Birthday;
+
 	void setUserID(int indata)
 	{
 		UserID=indata;

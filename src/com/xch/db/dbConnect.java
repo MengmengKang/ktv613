@@ -1,13 +1,14 @@
-package cheng.xch.db;
+package com.xch.db;
 
 import java.sql.*;
+import java.util.Scanner;
 
-import cheng.xch.obj.User;
+import com.xch.obj.User;
 
 public class dbConnect {
 	public static void addUser(User user)
 	{
-		//Scanner aS=new Scanner(System.in);
+		Scanner aS=new Scanner(System.in);
 		Connection aConnection;
 		Statement aStatement;
 		
