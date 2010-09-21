@@ -18,6 +18,8 @@ import com.xch.obj.UserData;
 import com.xch.db.dbConnect;
 import com.xch.login.MD5;
 
+
+
 /**
 * This code was edited or generated using CloudGarden's Jigloo
 * SWT/Swing GUI Builder, which is free for non-commercial
@@ -224,7 +226,7 @@ public class register extends javax.swing.JFrame {
 		user.setInterest(jInterest.getText());
 		
 		dbConnect.addUserData(user);
-		//JOptionPane.showMessageDialog(null, "OK");
+		JOptionPane.showMessageDialog(null, "×¢²á³É¹¦£¡");
 	}
 
 
