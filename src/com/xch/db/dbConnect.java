@@ -6,6 +6,7 @@ import java.util.Scanner;
 import com.xch.obj.UserData;
 
 public class dbConnect {
+	public static String DB="ktv613";
 	public static String ID="root";
 	public static String PW="";
 	
@@ -18,7 +19,7 @@ public class dbConnect {
 		int MaxID = 0;
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
-			aConnection = DriverManager.getConnection("jdbc:mysql://localhost:3306/ktv613?useUnicode=true&characterEncoding=utf8",ID,PW);
+			aConnection = DriverManager.getConnection("jdbc:mysql://localhost:3306/"+DB+"?useUnicode=true&characterEncoding=utf8",ID,PW);
 			
 			aStatement= aConnection.createStatement();
 			/*
@@ -70,7 +71,7 @@ public class dbConnect {
 		boolean flag = false;
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
-			aConnection = DriverManager.getConnection("jdbc:mysql://localhost:3306/ktv613?useUnicode=true&characterEncoding=utf8",ID,PW);
+			aConnection = DriverManager.getConnection("jdbc:mysql://localhost:3306/"+DB+"?useUnicode=true&characterEncoding=utf8",ID,PW);
 			
 			aStatement= aConnection.createStatement();
 	
@@ -106,7 +107,7 @@ public class dbConnect {
 		int MaxID = 0;
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
-			aConnection = DriverManager.getConnection("jdbc:mysql://localhost:3306/ktv613?useUnicode=true&characterEncoding=utf8",ID,PW);
+			aConnection = DriverManager.getConnection("jdbc:mysql://localhost:3306/"+DB+"?useUnicode=true&characterEncoding=utf8",ID,PW);
 			
 			aStatement= aConnection.createStatement();
 				
