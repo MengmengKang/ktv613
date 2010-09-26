@@ -100,7 +100,7 @@ public class dbConnect {
 				
 			String sql="insert users values("+user.getUserID()+",";
 			sql=sql+"'"+user.getUserName()+"',";
-			sql=sql+"'"+user.getPassword()+"',";
+			sql=sql+"'"+user.getPassWord()+"',";
 			sql=sql+"'"+user.getRealName()+"',";
 			sql=sql+"'"+user.getEmail()+"',";
 			sql=sql+user.getGender()+",";
