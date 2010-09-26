@@ -1,7 +1,6 @@
 package com.xch.db;
 
 import java.sql.*;
-import java.util.Scanner;
 
 import com.xch.obj.UserData;
 
@@ -32,7 +31,6 @@ public class dbConnect {
 	
 	public static int getUserMaxID()
 	{
-		Scanner aS=new Scanner(System.in);
 		Connection aConnection;
 		Statement aStatement;
 		int MaxID = 0;
@@ -60,7 +58,6 @@ public class dbConnect {
 	
 	public static boolean checkUserName(String username)
 	{
-		Scanner aS=new Scanner(System.in);
 		Connection aConnection;
 		Statement aStatement;
 		boolean flag = false;
@@ -92,7 +89,6 @@ public class dbConnect {
 	}	
 	public static int addUserData(UserData user)
 	{
-		Scanner aS=new Scanner(System.in);
 		Connection aConnection;
 		Statement aStatement;
 		int MaxID = 0;

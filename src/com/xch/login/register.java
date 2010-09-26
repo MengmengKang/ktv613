@@ -57,7 +57,6 @@ public class register extends javax.swing.JFrame {
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
 				register inst = new register();
-				inst.setTitle("注册用户");
 				inst.setLocationRelativeTo(null);
 				inst.setVisible(true);
 				
@@ -75,6 +74,7 @@ public class register extends javax.swing.JFrame {
 		try {
 			setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 			getContentPane().setLayout(null);
+			this.setTitle("\u6ce8\u518c\u65b0\u7528\u6237");
 			{
 				jLabel1 = new JLabel();
 				getContentPane().add(jLabel1);
@@ -195,28 +195,28 @@ public class register extends javax.swing.JFrame {
 			JOptionPane.showMessageDialog(null, "用户名已经被使用！");
 			return;
 		}
-		if(jPassword.getText().length()==0||jPasswordRepeat.getText().length()==0)
+		if(jPassword.getPassword().length==0||jPasswordRepeat.getPassword().length==0)
 		{
 			JOptionPane.showMessageDialog(null, "密码不能为空！");
 			jPassword.setText("");
 			jPasswordRepeat.setText("");
 			return;
 		}
-		if(jPassword.getText().length()==0||jPasswordRepeat.getText().length()==0)
+		if(jPassword.getPassword().length==0||jPasswordRepeat.getPassword().length==0)
 		{
 			JOptionPane.showMessageDialog(null, "密码不能为空！");
 			jPassword.setText("");
 			jPasswordRepeat.setText("");
 			return;
 		}
-		if(jPassword.getText().compareTo(jPasswordRepeat.getText())!=0)
+		if(jPassword.getPassword().length!=0)
 		{
 			JOptionPane.showMessageDialog(null, "两次密码输入不匹配，请重新输入！");
 			jPassword.setText("");
 			jPasswordRepeat.setText("");
 			return;
 		}
-		MD5 md5=new MD5(jPassword.getText());
+		MD5 md5=new MD5(jPassword.getPassword().toString());
 		user.setUserID(dbConnect.getUserMaxID()+1);
 		user.setUserName(jUserName.getText());
 		user.setPassword(md5.get());

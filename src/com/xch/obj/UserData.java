@@ -11,62 +11,62 @@ public class UserData {
 
 	public void setUserID(int indata)
 	{
-		UserID=indata;
+		this.UserID=indata;
 	}
 	public void setUserName(String indata)
 	{
-		UserName=indata;
+		this.UserName=indata;
 	}
 	
 	public void setPassword(String indata)
 	{
-		Password=indata;
+		this.Password=indata;
 	}
 	public void setRealName(String indata)
 	{
-		RealName=indata;
+		this.RealName=indata;
 	}
 	public void setEmail(String indata)
 	{
-		Email=indata;
+		this.Email=indata;
 	}
 	public void setGender(int indata)
 	{
-		Gender=indata;
+		this.Gender=indata;
 	}
 	public void setInterest(String indata)
 	{
-		Interest=indata;
+		this.Interest=indata;
 	}
 	
 	public int getUserID()
 	{
-		return UserID;
+		return this.UserID;
 	}
 	
 	public String getUserName()
 	{
-		return UserName;
+		return this.UserName;
 	}
 	
 	public String getPassword()
 	{
-		return Password;
+		return this.Password;
 	}
 	public String getRealName()
 	{
-		return RealName;
+		return this.RealName;
 	}
 	public String getEmail()
 	{
-		return Email;
+		return this.Email;
 	}
 	public int getGender()
 	{
-		return Gender;
+		return this.Gender;
 	}
 	public String getInterest()
 	{
-		return Interest;
+		return this.Interest;
 	}
 }
