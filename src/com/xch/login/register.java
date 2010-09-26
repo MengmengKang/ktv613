@@ -219,7 +219,7 @@ public class register extends javax.swing.JFrame {
 		MD5 md5=new MD5(jPassword.getPassword().toString());
 		user.setUserID(dbConnect.getUserMaxID()+1);
 		user.setUserName(jUserName.getText());
-		user.setPassword(md5.get());
+		user.setPassWord(md5.get());
 		user.setEmail(jEmail.getText());
 		user.setGender(jGender.getSelectedIndex());
 		user.setRealName(jRealName.getText());

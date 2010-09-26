@@ -3,7 +3,7 @@ package com.xch.obj;
 public class UserData {
 	private int UserID;
 	private String UserName;
-	private String Password;
+	private String PassWord;
 	private String RealName;
 	private String Email;
 	private int Gender;    //0Ϊ�У�1ΪŮ
@@ -18,9 +18,9 @@ public class UserData {
 		this.UserName=indata;
 	}
 	
-	public void setPassword(String indata)
+	public void setPassWord(String indata)
 	{
-		this.Password=indata;
+		this.PassWord=indata;
 	}
 	public void setRealName(String indata)
 	{
@@ -49,9 +49,9 @@ public class UserData {
 		return this.UserName;
 	}
 	
-	public String getPassword()
+	public String getPassWord()
 	{
-		return this.Password;
+		return this.PassWord;
 	}
 	public String getRealName()
 	{
