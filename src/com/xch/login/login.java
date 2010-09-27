@@ -1,12 +1,15 @@
 package com.xch.login;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.JButton;
-import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 import javax.swing.WindowConstants;
 import javax.swing.SwingUtilities;
+
+import com.xch.login.register;
 
 
 /**
@@ -80,6 +83,11 @@ public class login extends javax.swing.JFrame {
 				getContentPane().add(jRegister);
 				jRegister.setText("\u6ce8\u518c");
 				jRegister.setBounds(203, 159, 61, 24);
+				jRegister.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent evt) {
+						jRegisterActionPerformed(evt);
+					}
+				});
 			}
 			{
 				jPassword = new JPasswordField();
@@ -92,6 +100,14 @@ public class login extends javax.swing.JFrame {
 		    //add your error handling code here
 			e.printStackTrace();
 		}
+	}
+	
+	private void jRegisterActionPerformed(ActionEvent evt) {
+		System.out.println("jRegister.actionPerformed, event="+evt);
+		//TODO add your code for jRegister.actionPerformed
+		register inst = new register();
+		inst.setLocationRelativeTo(null);
+		inst.setVisible(true);
 	}
 
 }

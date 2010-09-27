@@ -172,6 +172,11 @@ public class register extends javax.swing.JFrame {
 				getContentPane().add(jCancel);
 				jCancel.setText("\u53d6\u6d88");
 				jCancel.setBounds(205, 244, 61, 22);
+				jCancel.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent evt) {
+						jCancelActionPerformed(evt);
+					}
+				});
 			}
 			pack();
 			this.setSize(385, 324);
@@ -202,7 +207,7 @@ public class register extends javax.swing.JFrame {
 			jPasswordRepeat.setText("");
 			return;
 		}
-		if(jPassword.getPassword().toString().compareTo(jPasswordRepeat.getPassword().toString())!=0)
+		if(jPassword.getPassword().toString().equals(jPasswordRepeat.getPassword().toString()))
 		{
 			JOptionPane.showMessageDialog(null, "两次密码输入不匹配，请重新输入！");
 			jPassword.setText("");
@@ -210,7 +215,7 @@ public class register extends javax.swing.JFrame {
 			return;
 		}
 		MD5 md5=new MD5(jPassword.getPassword().toString());
-		user.setUserID(dbConnect.getUserMaxID()+1);
+		user.setUserID(dbConnect.getUserMaxID());
 		user.setUserName(jUserName.getText());
 		user.setPassWord(md5.get());
 		user.setEmail(jEmail.getText());
@@ -220,9 +225,13 @@ public class register extends javax.swing.JFrame {
 		
 		dbConnect.addUserData(user);
 		JOptionPane.showMessageDialog(null, "注册成功！");
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		register.this.dispose();
 	}
-
-
+	
+	private void jCancelActionPerformed(ActionEvent evt) {
+		//System.out.println("jCancel.actionPerformed, event="+evt);
+		//TODO add your code for jCancel.actionPerformed
+		register.this.dispose();
+	}
 
 }

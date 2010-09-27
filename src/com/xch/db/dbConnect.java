@@ -33,7 +33,7 @@ public class dbConnect {
 	{
 		Connection aConnection;
 		Statement aStatement;
-		int MaxID = 0;
+		int MaxID = 1;
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			aConnection = DriverManager.getConnection("jdbc:mysql://localhost:3306/"+DB+"?useUnicode=true&characterEncoding=utf8",ID,PW);
@@ -43,8 +43,8 @@ public class dbConnect {
 			String sql="select * from users order by userid";
 			ResultSet result=aStatement.executeQuery(sql);
 			while(result.next()){
-				MaxID++;
 				if(result.getInt(1)!=MaxID) break;
+				MaxID++;
 			}
 			aStatement.close();
 			aConnection.close();
@@ -103,6 +103,8 @@ public class dbConnect {
 			sql=sql+"'"+user.getEmail()+"',";
 			sql=sql+user.getGender()+",";
 			sql=sql+"'"+user.getInterest()+"')";
+			
+			System.out.println(sql);
 			
 			aStatement.executeUpdate(sql);
 			
