@@ -27,7 +27,7 @@ while(result.next()){
 public class dbConnect {
 	public static String DB="ktv613";
 	public static String ID="root";
-	public static String PW="";
+	public static String PW="czx";
 	
 	public static int getUserMaxID()
 	{
@@ -46,7 +46,6 @@ public class dbConnect {
 				MaxID++;
 				if(result.getInt(1)!=MaxID) break;
 			}
-			
 			aStatement.close();
 			aConnection.close();
 		} catch (Exception e) {
@@ -75,7 +74,6 @@ public class dbConnect {
 					flag = true;
 					break;
 				}
-				//System.out.println(result.getInt(1)+"	"+result.getString(2));		
 			}
 			
 			aStatement.close();
@@ -115,9 +113,9 @@ public class dbConnect {
 			System.out.println(e);
 		}
 		return MaxID;
-	
-
 	}
+	
+	
 }
 
 

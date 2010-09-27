@@ -202,14 +202,7 @@ public class register extends javax.swing.JFrame {
 			jPasswordRepeat.setText("");
 			return;
 		}
-		if(jPassword.getPassword().length==0||jPasswordRepeat.getPassword().length==0)
-		{
-			JOptionPane.showMessageDialog(null, "密码不能为空！");
-			jPassword.setText("");
-			jPasswordRepeat.setText("");
-			return;
-		}
-		if(jPassword.getPassword().length!=0)
+		if(jPassword.getPassword().toString().compareTo(jPasswordRepeat.getPassword().toString())!=0)
 		{
 			JOptionPane.showMessageDialog(null, "两次密码输入不匹配，请重新输入！");
 			jPassword.setText("");
@@ -227,6 +220,7 @@ public class register extends javax.swing.JFrame {
 		
 		dbConnect.addUserData(user);
 		JOptionPane.showMessageDialog(null, "注册成功！");
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
 	}
 
 
