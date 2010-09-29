@@ -1,4 +1,4 @@
-package com.xch.login;
+package com.xch.client;
 import com.cloudgarden.layout.AnchorLayout;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
@@ -16,7 +16,7 @@ import javax.swing.WindowConstants;
 import javax.swing.SwingUtilities;
 import com.xch.obj.UserData;
 import com.xch.DAO.DA;
-import com.xch.login.MD5;
+import com.xch.client.MD5;
 
 
 

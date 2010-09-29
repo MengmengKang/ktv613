@@ -1,4 +1,4 @@
-package com.xch.login;
+package com.xch.client;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
@@ -9,7 +9,7 @@ import javax.swing.JTextField;
 import javax.swing.WindowConstants;
 import javax.swing.SwingUtilities;
 
-import com.xch.login.register;
+import com.xch.client.register;
 
 
 /**

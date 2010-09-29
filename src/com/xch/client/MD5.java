@@ -1,4 +1,4 @@
-package com.xch.login;
+package com.xch.client;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
