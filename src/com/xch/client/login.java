@@ -9,7 +9,7 @@ import javax.swing.JTextField;
 import javax.swing.WindowConstants;
 import javax.swing.SwingUtilities;
 
-import com.xch.client.register;
+import com.xch.client.Register;
 
 
 /**
@@ -24,7 +24,7 @@ import com.xch.client.register;
 * THIS MACHINE, SO JIGLOO OR THIS CODE CANNOT BE USED
 * LEGALLY FOR ANY CORPORATE OR COMMERCIAL PURPOSE.
 */
-public class login extends javax.swing.JFrame {
+public class Login extends javax.swing.JFrame {
 	private JLabel jLabel1;
 	private JLabel jLabel2;
 	private JButton jLogin;
@@ -38,14 +38,14 @@ public class login extends javax.swing.JFrame {
 	public static void main(String[] args) {
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
-				login inst = new login();
+				Login inst = new Login();
 				inst.setLocationRelativeTo(null);
 				inst.setVisible(true);
 			}
 		});
 	}
 	
-	public login() {
+	public Login() {
 		super();
 		initGUI();
 	}
@@ -105,7 +105,7 @@ public class login extends javax.swing.JFrame {
 	private void jRegisterActionPerformed(ActionEvent evt) {
 		//System.out.println("jRegister.actionPerformed, event="+evt);
 		//TODO add your code for jRegister.actionPerformed
-		register inst = new register();
+		Register inst = new Register();
 		inst.setLocationRelativeTo(null);
 		inst.setVisible(true);
 	}

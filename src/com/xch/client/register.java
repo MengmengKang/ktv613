@@ -32,7 +32,7 @@ import com.xch.client.MD5;
 * THIS MACHINE, SO JIGLOO OR THIS CODE CANNOT BE USED
 * LEGALLY FOR ANY CORPORATE OR COMMERCIAL PURPOSE.
 */
-public class register extends javax.swing.JFrame {
+public class Register extends javax.swing.JFrame {
 	private JLabel jLabel1;
 	private JTextField jUserName;
 	private JLabel jLabel2;
@@ -56,7 +56,7 @@ public class register extends javax.swing.JFrame {
 	public static void main(String[] args) {
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
-				register inst = new register();
+				Register inst = new Register();
 				inst.setLocationRelativeTo(null);
 				inst.setVisible(true);
 				
@@ -65,7 +65,7 @@ public class register extends javax.swing.JFrame {
 		});
 	}
 	
-	public register() {
+	public Register() {
 		super();
 		initGUI();
 	}
@@ -225,13 +225,13 @@ public class register extends javax.swing.JFrame {
 		
 		DA.addUserData(user);
 		JOptionPane.showMessageDialog(null, "×¢²á³É¹¦£¡");
-		register.this.dispose();
+		Register.this.dispose();
 	}
 	
 	private void jCancelActionPerformed(ActionEvent evt) {
 		//System.out.println("jCancel.actionPerformed, event="+evt);
 		//TODO add your code for jCancel.actionPerformed
-		register.this.dispose();
+		Register.this.dispose();
 	}
 
 }
