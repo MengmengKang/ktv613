@@ -27,7 +27,7 @@ while(result.next()){
 public class DA {
 	static String DB="ktv613";
 	static String ID="root";
-	static String PW="czx";
+	static String PW="";
 	static String CONNECT="jdbc:mysql://localhost:3306/"+DB+"?useUnicode=true&characterEncoding=utf8";
 	
 	static Connection aConnection;
@@ -120,6 +120,46 @@ public class DA {
 			System.out.println(e);
 		}
 		return MaxID;
+	}
+	
+	public static String[][] orderByPinyin(String pinyin,int n)
+	{
+		String[][] res={};
+		
+		try{
+			open();
+			
+			String sql="select * from songs,stars where (SoPinYin like '"+pinyin+
+					"' OR SoPinYin like '%"+pinyin+
+					"' OR SoPinYin like '"+pinyin+
+					"%' OR SoPinYin like '%"+pinyin+
+					"%') AND songs.StarID=stars.StarID";
+			System.out.println(sql);
+			ResultSet result=aStatement.executeQuery(sql);
+			result.last();    
+			int row=result.getRow();
+			result.beforeFirst();
+			res=new String[row][n];
+			int i=-1;
+			while(result.next()){
+				i++;
+				String[] resLine =new String[n];
+				//System.out.println(result.getString(5)+" "+result.getString(2)+
+				//		" "+result.getString(3)+" "+result.getString(9));
+				//String[] resLine=new String[]{result.getString(5),result.getString(2),result.getString(3),result.getString(9)};
+				resLine[0]=result.getString(1);
+				resLine[1]=result.getString(5);
+				resLine[2]=result.getString(2);
+				resLine[3]=result.getString(3);
+				resLine[4]=result.getString(9);
+				res[i]=resLine;				
+			}
+			
+			close();
+		} catch (Exception e) {
+			System.out.println();
+		}
+		return res;		
 	}
 	
 	

@@ -7,6 +7,7 @@ public class SongData {
 	private int SoNumber;
 	private String SoPinYin;
 	private int StarID;
+	private String StarName;
 	
 	public void setSongID(int indata)
 	{
@@ -32,6 +33,10 @@ public class SongData {
 	{
 		this.StarID=indata;
 	}
+	public void setStarName(String indata)
+	{
+		this.StarName=indata;		
+	}
 	
 	public int getSongID()
 	{
@@ -56,6 +61,10 @@ public class SongData {
 	public int getStarID()
 	{
 		return this.StarID;
+	}
+	public String getStarName()
+	{
+		return this.StarName;		
 	}
 
 }
