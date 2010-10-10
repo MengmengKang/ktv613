@@ -113,7 +113,7 @@ public class Login extends javax.swing.JFrame {
 		//System.out.println("jLogin.actionPerformed, event="+evt);
 		//TODO add your code for jLogin.actionPerformed
 		AdminData user=new AdminData();
-		if(jManagerID.getText().length()==0)
+		if(jUserName.getText().length()==0)
 		{
 			JOptionPane.showMessageDialog(null, "用户名不能为空！");
 			return;
@@ -123,7 +123,7 @@ public class Login extends javax.swing.JFrame {
 	private void jExitActionPerformed(ActionEvent evt) {
 		//System.out.println("jExit.actionPerformed, event="+evt);
 		//TODO add your code for jExit.actionPerformed
-		Login.this.dispose();
+		this.dispose();
 	}
 }
 

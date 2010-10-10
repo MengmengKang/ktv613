@@ -1,4 +1,6 @@
 package com.xch.server;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.JButton;
 
 import javax.swing.WindowConstants;
@@ -19,6 +21,7 @@ import javax.swing.SwingUtilities;
 */
 public class Manager extends javax.swing.JFrame {
 	private JButton jManageUser;
+	private JButton jManageAdmin;
 	private JButton jManageSong;
 	private JButton jManageStar;
 
@@ -48,19 +51,35 @@ public class Manager extends javax.swing.JFrame {
 				jManageUser = new JButton();
 				getContentPane().add(jManageUser);
 				jManageUser.setText("\u7528\u6237\u4fe1\u606f\u7ba1\u7406");
-				jManageUser.setBounds(51, 28, 86, 22);
+				jManageUser.setBounds(117, 87, 143, 40);
 			}
 			{
 				jManageStar = new JButton();
 				getContentPane().add(jManageStar);
 				jManageStar.setText("\u660e\u661f\u4fe1\u606f\u7ba1\u7406");
-				jManageStar.setBounds(51, 120, 86, 22);
+				jManageStar.setBounds(117, 146, 143, 40);
+				jManageStar.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent evt) {
+						jManageStarActionPerformed(evt);
+					}
+				});
 			}
 			{
 				jManageSong = new JButton();
 				getContentPane().add(jManageSong);
 				jManageSong.setText("\u6b4c\u66f2\u4fe1\u606f\u7ba1\u7406");
-				jManageSong.setBounds(51, 206, 86, 22);
+				jManageSong.setBounds(117, 206, 143, 40);
+				jManageSong.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent evt) {
+						jManageSongActionPerformed(evt);
+					}
+				});
+			}
+			{
+				jManageAdmin = new JButton();
+				getContentPane().add(jManageAdmin);
+				jManageAdmin.setText("\u7ba1\u7406\u5458\u4fe1\u606f\u7ba1\u7406");
+				jManageAdmin.setBounds(117, 22,143, 40);
 			}
 			pack();
 			setSize(400, 300);
@@ -68,6 +87,22 @@ public class Manager extends javax.swing.JFrame {
 		    //add your error handling code here
 			e.printStackTrace();
 		}
+	}
+	
+	private void jManageSongActionPerformed(ActionEvent evt) {
+		//System.out.println("jManageSong.actionPerformed, event="+evt);
+		//TODO add your code for jManageSong.actionPerformed
+			ManageSongs inst = new ManageSongs();
+			inst.setLocationRelativeTo(null);
+			inst.setVisible(true);
+	}
+	
+	private void jManageStarActionPerformed(ActionEvent evt) {
+		//System.out.println("jManageStar.actionPerformed, event="+evt);
+		//TODO add your code for jManageStar.actionPerformed
+		ManageStars inst = new ManageStars();
+		inst.setLocationRelativeTo(null);
+		inst.setVisible(true);
 	}
 
 }
