@@ -76,6 +76,45 @@ public class DA {
 		return MaxID;
 	}
 	
+	public static int getSongMaxID()
+	{
+		int MaxID = 1;
+		try {
+			open();
+			String sql="select * from songs order by songid";
+			ResultSet result=aStatement.executeQuery(sql);
+			while(result.next()){
+				if(result.getInt(1)!=MaxID) break;
+				MaxID++;
+			}
+			close();
+
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println(e);
+		}
+		return MaxID;
+	}
+	
+	public static int getStarMaxID()
+	{
+		int MaxID = 1;
+		try {
+			open();
+			String sql="select * from stars order by starid";
+			ResultSet result=aStatement.executeQuery(sql);
+			while(result.next()){
+				if(result.getInt(1)!=MaxID) break;
+				MaxID++;
+			}
+			close();
+
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println(e);
+		}
+		return MaxID;
+	}	
 	public static boolean checkUserName(String username)
 	{
 		boolean flag = false;
@@ -122,19 +161,18 @@ public class DA {
 		return MaxID;
 	}
 	
-	public static String[][] orderByPinyin(String pinyin,int n)
+	public static String[][] orderByPinyin(String indata,int n)
 	{
 		String[][] res={};
 		
 		try{
 			open();
 			
-			String sql="select * from songs,stars where (SoPinYin like '"+pinyin+
-					"' OR SoPinYin like '%"+pinyin+
-					"' OR SoPinYin like '"+pinyin+
-					"%' OR SoPinYin like '%"+pinyin+
+			String sql="select * from songs,stars where (SoPinYin like '"+indata+
+					"' OR SoPinYin like '%"+indata+
+					"' OR SoPinYin like '"+indata+
+					"%' OR SoPinYin like '%"+indata+
 					"%') AND songs.StarID=stars.StarID";
-			System.out.println(sql);
 			ResultSet result=aStatement.executeQuery(sql);
 			result.last();    
 			int row=result.getRow();
@@ -144,15 +182,13 @@ public class DA {
 			while(result.next()){
 				i++;
 				String[] resLine =new String[n];
-				//System.out.println(result.getString(5)+" "+result.getString(2)+
-				//		" "+result.getString(3)+" "+result.getString(9));
-				//String[] resLine=new String[]{result.getString(5),result.getString(2),result.getString(3),result.getString(9)};
+				//System.out.println(result.getString(5)+" "+result.getString(2)+" "+result.getString(3)+" "+result.getString(9));
 				resLine[0]=result.getString(1);
 				resLine[1]=result.getString(5);
 				resLine[2]=result.getString(2);
 				resLine[3]=result.getString(3);
 				resLine[4]=result.getString(9);
-				res[i]=resLine;				
+				res[i]=resLine;		
 			}
 			
 			close();
@@ -161,8 +197,8 @@ public class DA {
 		}
 		return res;		
 	}
-	
-	
+
+	 
 }
 
 
