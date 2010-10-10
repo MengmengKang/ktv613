@@ -1,19 +1,29 @@
 package com.xch.client;
 
+
+import java.awt.Container;
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
 
 public class Player extends Thread{
-	private static final String MPLAYER_PATH = "player/mplayer.exe";
+	private static final String MPLAYER_PATH = "player\\mplayer.exe";
 	private String[] cmd;
 	public static boolean isPlay;
 	public Process proc;
 	OutputStream os;
     BufferedWriter bw;
+  
+	
     
+	
+	
+	
 	public Player(final String path){
 		//stop();
 		//mediaPath=path;
@@ -72,6 +82,7 @@ public class Player extends Thread{
 		bw.flush();
 	
 	}
+	
 	public void Append(String name) throws IOException 
 	{
 		bw.write("loadfile " + name + " 1\n");

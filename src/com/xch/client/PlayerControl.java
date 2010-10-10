@@ -68,7 +68,8 @@ public class PlayerControl extends javax.swing.JFrame {
 	private void jPlayActionPerformed(ActionEvent evt) {
 		//System.out.println("jPlay.actionPerformed, event="+evt);
 		//TODO add your code for jPlay.actionPerformed
-		new Player("lib\\test4.mpg").start();
+		//new Player("lib\\test4.mpg").start();
+		new MplayerDemo("lib\\test4.mpg");
 	}
 
 }

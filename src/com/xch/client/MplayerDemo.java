@@ -122,19 +122,18 @@ Float.valueOf(""+Math.floor(Math.random()*100)).intValue();
 
     };
 
-    public MplayerDemo() {
+    public MplayerDemo(String name) {
         //final String cmd = mplayerPath + space + flags[0] + space + mediaPath[0];
 		String[] cmd = new String[] {
 				mplayerPath,
 				flags[0],
-				mediaPath[0]
+				name
 		};
         showGUI();
 
         try {
-        	System.out.println("test 1");
             playerPrc = Runtime.getRuntime().exec(cmd);
-            System.out.println("test 2");
+            
             
             //StringBuffer sb = new StringBuffer();
             //StringBuffer s2 = new StringBuffer();
@@ -225,12 +224,16 @@ Float.valueOf(""+Math.floor(Math.random()*100)).intValue();
      */
     public static void main(String[] args) {
         // TODO Auto-generated method stub
-        new MplayerDemo();
+        new MplayerDemo(mediaPath[0]);
     }
-
+    
 	@Override
 	public void windowClosing(WindowEvent e) {
 		quitAction.actionPerformed(new ActionEvent(this, 0, null));
 	}
+
+	
+		
 }
+	
 
