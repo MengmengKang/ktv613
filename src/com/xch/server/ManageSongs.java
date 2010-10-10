@@ -1,4 +1,7 @@
 package com.xch.server;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JList;
@@ -52,19 +55,32 @@ public class ManageSongs extends javax.swing.JFrame {
 				jAddSongs = new JButton();
 				getContentPane().add(jAddSongs);
 				jAddSongs.setText("\u6dfb\u52a0\u6b4c\u66f2");
-				jAddSongs.setBounds(45, 199, 62, 24);
+				jAddSongs.setBounds(19, 199, 95, 24);
+				jAddSongs.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent evt) {
+						jAddSongActionPerformed(evt);
+					}
+
+					private void jAddSongActionPerformed(ActionEvent evt) {
+						//System.out.println("jAddSong.actionPerformed, event="+evt);
+						//TODO add your code for jAddSong.actionPerformed
+							AddSongs inst = new AddSongs();
+							inst.setLocationRelativeTo(null);
+							inst.setVisible(true);
+					}
+			});
 			}
 			{
 				jDeleteSongs = new JButton();
 				getContentPane().add(jDeleteSongs);
 				jDeleteSongs.setText("\u5220\u9664\u6b4c\u66f2");
-				jDeleteSongs.setBounds(156, 199, 62, 24);
+				jDeleteSongs.setBounds(143, 199, 103, 24);
 			}
 			{
 				jRefreshList = new JButton();
 				getContentPane().add(jRefreshList);
 				jRefreshList.setText("\u66f4\u65b0\u6b4c\u66f2\u8868");
-				jRefreshList.setBounds(268, 199, 74, 24);
+				jRefreshList.setBounds(268, 199, 105, 24);
 			}
 			{
 				ListModel jSongListModel = 

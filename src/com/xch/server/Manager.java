@@ -52,7 +52,11 @@ public class Manager extends javax.swing.JFrame {
 				getContentPane().add(jManageUser);
 				jManageUser.setText("\u7528\u6237\u4fe1\u606f\u7ba1\u7406");
 				jManageUser.setBounds(117, 87, 143, 40);
-			}
+				jManageUser.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent evt) {
+						jManageUsersActionPerformed(evt);
+					}
+			});
 			{
 				jManageStar = new JButton();
 				getContentPane().add(jManageStar);
@@ -80,15 +84,33 @@ public class Manager extends javax.swing.JFrame {
 				getContentPane().add(jManageAdmin);
 				jManageAdmin.setText("\u7ba1\u7406\u5458\u4fe1\u606f\u7ba1\u7406");
 				jManageAdmin.setBounds(117, 22,143, 40);
+				jManageAdmin.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent evt) {
+						jManageAdminActionPerformed(evt);
+					}
+					});
 			}
 			pack();
-			setSize(400, 300);
-		} catch (Exception e) {
+			}	setSize(400, 300);}
+		 catch (Exception e) {
 		    //add your error handling code here
 			e.printStackTrace();
 		}
 	}
-	
+	private void jManageAdminActionPerformed(ActionEvent evt){
+		//System.out.println("jManageAdmin.actionPerformed, event="+evt);
+		//TODO add your code for jManageAdmin.actionPerformed
+		ManageAdmin inst = new ManageAdmin();
+		inst.setLocationRelativeTo(null);
+		inst.setVisible(true);
+	}
+	private void jManageUsersActionPerformed(ActionEvent evt){
+		//System.out.println("jManageUsers.actionPerformed, event="+evt);
+		//TODO add your code for jManageUsers.actionPerformed
+		ManageUsers inst = new ManageUsers();
+		inst.setLocationRelativeTo(null);
+		inst.setVisible(true);
+	}
 	private void jManageSongActionPerformed(ActionEvent evt) {
 		//System.out.println("jManageSong.actionPerformed, event="+evt);
 		//TODO add your code for jManageSong.actionPerformed

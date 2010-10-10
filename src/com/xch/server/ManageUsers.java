@@ -1,5 +1,8 @@
 package com.xch.server;
-import java.awt.BorderLayout;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.JButton;
 import javax.swing.JRadioButton;
 import javax.swing.JTable;
@@ -73,7 +76,19 @@ public class ManageUsers extends javax.swing.JFrame {
 				getContentPane().add(jViewUsers);
 				jViewUsers.setText("\u67e5\u770b\u7528\u6237\u4fe1\u606f");
 				jViewUsers.setBounds(243, 42, 86, 24);
-			}
+				jViewUsers.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent evt) {
+						jViewUsersActionPerformed(evt);
+					}
+
+					private void jViewUsersActionPerformed(ActionEvent evt) {
+						//System.out.println("jViewUsers.actionPerformed, event="+evt);
+						//TODO add your code for jViewUsers.actionPerformed
+							ViewUsers inst = new ViewUsers();
+							inst.setLocationRelativeTo(null);
+							inst.setVisible(true);
+					}
+			});
 			{
 				jDeleteUsers = new JButton();
 				getContentPane().add(jDeleteUsers);
@@ -88,7 +103,7 @@ public class ManageUsers extends javax.swing.JFrame {
 			}
 			pack();
 			setSize(400, 300);
-		} catch (Exception e) {
+		}} catch (Exception e) {
 		    //add your error handling code here
 			e.printStackTrace();
 		}

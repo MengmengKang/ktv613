@@ -1,4 +1,7 @@
 package com.xch.server;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JList;
@@ -53,7 +56,19 @@ public class ManageStars extends javax.swing.JFrame {
 				getContentPane().add(jEditMessage);
 				jEditMessage.setText("\u660e\u661f\u4fe1\u606f\u4fee\u6539");
 				jEditMessage.setBounds(243, 50, 86, 24);
-			}
+				jEditMessage.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent evt) {
+						jViewStarsActionPerformed(evt);
+					}
+
+					private void jViewStarsActionPerformed(ActionEvent evt) {
+						//System.out.println("jViewStars.actionPerformed, event="+evt);
+						//TODO add your code for jViewStars.actionPerformed
+							ViewStars inst = new ViewStars();
+							inst.setLocationRelativeTo(null);
+							inst.setVisible(true);
+					}
+			});
 			{
 				ListModel jStarsNamesModel = 
 					new DefaultComboBoxModel(
@@ -68,7 +83,19 @@ public class ManageStars extends javax.swing.JFrame {
 				getContentPane().add(jAddStars);
 				jAddStars.setText("\u6dfb\u52a0\u660e\u661f\u4fe1\u606f");
 				jAddStars.setBounds(243, 119, 86, 24);
-			}
+				jAddStars.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent evt) {
+						jAddStarsActionPerformed(evt);
+					}
+
+					private void jAddStarsActionPerformed(ActionEvent evt) {
+						//System.out.println("jAddStars.actionPerformed, event="+evt);
+						//TODO add your code for jAddStars.actionPerformed
+							AddStars inst = new AddStars();
+							inst.setLocationRelativeTo(null);
+							inst.setVisible(true);
+					}
+			});
 			{
 				jDeleteStars = new JButton();
 				getContentPane().add(jDeleteStars);
@@ -77,7 +104,8 @@ public class ManageStars extends javax.swing.JFrame {
 			}
 			pack();
 			setSize(400, 300);
-		} catch (Exception e) {
+			}} }
+		catch (Exception e) {
 		    //add your error handling code here
 			e.printStackTrace();
 		}
