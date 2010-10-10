@@ -234,6 +234,8 @@ public class DA {
 			String sql="select * from admins";
 			ResultSet result=aStatement.executeQuery(sql);
 			while(result.next()){
+				//System.out.println("s "+result.getString(1)+" "+result.getString(2));
+				//System.out.println("t "+admin.getAdmin()+" "+admin.getPassWord());
 				if(result.getString(1).compareTo(admin.getAdmin())==0&&
 					result.getString(2).compareTo(admin.getPassWord())==0)
 				{
