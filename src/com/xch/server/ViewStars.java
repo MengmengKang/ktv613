@@ -31,10 +31,11 @@ import javax.swing.SwingUtilities;
 public class ViewStars extends javax.swing.JFrame {
 	private JButton jConfirm;
 	private JLabel jSex;
+	private JLabel jViewStars;
+	private JLabel jStTeam;
+	private JLabel jStComeFrom;
 	private JTextField jTextField3;
-	private JLabel jHobby;
 	private JTextField jTextField2;
-	private JLabel jBirthday;
 	private JComboBox jComboBox1;
 	private JTextField jTextField1;
 	private JLabel jStarName;
@@ -66,25 +67,25 @@ public class ViewStars extends javax.swing.JFrame {
 				jConfirm = new JButton();
 				getContentPane().add(jConfirm);
 				jConfirm.setText("\u786e\u8ba4");
-				jConfirm.setBounds(63, 219, 88, 24);
+				jConfirm.setBounds(62, 225, 88, 24);
 			}
 			
 			{
 				jStarName = new JLabel();
 				getContentPane().add(jStarName);
 				jStarName.setText("\u660e\u661f\u59d3\u540d");
-				jStarName.setBounds(92, 28, 76, 17);
+				jStarName.setBounds(92, 68, 76, 17);
 			}
 			{
 				jTextField1 = new JTextField();
 				getContentPane().add(jTextField1);
-				jTextField1.setBounds(194, 25, 97, 24);
+				jTextField1.setBounds(194, 65, 97, 24);
 			}
 			{
 				jSex = new JLabel();
 				getContentPane().add(jSex);
 				jSex.setText("\u6027\u522b");
-				jSex.setBounds(92, 72, 46, 17);
+				jSex.setBounds(92, 109, 46, 17);
 			}
 			{
 				ComboBoxModel jComboBox1Model = 
@@ -93,41 +94,47 @@ public class ViewStars extends javax.swing.JFrame {
 				jComboBox1 = new JComboBox();
 				getContentPane().add(jComboBox1);
 				jComboBox1.setModel(jComboBox1Model);
-				jComboBox1.setBounds(194, 68, 52, 24);
-			}
-			{
-				jBirthday = new JLabel();
-				getContentPane().add(jBirthday);
-				jBirthday.setText("\u751f\u65e5");
-				jBirthday.setBounds(92, 123, 38, 17);
+				jComboBox1.setBounds(194, 105, 52, 24);
 			}
 			{
 				jTextField2 = new JTextField();
 				getContentPane().add(jTextField2);
-				jTextField2.setBounds(194, 120, 97, 24);
-			}
-			{
-				jHobby = new JLabel();
-				getContentPane().add(jHobby);
-				jHobby.setText("\u7231\u597d");
-				jHobby.setBounds(92, 167, 46, 17);
+				jTextField2.setBounds(194, 141, 97, 24);
 			}
 			{
 				jTextField3 = new JTextField();
 				getContentPane().add(jTextField3);
-				jTextField3.setBounds(194, 164, 97, 24);
+				jTextField3.setBounds(194, 180, 97, 24);
 			}
 			{
 				jExit = new JButton();
 				getContentPane().add(jExit);
 				jExit.setText("\u9000\u51fa");
-				jExit.setBounds(229, 219, 85, 24);
+				jExit.setBounds(228, 225, 85, 24);
 				jExit.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent evt) {
 						jExitActionPerformed(evt);}
 			});}
+			{
+				jStComeFrom = new JLabel();
+				getContentPane().add(jStComeFrom);
+				jStComeFrom.setText("\u6e2f\u53f0\u6216\u5185\u5730");
+				jStComeFrom.setBounds(92, 144, 76, 17);
+			}
+			{
+				jStTeam = new JLabel();
+				getContentPane().add(jStTeam);
+				jStTeam.setText("\u660e\u661f\u7ec4\u5408");
+				jStTeam.setBounds(92, 183, 76, 17);
+			}
+			{
+				jViewStars = new JLabel();
+				getContentPane().add(jViewStars);
+				jViewStars.setText("\u4fee\u6539\u660e\u661f\u4fe1\u606f");
+				jViewStars.setBounds(153, 23, 131, 17);
+			}
 			pack();
-			setSize(400, 300);
+			this.setSize(400, 315);
 		}catch (Exception e) {
 		    //add your error handling code here
 		}	

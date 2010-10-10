@@ -21,6 +21,7 @@ import javax.swing.SwingUtilities;
 */
 public class Manager extends javax.swing.JFrame {
 	private JButton jManageUser;
+	private JButton jExit;
 	private JButton jManageAdmin;
 	private JButton jManageSong;
 	private JButton jManageStar;
@@ -90,13 +91,28 @@ public class Manager extends javax.swing.JFrame {
 					}
 					});
 			}
+			{
+				jExit = new JButton();
+				getContentPane().add(jExit);
+				jExit.setText("\u9000\u51fa\u7ba1\u7406\u5458\u7cfb\u7edf");
+				jExit.setBounds(121, 268, 139, 39);
+				jExit.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent evt) {
+						jExitActionPerformed(evt);}
+			});}
 			pack();
-			}	setSize(400, 300);}
-		 catch (Exception e) {
+			setSize(400, 363);
+			}}catch (Exception e) {
 		    //add your error handling code here
-			e.printStackTrace();
+		}	
 		}
+		private void jExitActionPerformed(ActionEvent evt) {
+			//System.out.println("jExit.actionPerformed, event="+evt);
+			//TODO add your code for jExit.actionPerformed
+			this.dispose();
 	}
+
+
 	private void jManageAdminActionPerformed(ActionEvent evt){
 		//System.out.println("jManageAdmin.actionPerformed, event="+evt);
 		//TODO add your code for jManageAdmin.actionPerformed

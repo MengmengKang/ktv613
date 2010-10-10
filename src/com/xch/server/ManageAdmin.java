@@ -35,6 +35,7 @@ public class ManageAdmin extends javax.swing.JFrame {
 	private JPasswordField jPasswordField1;
 	private JLabel jEnsurePassword;
 	private JPasswordField jPasswordField2;
+	private JLabel jManageAdmin;
 	private JLabel jPassword;
 	private JTextField jTextField1;
 	private JLabel jAdminID;
@@ -84,34 +85,34 @@ public class ManageAdmin extends javax.swing.JFrame {
 				jAdminID = new JLabel();
 				getContentPane().add(jAdminID);
 				jAdminID.setText("\u7ba1\u7406\u5458\u8d26\u53f7");
-				jAdminID.setBounds(58, 34, 84, 17);
+				jAdminID.setBounds(58, 66, 84, 17);
 			}
 			{
 				jTextField1 = new JTextField();
 				getContentPane().add(jTextField1);
-				jTextField1.setBounds(149, 31, 99, 24);
+				jTextField1.setBounds(149, 63, 99, 24);
 			}
 			{
 				jPassword = new JLabel();
 				getContentPane().add(jPassword);
 				jPassword.setText("\u5bc6\u7801");
-				jPassword.setBounds(58, 84, 57, 17);
+				jPassword.setBounds(58, 109, 57, 17);
 			}
 			{
 				jPasswordField1 = new JPasswordField();
 				getContentPane().add(jPasswordField1);
-				jPasswordField1.setBounds(149, 77, 99, 24);
+				jPasswordField1.setBounds(149, 106, 99, 24);
 			}
 			{
 				jEnsurePassword = new JLabel();
 				getContentPane().add(jEnsurePassword);
 				jEnsurePassword.setText("\u786e\u8ba4\u5bc6\u7801");
-				jEnsurePassword.setBounds(58, 121, 66, 17);
+				jEnsurePassword.setBounds(58, 152, 66, 17);
 			}
 			{
 				jPasswordField2 = new JPasswordField();
 				getContentPane().add(jPasswordField2);
-				jPasswordField2.setBounds(149, 118, 99, 24);
+				jPasswordField2.setBounds(149, 149, 99, 24);
 			}
 			{
 				jExit = new JButton();
@@ -122,6 +123,12 @@ public class ManageAdmin extends javax.swing.JFrame {
 					public void actionPerformed(ActionEvent evt) {
 						jExitActionPerformed(evt);}
 			});}
+			{
+				jManageAdmin = new JLabel();
+				getContentPane().add(jManageAdmin);
+				jManageAdmin.setText("\u7ba1\u7406\u5458\u4fe1\u606f\u7ba1\u7406");
+				jManageAdmin.setBounds(142, 17, 147, 29);
+			}
 			pack();
 			setSize(400, 300);
 		} catch (Exception e) {

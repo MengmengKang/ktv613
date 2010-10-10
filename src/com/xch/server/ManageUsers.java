@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JRadioButton;
 import javax.swing.JTable;
 
@@ -29,6 +30,8 @@ public class ManageUsers extends javax.swing.JFrame {
 	private static final JButton eGViewUsers = null;
 	private JButton RefreshMessage;
 	private JButton jViewUsers;
+	private JLabel jManageUsers;
+	private JButton jExit;
 	private JButton jRefreshMessage;
 	private JButton jDeleteUsers;
 	private JTable jUserID;
@@ -64,13 +67,13 @@ public class ManageUsers extends javax.swing.JFrame {
 				jUserID = new JTable();
 				getContentPane().add(jUserID);
 				jUserID.setModel(jUserIDModel);
-				jUserID.setBounds(30, 42, 164, 178);
+				jUserID.setBounds(43, 83, 542, 132);
 			}
 			{
 				jViewUsers = new JButton();
 				getContentPane().add(jViewUsers);
 				jViewUsers.setText("\u67e5\u770b\u7528\u6237\u4fe1\u606f");
-				jViewUsers.setBounds(226, 42, 130, 24);
+				jViewUsers.setBounds(42, 244, 126, 24);
 				jViewUsers.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent evt) {
 						jViewUsersActionPerformed(evt);
@@ -88,21 +91,39 @@ public class ManageUsers extends javax.swing.JFrame {
 				jDeleteUsers = new JButton();
 				getContentPane().add(jDeleteUsers);
 				jDeleteUsers.setText("\u5220\u9664\u7528\u6237\u4fe1\u606f");
-				jDeleteUsers.setBounds(226, 118, 130, 24);
+				jDeleteUsers.setBounds(197, 244, 130, 24);
 			}
 			{
 				jRefreshMessage = new JButton();
 				getContentPane().add(jRefreshMessage);
 				jRefreshMessage.setText("\u66f4\u65b0\u7528\u6237\u4fe1\u606f");
-				jRefreshMessage.setBounds(226, 189, 130, 24);
+				jRefreshMessage.setBounds(358, 244, 130, 24);
+			}
+			{
+				jExit = new JButton();
+				getContentPane().add(jExit);
+				jExit.setText("\u9000\u51fa");
+				jExit.setBounds(523, 244, 62, 24);
+				jExit.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent evt) {
+						jExitActionPerformed(evt);}
+			});}
+			{
+				jManageUsers = new JLabel();
+				getContentPane().add(jManageUsers);
+				jManageUsers.setText("\u7528\u6237\u4fe1\u606f\u7ba1\u7406");
+				jManageUsers.setBounds(279, 32, 202, 17);
 			}
 			pack();
-			setSize(400, 300);
-		}} catch (Exception e) {
+			setSize(653, 363);
+			}}catch (Exception e) {
 		    //add your error handling code here
-			e.printStackTrace();
+		}	
 		}
+		private void jExitActionPerformed(ActionEvent evt) {
+			//System.out.println("jExit.actionPerformed, event="+evt);
+			//TODO add your code for jExit.actionPerformed
+			this.dispose();
 	}
-	
-}
 
+}

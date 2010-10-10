@@ -4,6 +4,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.ListModel;
 
@@ -25,6 +26,8 @@ import javax.swing.SwingUtilities;
 */
 public class ManageStars extends javax.swing.JFrame {
 	private JButton jEditMessage;
+	private JLabel jManageStars;
+	private JButton jExit;
 	private JButton jDeleteStars;
 	private JButton jAddStars;
 	private JList jStarsNames;
@@ -55,7 +58,7 @@ public class ManageStars extends javax.swing.JFrame {
 				jEditMessage = new JButton();
 				getContentPane().add(jEditMessage);
 				jEditMessage.setText("\u660e\u661f\u4fe1\u606f\u4fee\u6539");
-				jEditMessage.setBounds(243, 50, 86, 24);
+				jEditMessage.setBounds(39, 232, 128, 24);
 				jEditMessage.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent evt) {
 						jViewStarsActionPerformed(evt);
@@ -76,13 +79,13 @@ public class ManageStars extends javax.swing.JFrame {
 				jStarsNames = new JList();
 				getContentPane().add(jStarsNames);
 				jStarsNames.setModel(jStarsNamesModel);
-				jStarsNames.setBounds(39, 52, 159, 161);
+				jStarsNames.setBounds(39, 73, 534, 122);
 			}
 			{
 				jAddStars = new JButton();
 				getContentPane().add(jAddStars);
 				jAddStars.setText("\u6dfb\u52a0\u660e\u661f\u4fe1\u606f");
-				jAddStars.setBounds(243, 119, 86, 24);
+				jAddStars.setBounds(189, 232, 134, 24);
 				jAddStars.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent evt) {
 						jAddStarsActionPerformed(evt);
@@ -100,15 +103,33 @@ public class ManageStars extends javax.swing.JFrame {
 				jDeleteStars = new JButton();
 				getContentPane().add(jDeleteStars);
 				jDeleteStars.setText("\u5220\u9664\u660e\u661f\u4fe1\u606f");
-				jDeleteStars.setBounds(243, 189, 86, 24);
+				jDeleteStars.setBounds(346, 232, 134, 24);
+			}
+			{
+				jExit = new JButton();
+				getContentPane().add(jExit);
+				jExit.setText("\u9000\u51fa");
+				jExit.setBounds(511, 232, 62, 24);
+				jExit.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent evt) {
+						jExitActionPerformed(evt);}
+			});}
+			{
+				jManageStars = new JLabel();
+				getContentPane().add(jManageStars);
+				jManageStars.setText("\u660e\u661f\u4fe1\u606f\u7ba1\u7406");
+				jManageStars.setBounds(272, 25, 198, 17);
 			}
 			pack();
-			setSize(400, 300);
-			}} }
-		catch (Exception e) {
+			setSize(635, 349);
+			}}}catch (Exception e) {
 		    //add your error handling code here
-			e.printStackTrace();
+		}	
 		}
+		private void jExitActionPerformed(ActionEvent evt) {
+			//System.out.println("jExit.actionPerformed, event="+evt);
+			//TODO add your code for jExit.actionPerformed
+			this.dispose();
 	}
 
 }

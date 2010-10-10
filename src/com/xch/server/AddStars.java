@@ -31,10 +31,11 @@ import javax.swing.SwingUtilities;
 public class AddStars extends javax.swing.JFrame {
 	private JButton jConfirm;
 	private JLabel jSex;
+	private JLabel jAddStar;
+	private JLabel jStTeam;
+	private JLabel jStComeFrom;
 	private JTextField jTextField3;
-	private JLabel jHobby;
 	private JTextField jTextField2;
-	private JLabel jBirthday;
 	private JComboBox jComboBox1;
 	private JTextField jTextField1;
 	private JLabel jStarName;
@@ -73,18 +74,18 @@ public class AddStars extends javax.swing.JFrame {
 				jStarName = new JLabel();
 				getContentPane().add(jStarName);
 				jStarName.setText("\u660e\u661f\u59d3\u540d");
-				jStarName.setBounds(82, 27, 80, 17);
+				jStarName.setBounds(82, 42, 80, 17);
 			}
 			{
 				jTextField1 = new JTextField();
 				getContentPane().add(jTextField1);
-				jTextField1.setBounds(186, 24, 93, 24);
+				jTextField1.setBounds(186, 39, 93, 24);
 			}
 			{
 				jSex = new JLabel();
 				getContentPane().add(jSex);
 				jSex.setText("\u6027\u522b");
-				jSex.setBounds(82, 65, 48, 17);
+				jSex.setBounds(82, 79, 48, 17);
 			}
 			{
 				ComboBoxModel jComboBox1Model = 
@@ -93,30 +94,17 @@ public class AddStars extends javax.swing.JFrame {
 				jComboBox1 = new JComboBox();
 				getContentPane().add(jComboBox1);
 				jComboBox1.setModel(jComboBox1Model);
-				jComboBox1.setBounds(191, 61, 56, 24);
-			}
-			{
-				jBirthday = new JLabel();
-				getContentPane().add(jBirthday);
-				jBirthday.setText("\u751f\u65e5");
-				jBirthday.setBounds(82, 104, 66, 17);
+				jComboBox1.setBounds(186, 75, 56, 24);
 			}
 			{
 				jTextField2 = new JTextField();
 				getContentPane().add(jTextField2);
-				jTextField2.setBounds(186, 101, 93, 24);
-			}
-			{
-				jHobby = new JLabel();
-				getContentPane().add(jHobby);
-				jHobby.setBounds(82, 140, 72, 17);
-				jHobby.setText("\u7231\u597d");
-				jHobby.setBounds(82, 149, 72, 17);
+				jTextField2.setBounds(186, 114, 93, 24);
 			}
 			{
 				jTextField3 = new JTextField();
 				getContentPane().add(jTextField3);
-				jTextField3.setBounds(186, 137, 93, 24);
+				jTextField3.setBounds(186, 151, 93, 24);
 			}
 			{
 				jExit = new JButton();
@@ -127,6 +115,24 @@ public class AddStars extends javax.swing.JFrame {
 					public void actionPerformed(ActionEvent evt) {
 						jExitActionPerformed(evt);}
 			});}
+			{
+				jStComeFrom = new JLabel();
+				getContentPane().add(jStComeFrom);
+				jStComeFrom.setText("\u6e2f\u53f0\u6216\u5185\u5730");
+				jStComeFrom.setBounds(82, 117, 86, 17);
+			}
+			{
+				jStTeam = new JLabel();
+				getContentPane().add(jStTeam);
+				jStTeam.setText("\u660e\u661f\u7ec4\u5408");
+				jStTeam.setBounds(82, 154, 80, 17);
+			}
+			{
+				jAddStar = new JLabel();
+				getContentPane().add(jAddStar);
+				jAddStar.setText("\u6dfb\u52a0\u660e\u661f\u4fe1\u606f");
+				jAddStar.setBounds(154, 5, 166, 23);
+			}
 			pack();
 			setSize(400, 300);
 		}catch (Exception e) {
