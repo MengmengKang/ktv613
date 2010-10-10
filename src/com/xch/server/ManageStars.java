@@ -1,5 +1,8 @@
 package com.xch.server;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
+import javax.swing.JList;
+import javax.swing.ListModel;
 
 import javax.swing.WindowConstants;
 import javax.swing.SwingUtilities;
@@ -17,10 +20,11 @@ import javax.swing.SwingUtilities;
 * THIS MACHINE, SO JIGLOO OR THIS CODE CANNOT BE USED
 * LEGALLY FOR ANY CORPORATE OR COMMERCIAL PURPOSE.
 */
-public class Manager extends javax.swing.JFrame {
-	private JButton jManageUser;
-	private JButton jManageSong;
-	private JButton jManageStar;
+public class ManageStars extends javax.swing.JFrame {
+	private JButton jEditMessage;
+	private JButton jDeleteStars;
+	private JButton jAddStars;
+	private JList jStarsNames;
 
 	/**
 	* Auto-generated main method to display this JFrame
@@ -28,14 +32,14 @@ public class Manager extends javax.swing.JFrame {
 	public static void main(String[] args) {
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
-				Manager inst = new Manager();
+				ManageStars inst = new ManageStars();
 				inst.setLocationRelativeTo(null);
 				inst.setVisible(true);
 			}
 		});
 	}
 	
-	public Manager() {
+	public ManageStars() {
 		super();
 		initGUI();
 	}
@@ -45,22 +49,31 @@ public class Manager extends javax.swing.JFrame {
 			setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 			getContentPane().setLayout(null);
 			{
-				jManageUser = new JButton();
-				getContentPane().add(jManageUser);
-				jManageUser.setText("\u7528\u6237\u4fe1\u606f\u7ba1\u7406");
-				jManageUser.setBounds(51, 28, 86, 22);
+				jEditMessage = new JButton();
+				getContentPane().add(jEditMessage);
+				jEditMessage.setText("\u660e\u661f\u4fe1\u606f\u4fee\u6539");
+				jEditMessage.setBounds(243, 50, 86, 24);
 			}
 			{
-				jManageStar = new JButton();
-				getContentPane().add(jManageStar);
-				jManageStar.setText("\u660e\u661f\u4fe1\u606f\u7ba1\u7406");
-				jManageStar.setBounds(51, 120, 86, 22);
+				ListModel jStarsNamesModel = 
+					new DefaultComboBoxModel(
+							new String[] { "StarName1", "StarName2","StarName3" ,"..."});
+				jStarsNames = new JList();
+				getContentPane().add(jStarsNames);
+				jStarsNames.setModel(jStarsNamesModel);
+				jStarsNames.setBounds(39, 52, 159, 161);
 			}
 			{
-				jManageSong = new JButton();
-				getContentPane().add(jManageSong);
-				jManageSong.setText("\u6b4c\u66f2\u4fe1\u606f\u7ba1\u7406");
-				jManageSong.setBounds(51, 206, 86, 22);
+				jAddStars = new JButton();
+				getContentPane().add(jAddStars);
+				jAddStars.setText("\u6dfb\u52a0\u660e\u661f\u4fe1\u606f");
+				jAddStars.setBounds(243, 119, 86, 24);
+			}
+			{
+				jDeleteStars = new JButton();
+				getContentPane().add(jDeleteStars);
+				jDeleteStars.setText("\u5220\u9664\u660e\u661f\u4fe1\u606f");
+				jDeleteStars.setBounds(243, 189, 86, 24);
 			}
 			pack();
 			setSize(400, 300);

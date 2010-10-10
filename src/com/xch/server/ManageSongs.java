@@ -1,5 +1,8 @@
 package com.xch.server;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
+import javax.swing.JList;
+import javax.swing.ListModel;
 
 import javax.swing.WindowConstants;
 import javax.swing.SwingUtilities;
@@ -17,10 +20,11 @@ import javax.swing.SwingUtilities;
 * THIS MACHINE, SO JIGLOO OR THIS CODE CANNOT BE USED
 * LEGALLY FOR ANY CORPORATE OR COMMERCIAL PURPOSE.
 */
-public class Manager extends javax.swing.JFrame {
-	private JButton jManageUser;
-	private JButton jManageSong;
-	private JButton jManageStar;
+public class ManageSongs extends javax.swing.JFrame {
+	private JButton jAddSongs;
+	private JButton jDeleteSongs;
+	private JButton jRefreshList;
+	private JList jSongList;
 
 	/**
 	* Auto-generated main method to display this JFrame
@@ -28,14 +32,14 @@ public class Manager extends javax.swing.JFrame {
 	public static void main(String[] args) {
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
-				Manager inst = new Manager();
+				ManageSongs inst = new ManageSongs();
 				inst.setLocationRelativeTo(null);
 				inst.setVisible(true);
 			}
 		});
 	}
 	
-	public Manager() {
+	public ManageSongs() {
 		super();
 		initGUI();
 	}
@@ -45,22 +49,31 @@ public class Manager extends javax.swing.JFrame {
 			setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 			getContentPane().setLayout(null);
 			{
-				jManageUser = new JButton();
-				getContentPane().add(jManageUser);
-				jManageUser.setText("\u7528\u6237\u4fe1\u606f\u7ba1\u7406");
-				jManageUser.setBounds(51, 28, 86, 22);
+				jAddSongs = new JButton();
+				getContentPane().add(jAddSongs);
+				jAddSongs.setText("\u6dfb\u52a0\u6b4c\u66f2");
+				jAddSongs.setBounds(45, 199, 62, 24);
 			}
 			{
-				jManageStar = new JButton();
-				getContentPane().add(jManageStar);
-				jManageStar.setText("\u660e\u661f\u4fe1\u606f\u7ba1\u7406");
-				jManageStar.setBounds(51, 120, 86, 22);
+				jDeleteSongs = new JButton();
+				getContentPane().add(jDeleteSongs);
+				jDeleteSongs.setText("\u5220\u9664\u6b4c\u66f2");
+				jDeleteSongs.setBounds(156, 199, 62, 24);
 			}
 			{
-				jManageSong = new JButton();
-				getContentPane().add(jManageSong);
-				jManageSong.setText("\u6b4c\u66f2\u4fe1\u606f\u7ba1\u7406");
-				jManageSong.setBounds(51, 206, 86, 22);
+				jRefreshList = new JButton();
+				getContentPane().add(jRefreshList);
+				jRefreshList.setText("\u66f4\u65b0\u6b4c\u66f2\u8868");
+				jRefreshList.setBounds(268, 199, 74, 24);
+			}
+			{
+				ListModel jSongListModel = 
+					new DefaultComboBoxModel(
+							new String[] { "Song1", "Song2","Song3","..." });
+				jSongList = new JList();
+				getContentPane().add(jSongList);
+				jSongList.setModel(jSongListModel);
+				jSongList.setBounds(107, 18, 169, 169);
 			}
 			pack();
 			setSize(400, 300);
