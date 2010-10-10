@@ -2,6 +2,8 @@ package com.xch.DAO;
 
 import java.sql.*;
 
+import com.xch.obj.AdminData;
+import com.xch.obj.SongData;
 import com.xch.obj.UserData;
 
 /*
@@ -61,7 +63,7 @@ public class DA {
 		int MaxID = 1;
 		try {
 			open();
-			String sql="select * from users order by userid";
+			String sql="select userid from users order by userid";
 			ResultSet result=aStatement.executeQuery(sql);
 			while(result.next()){
 				if(result.getInt(1)!=MaxID) break;
@@ -81,7 +83,7 @@ public class DA {
 		int MaxID = 1;
 		try {
 			open();
-			String sql="select * from songs order by songid";
+			String sql="select songid from songs order by songid";
 			ResultSet result=aStatement.executeQuery(sql);
 			while(result.next()){
 				if(result.getInt(1)!=MaxID) break;
@@ -101,7 +103,7 @@ public class DA {
 		int MaxID = 1;
 		try {
 			open();
-			String sql="select * from stars order by starid";
+			String sql="select starid from stars order by starid";
 			ResultSet result=aStatement.executeQuery(sql);
 			while(result.next()){
 				if(result.getInt(1)!=MaxID) break;
@@ -120,10 +122,10 @@ public class DA {
 		boolean flag = false;
 		try {
 			open();
-			String sql="select * from users";
+			String sql="select username from users";
 			ResultSet result=aStatement.executeQuery(sql);
 			while(result.next()){
-				if(result.getString(2).compareTo(username)==0)
+				if(result.getString(1).compareTo(username)==0)
 				{
 					flag = true;
 					break;
@@ -135,11 +137,32 @@ public class DA {
 			System.out.println(e);
 		}
 		return flag;
-	
 	}	
-	public static int addUserData(UserData user)
+	
+	public static boolean loginUser(UserData user)
 	{
-		int MaxID = 0;
+		boolean flag = false;
+		try {
+			open();
+			String sql="select username,password from users";
+			ResultSet result=aStatement.executeQuery(sql);
+			while(result.next()){
+				if(result.getString(1).compareTo(user.getUserName())==0&&
+					result.getString(2).compareTo(user.getPassWord())==0)
+				{
+					flag = true;
+					break;
+				}
+			}
+			close();
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println(e);
+		}
+		return flag;
+	}
+	public static void addUserData(UserData user)
+	{
 		try {
 			open();				
 			String sql="insert users values("+user.getUserID()+",";
@@ -158,9 +181,104 @@ public class DA {
 			// TODO: handle exception
 			System.out.println(e);
 		}
-		return MaxID;
 	}
+	public static void ModifyUserData(UserData user)
+	{
+		try {
+			open();				
+			String sql="update users set ";
+			sql=sql+"username='"+user.getUserName()+"',";
+			sql=sql+"password='"+user.getPassWord()+"',";
+			sql=sql+"realname='"+user.getRealName()+"',";
+			sql=sql+"email='"+user.getEmail()+"',";
+			sql=sql+"gender="+user.getGender()+",";
+			sql=sql+"interest='"+user.getInterest()+"' ";
+			sql=sql+"where userid="+user.getUserID();
+			
+			System.out.println(sql);
+			
+			aStatement.executeUpdate(sql);
+			close();
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println(e);
+		}
+	}	
+	public static boolean checkAdmin(String admin)
+	{
+		boolean flag = false;
+		try {
+			open();
+			String sql="select admin from admins";
+			ResultSet result=aStatement.executeQuery(sql);
+			while(result.next()){
+				if(result.getString(1).compareTo(admin)==0)
+				{
+					flag = true;
+					break;
+				}
+			}
+			close();
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println(e);
+		}
+		return flag;
 	
+	}		
+	public static boolean loginAdmin(AdminData admin)
+	{
+		boolean flag = false;
+		try {
+			open();
+			String sql="select * from admins";
+			ResultSet result=aStatement.executeQuery(sql);
+			while(result.next()){
+				if(result.getString(1).compareTo(admin.getAdmin())==0&&
+					result.getString(2).compareTo(admin.getPassWord())==0)
+				{
+					flag = true;
+					break;
+				}
+			}
+			close();
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println(e);
+		}
+		return flag;
+	}	
+	public static void addAdminData(AdminData admin)
+	{
+		try {
+			open();				
+			String sql="insert admins values('"+admin.getAdmin()+"',";
+			sql=sql+"'"+admin.getPassWord()+"')";
+			
+			System.out.println(sql);
+			
+			aStatement.executeUpdate(sql);
+			close();
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println(e);
+		}
+	}
+	public static void delAdminData(AdminData admin)
+	{
+		try {
+			open();				
+			String sql="delete from admins where Admin="+admin;
+			
+			System.out.println(sql);
+			
+			aStatement.executeUpdate(sql);
+			close();
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println(e);
+		}
+	}
 	public static String[][] orderByPinyin(String indata,int n)
 	{
 		String[][] res={};
@@ -198,7 +316,64 @@ public class DA {
 		return res;		
 	}
 
-	 
+	public static void addSongData(SongData song)
+	{
+		try {
+			open();				
+			String sql="insert songs values("+song.getSongID()+",";
+			sql=sql+"'"+song.getSongName()+"',";
+			sql=sql+"'"+song.getSongType()+"',";
+			sql=sql+song.getSoNumber()+",";
+			sql=sql+"'"+song.getSoPinYin()+"',";
+			sql=sql+song.getStarID()+",";
+			sql=sql+"'"+song.getURL()+"')";
+			
+			System.out.println(sql);
+			
+			aStatement.executeUpdate(sql);
+			close();
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println(e);
+		}
+	}
+	public static void ModifySongData(SongData song)
+	{
+		try {
+			open();				
+			String sql="update users set ";
+			sql=sql+"songname='"+song.getSongName()+"',";
+			sql=sql+"songtype='"+song.getSongType()+"',";
+			sql=sql+"sonumber="+song.getSoNumber()+",";
+			sql=sql+"sopinyin='"+song.getSoPinYin()+"',";
+			sql=sql+"starid="+song.getStarID()+",";
+			sql=sql+"url='"+song.getURL()+"' ";
+			sql=sql+"where songid="+song.getSongID();
+			
+			System.out.println(sql);
+			
+			aStatement.executeUpdate(sql);
+			close();
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println(e);
+		}
+	}	
+	public static void delSongData(SongData song)
+	{
+		try {
+			open();				
+			String sql="delete from admins where songid="+song.getSongID();
+			
+			System.out.println(sql);
+			
+			aStatement.executeUpdate(sql);
+			close();
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println(e);
+		}
+	}
 }
 
 
