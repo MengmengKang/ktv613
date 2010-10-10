@@ -1,6 +1,14 @@
 package com.xch.server;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.ComboBoxModel;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 
 import javax.swing.WindowConstants;
 import javax.swing.table.DefaultTableModel;
@@ -21,8 +29,19 @@ import javax.swing.SwingUtilities;
 * LEGALLY FOR ANY CORPORATE OR COMMERCIAL PURPOSE.
 */
 public class ViewUsers extends javax.swing.JFrame {
-	private JTable jUsersMessage;
 	private JButton jConfirm;
+	private JComboBox jComboBox1;
+	private JLabel jEmail;
+	private JLabel jSex;
+	private JTextField jTextField5;
+	private JLabel jHobby;
+	private JTextField jTextField4;
+	private JTextField jTextField3;
+	private JLabel jRealName;
+	private JTextField jTextField2;
+	private JLabel jPassword;
+	private JTextField jTextField1;
+	private JLabel jUserID;
 	private JButton jExit;
 
 	/**
@@ -48,33 +67,102 @@ public class ViewUsers extends javax.swing.JFrame {
 			setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 			getContentPane().setLayout(null);
 			{
-				TableModel jUsersMessageModel = 
-					new DefaultTableModel(
-							new String[][] { { "ID", "Password","Name","Sex","Age" }, { "", "","" } },
-							new String[] { "Column 1", "Column 2" ,"Column 3","Column 4","Column5"});
-				jUsersMessage = new JTable();
-				getContentPane().add(jUsersMessage);
-				jUsersMessage.setModel(jUsersMessageModel);
-				jUsersMessage.setBounds(26, 21, 346, 64);
-			}
-			{
 				jConfirm = new JButton();
 				getContentPane().add(jConfirm);
 				jConfirm.setText("\u786e\u8ba4");
-				jConfirm.setBounds(97, 136, 65, 24);
+				jConfirm.setBounds(73, 205, 74, 24);
+			}
+			
+			{
+				jUserID = new JLabel();
+				getContentPane().add(jUserID);
+				jUserID.setText("\u7528\u6237\u540d");
+				jUserID.setBounds(105, 22, 55, 17);
+			}
+			{
+				jTextField1 = new JTextField();
+				getContentPane().add(jTextField1);
+				jTextField1.setBounds(200, 19, 96, 24);
+			}
+			{
+				jPassword = new JLabel();
+				getContentPane().add(jPassword);
+				jPassword.setText("\u5bc6\u7801");
+				jPassword.setBounds(105, 52, 55, 17);
+			}
+			{
+				jTextField2 = new JTextField();
+				getContentPane().add(jTextField2);
+				jTextField2.setBounds(200, 49, 96, 24);
+			}
+			{
+				jRealName = new JLabel();
+				getContentPane().add(jRealName);
+				jRealName.setText("\u771f\u5b9e\u59d3\u540d");
+				jRealName.setBounds(105, 81, 70, 17);
+			}
+			{
+				jTextField3 = new JTextField();
+				getContentPane().add(jTextField3);
+				jTextField3.setBounds(200, 78, 96, 24);
+			}
+			{
+				jEmail = new JLabel();
+				getContentPane().add(jEmail);
+				jEmail.setText("\u7535\u5b50\u90ae\u7bb1");
+				jEmail.setBounds(105, 141, 79, 17);
+			}
+			{
+				jTextField4 = new JTextField();
+				getContentPane().add(jTextField4);
+				jTextField4.setBounds(202, 138, 94, 24);
+			}
+			{
+				jHobby = new JLabel();
+				getContentPane().add(jHobby);
+				jHobby.setText("\u5174\u8da3");
+				jHobby.setBounds(105, 170, 55, 17);
+			}
+			{
+				jTextField5 = new JTextField();
+				getContentPane().add(jTextField5);
+				jTextField5.setBounds(202, 167, 94, 24);
+			}
+			{
+				jSex = new JLabel();
+				getContentPane().add(jSex);
+				jSex.setText("\u6027\u522b");
+				jSex.setBounds(105, 110, 55, 17);
+			}
+			{
+				ComboBoxModel jComboBox1Model = 
+					new DefaultComboBoxModel(
+							new String[] { "ÄÐ", "Å®" });
+				jComboBox1 = new JComboBox();
+				getContentPane().add(jComboBox1);
+				jComboBox1.setModel(jComboBox1Model);
+				jComboBox1.setBounds(202, 108, 65, 24);
 			}
 			{
 				jExit = new JButton();
 				getContentPane().add(jExit);
 				jExit.setText("\u9000\u51fa");
-				jExit.setBounds(218, 136, 63, 24);
-			}
+				jExit.setBounds(236, 205, 81, 24);
+				jExit.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent evt) {
+						jExitActionPerformed(evt);}
+			});}
 			pack();
 			setSize(400, 300);
-		} catch (Exception e) {
+		}catch (Exception e) {
 		    //add your error handling code here
-			e.printStackTrace();
+		}	
 		}
+		private void jExitActionPerformed(ActionEvent evt) {
+			//System.out.println("jExit.actionPerformed, event="+evt);
+			//TODO add your code for jExit.actionPerformed
+			this.dispose();
 	}
 
 }
+

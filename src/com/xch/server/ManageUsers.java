@@ -55,12 +55,7 @@ public class ManageUsers extends javax.swing.JFrame {
 		try {
 			setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 			getContentPane().setLayout(null);
-			{
-				RefreshMessage = new JButton();
-				getContentPane().add(jRefreshMessage);
-				RefreshMessage.setText("\u66f4\u65b0\u7528\u6237\u4fe1\u606f");
-				RefreshMessage.setBounds(243, 196, 86, 24);
-			}
+		
 			{
 				TableModel jUserIDModel = 
 					new DefaultTableModel(
@@ -75,7 +70,7 @@ public class ManageUsers extends javax.swing.JFrame {
 				jViewUsers = new JButton();
 				getContentPane().add(jViewUsers);
 				jViewUsers.setText("\u67e5\u770b\u7528\u6237\u4fe1\u606f");
-				jViewUsers.setBounds(243, 42, 86, 24);
+				jViewUsers.setBounds(226, 42, 130, 24);
 				jViewUsers.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent evt) {
 						jViewUsersActionPerformed(evt);
@@ -93,13 +88,13 @@ public class ManageUsers extends javax.swing.JFrame {
 				jDeleteUsers = new JButton();
 				getContentPane().add(jDeleteUsers);
 				jDeleteUsers.setText("\u5220\u9664\u7528\u6237\u4fe1\u606f");
-				jDeleteUsers.setBounds(243, 116, 86, 24);
+				jDeleteUsers.setBounds(226, 118, 130, 24);
 			}
 			{
 				jRefreshMessage = new JButton();
 				getContentPane().add(jRefreshMessage);
 				jRefreshMessage.setText("\u66f4\u65b0\u7528\u6237\u4fe1\u606f");
-				jRefreshMessage.setBounds(243, 189, 86, 24);
+				jRefreshMessage.setBounds(226, 189, 130, 24);
 			}
 			pack();
 			setSize(400, 300);

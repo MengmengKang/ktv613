@@ -1,7 +1,13 @@
 package com.xch.server;
 import java.awt.BorderLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPasswordField;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 
 import javax.swing.WindowConstants;
 import javax.swing.table.DefaultTableModel;
@@ -22,12 +28,16 @@ import javax.swing.SwingUtilities;
 * LEGALLY FOR ANY CORPORATE OR COMMERCIAL PURPOSE.
 */
 public class ManageAdmin extends javax.swing.JFrame {
-	private JTable jAdminMessage;
 	private JButton jExit;
-	private JButton jConfirm;
 	private JButton jDelete;
 	private JButton jCorrect;
 	private JButton jAdd;
+	private JPasswordField jPasswordField1;
+	private JLabel jEnsurePassword;
+	private JPasswordField jPasswordField2;
+	private JLabel jPassword;
+	private JTextField jTextField1;
+	private JLabel jAdminID;
 
 	/**
 	* Auto-generated main method to display this JFrame
@@ -52,51 +62,77 @@ public class ManageAdmin extends javax.swing.JFrame {
 			setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 			getContentPane().setLayout(null);
 			{
-				TableModel jAdminMessageModel = 
-					new DefaultTableModel(
-							new String[][] { { "ID", "Password","Name", }, { "", "","","" } },
-							new String[] { "Column 1", "Column 2","Column 3","Column 4" });
-				jAdminMessage = new JTable();
-				getContentPane().add(jAdminMessage);
-				jAdminMessage.setModel(jAdminMessageModel);
-				jAdminMessage.setBounds(31, 34, 317, 35);
-			}
-			{
 				jAdd = new JButton();
 				getContentPane().add(jAdd);
 				jAdd.setText("\u6dfb\u52a0");
-				jAdd.setBounds(31, 104, 67, 24);
+				jAdd.setBounds(0, 200, 67, 24);
 			}
 			{
 				jCorrect = new JButton();
 				getContentPane().add(jCorrect);
 				jCorrect.setText("\u4fee\u6539");
-				jCorrect.setBounds(158, 104, 66, 24);
+				jCorrect.setBounds(107, 200, 66, 24);
 			}
 			{
 				jDelete = new JButton();
 				getContentPane().add(jDelete);
 				jDelete.setText("\u5220\u9664");
-				jDelete.setBounds(279, 104, 69, 24);
+				jDelete.setBounds(211, 200, 69, 24);
+			}
+
+			{
+				jAdminID = new JLabel();
+				getContentPane().add(jAdminID);
+				jAdminID.setText("\u7ba1\u7406\u5458\u8d26\u53f7");
+				jAdminID.setBounds(58, 34, 84, 17);
 			}
 			{
-				jConfirm = new JButton();
-				getContentPane().add(jConfirm);
-				jConfirm.setText("\u786e\u8ba4");
-				jConfirm.setBounds(96, 178, 62, 24);
+				jTextField1 = new JTextField();
+				getContentPane().add(jTextField1);
+				jTextField1.setBounds(149, 31, 99, 24);
+			}
+			{
+				jPassword = new JLabel();
+				getContentPane().add(jPassword);
+				jPassword.setText("\u5bc6\u7801");
+				jPassword.setBounds(58, 84, 57, 17);
+			}
+			{
+				jPasswordField1 = new JPasswordField();
+				getContentPane().add(jPasswordField1);
+				jPasswordField1.setBounds(149, 77, 99, 24);
+			}
+			{
+				jEnsurePassword = new JLabel();
+				getContentPane().add(jEnsurePassword);
+				jEnsurePassword.setText("\u786e\u8ba4\u5bc6\u7801");
+				jEnsurePassword.setBounds(58, 121, 66, 17);
+			}
+			{
+				jPasswordField2 = new JPasswordField();
+				getContentPane().add(jPasswordField2);
+				jPasswordField2.setBounds(149, 118, 99, 24);
 			}
 			{
 				jExit = new JButton();
 				getContentPane().add(jExit);
 				jExit.setText("\u9000\u51fa");
-				jExit.setBounds(224, 178, 68, 24);
-			}
+				jExit.setBounds(316, 200, 68, 24);
+				jExit.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent evt) {
+						jExitActionPerformed(evt);}
+			});}
 			pack();
 			setSize(400, 300);
 		} catch (Exception e) {
 		    //add your error handling code here
-			e.printStackTrace();
 		}
+
+		}
+		private void jExitActionPerformed(ActionEvent evt) {
+			//System.out.println("jExit.actionPerformed, event="+evt);
+			//TODO add your code for jExit.actionPerformed
+			this.dispose();
 	}
 
 }

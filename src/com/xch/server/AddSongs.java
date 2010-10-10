@@ -1,5 +1,8 @@
 package com.xch.server;
 import java.awt.BorderLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
@@ -23,7 +26,7 @@ import javax.swing.SwingUtilities;
 public class AddSongs extends javax.swing.JFrame {
 	private JLabel jAddSongs;
 	private JButton jConfirm;
-	private JButton jCancel;
+	private JButton jExit;
 	private JTextField jSongName;
 
 	/**
@@ -66,17 +69,24 @@ public class AddSongs extends javax.swing.JFrame {
 				jConfirm.setBounds(74, 153, 95, 24);
 			}
 			{
-				jCancel = new JButton();
-				getContentPane().add(jCancel);
-				jCancel.setText("\u53d6\u6d88");
-				jCancel.setBounds(225, 153, 109, 24);
-			}
+				jExit = new JButton();
+				getContentPane().add(jExit);
+				jExit.setText("\u9000\u51fa");
+				jExit.setBounds(228, 153, 100, 24);
+				jExit.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent evt) {
+						jExitActionPerformed(evt);}
+			});}
 			pack();
 			setSize(400, 300);
 		} catch (Exception e) {
 		    //add your error handling code here
-			e.printStackTrace();
+		}	
 		}
+		private void jExitActionPerformed(ActionEvent evt) {
+			//System.out.println("jExit.actionPerformed, event="+evt);
+			//TODO add your code for jExit.actionPerformed
+			this.dispose();
 	}
 
 }
