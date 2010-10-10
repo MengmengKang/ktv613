@@ -57,7 +57,7 @@ public class Login extends javax.swing.JFrame {
 		try {
 			setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 			getContentPane().setLayout(null);
-			this.setTitle("\u7528\u6237\u767b\u5f55");
+			this.setTitle("\u7ba1\u7406\u5458\u767b\u5f55");
 			{
 				jLabel2 = new JLabel();
 				getContentPane().add(jLabel2);

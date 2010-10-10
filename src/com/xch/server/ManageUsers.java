@@ -58,7 +58,8 @@ public class ManageUsers extends javax.swing.JFrame {
 		try {
 			setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 			getContentPane().setLayout(null);
-		
+			this.setTitle("\u7528\u6237\u4fe1\u606f\u7ba1\u7406");
+
 			{
 				TableModel jUserIDModel = 
 					new DefaultTableModel(

@@ -54,6 +54,7 @@ public class ManageSongs extends javax.swing.JFrame {
 		try {
 			setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 			getContentPane().setLayout(null);
+			this.setTitle("\u6b4c\u66f2\u4fe1\u606f\u7ba1\u7406");
 			{
 				jAddSongs = new JButton();
 				getContentPane().add(jAddSongs);

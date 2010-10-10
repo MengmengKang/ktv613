@@ -2,6 +2,7 @@ package com.xch.server;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 
 import javax.swing.WindowConstants;
 import javax.swing.SwingUtilities;
@@ -21,6 +22,7 @@ import javax.swing.SwingUtilities;
 */
 public class Manager extends javax.swing.JFrame {
 	private JButton jManageUser;
+	private JLabel jMainManage;
 	private JButton jExit;
 	private JButton jManageAdmin;
 	private JButton jManageSong;
@@ -48,11 +50,12 @@ public class Manager extends javax.swing.JFrame {
 		try {
 			setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 			getContentPane().setLayout(null);
+			this.setTitle("\u4e3b\u7ba1\u7406\u754c\u9762");
 			{
 				jManageUser = new JButton();
 				getContentPane().add(jManageUser);
 				jManageUser.setText("\u7528\u6237\u4fe1\u606f\u7ba1\u7406");
-				jManageUser.setBounds(117, 87, 143, 40);
+				jManageUser.setBounds(117, 107, 143, 40);
 				jManageUser.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent evt) {
 						jManageUsersActionPerformed(evt);
@@ -62,7 +65,7 @@ public class Manager extends javax.swing.JFrame {
 				jManageStar = new JButton();
 				getContentPane().add(jManageStar);
 				jManageStar.setText("\u660e\u661f\u4fe1\u606f\u7ba1\u7406");
-				jManageStar.setBounds(117, 146, 143, 40);
+				jManageStar.setBounds(117, 165, 143, 40);
 				jManageStar.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent evt) {
 						jManageStarActionPerformed(evt);
@@ -73,7 +76,7 @@ public class Manager extends javax.swing.JFrame {
 				jManageSong = new JButton();
 				getContentPane().add(jManageSong);
 				jManageSong.setText("\u6b4c\u66f2\u4fe1\u606f\u7ba1\u7406");
-				jManageSong.setBounds(117, 206, 143, 40);
+				jManageSong.setBounds(117, 227, 143, 40);
 				jManageSong.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent evt) {
 						jManageSongActionPerformed(evt);
@@ -84,7 +87,7 @@ public class Manager extends javax.swing.JFrame {
 				jManageAdmin = new JButton();
 				getContentPane().add(jManageAdmin);
 				jManageAdmin.setText("\u7ba1\u7406\u5458\u4fe1\u606f\u7ba1\u7406");
-				jManageAdmin.setBounds(117, 22,143, 40);
+				jManageAdmin.setBounds(117, 44, 143, 40);
 				jManageAdmin.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent evt) {
 						jManageAdminActionPerformed(evt);
@@ -95,13 +98,19 @@ public class Manager extends javax.swing.JFrame {
 				jExit = new JButton();
 				getContentPane().add(jExit);
 				jExit.setText("\u9000\u51fa\u7ba1\u7406\u5458\u7cfb\u7edf");
-				jExit.setBounds(121, 268, 139, 39);
+				jExit.setBounds(117, 288, 143, 39);
 				jExit.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent evt) {
 						jExitActionPerformed(evt);}
 			});}
+			{
+				jMainManage = new JLabel();
+				getContentPane().add(jMainManage);
+				jMainManage.setText("\u4e3b\u7ba1\u7406\u754c\u9762");
+				jMainManage.setBounds(158, 15, 142, 17);
+			}
 			pack();
-			setSize(400, 363);
+			this.setSize(400, 392);
 			}}catch (Exception e) {
 		    //add your error handling code here
 		}	

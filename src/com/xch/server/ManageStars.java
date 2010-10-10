@@ -54,6 +54,7 @@ public class ManageStars extends javax.swing.JFrame {
 		try {
 			setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 			getContentPane().setLayout(null);
+			this.setTitle("\u660e\u661f\u4fe1\u606f\u7ba1\u7406");
 			{
 				jEditMessage = new JButton();
 				getContentPane().add(jEditMessage);

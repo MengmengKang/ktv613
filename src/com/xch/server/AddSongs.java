@@ -58,6 +58,7 @@ public class AddSongs extends javax.swing.JFrame {
 		try {
 			setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 			getContentPane().setLayout(null);
+			this.setTitle("\u6dfb\u52a0\u6b4c\u66f2");
 			{
 				jSongName = new JTextField();
 				getContentPane().add(jSongName);
