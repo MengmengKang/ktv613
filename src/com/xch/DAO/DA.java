@@ -315,7 +315,76 @@ public class DA {
 		}
 		return res;		
 	}
-
+	public static String[][] orderBySongName(String indata,int n)
+	{
+		String[][] res={};
+		
+		try{
+			open();
+			
+			String sql="select * from songs,stars where (SongName like '"+indata+
+					"' OR SongName like '%"+indata+
+					"' OR SongName like '"+indata+
+					"%' OR SongName like '%"+indata+
+					"%') AND songs.StarID=stars.StarID";
+			ResultSet result=aStatement.executeQuery(sql);
+			result.last();    
+			int row=result.getRow();
+			result.beforeFirst();
+			res=new String[row][n];
+			int i=-1;
+			while(result.next()){
+				i++;
+				String[] resLine =new String[n];
+				//System.out.println(result.getString(5)+" "+result.getString(2)+" "+result.getString(3)+" "+result.getString(9));
+				resLine[0]=result.getString(1);
+				resLine[1]=result.getString(5);
+				resLine[2]=result.getString(2);
+				resLine[3]=result.getString(3);
+				resLine[4]=result.getString(9);
+				res[i]=resLine;		
+			}
+			
+			close();
+		} catch (Exception e) {
+			System.out.println();
+		}
+		return res;		
+	}
+	
+	public static String[][] orderBySongNumber(int indata,int n)
+	{
+		String[][] res={};
+		
+		try{
+			open();
+			
+			String sql="select * from songs,stars where SoNumber="+indata+
+					" AND songs.StarID=stars.StarID";
+			ResultSet result=aStatement.executeQuery(sql);
+			result.last();    
+			int row=result.getRow();
+			result.beforeFirst();
+			res=new String[row][n];
+			int i=-1;
+			while(result.next()){
+				i++;
+				String[] resLine =new String[n];
+				//System.out.println(result.getString(5)+" "+result.getString(2)+" "+result.getString(3)+" "+result.getString(9));
+				resLine[0]=result.getString(1);
+				resLine[1]=result.getString(5);
+				resLine[2]=result.getString(2);
+				resLine[3]=result.getString(3);
+				resLine[4]=result.getString(9);
+				res[i]=resLine;		
+			}
+			
+			close();
+		} catch (Exception e) {
+			System.out.println();
+		}
+		return res;		
+	}
 	public static void addSongData(SongData song)
 	{
 		try {
