@@ -10,6 +10,8 @@ import javax.swing.JTextField;
 import javax.swing.WindowConstants;
 import javax.swing.SwingUtilities;
 
+import com.xch.DAO.DA;
+import com.xch.client.MD5;
 import com.xch.client.Register;
 import com.xch.obj.AdminData;
 import com.xch.obj.UserData;
@@ -118,7 +120,24 @@ public class Login extends javax.swing.JFrame {
 			JOptionPane.showMessageDialog(null, "用户名不能为空！");
 			return;
 		}
+		String password=new String(jPassword.getPassword());
+		MD5 md5=new MD5(password);
+		//System.out.println(password);
+		AdminData admin=new AdminData();
+		admin.setAdmin(jUserName.getText());
+		admin.setPassWord(md5.get());
 		
+		if (DA.loginAdmin(admin))
+		{
+			this.dispose();
+			Manager inst = new Manager();
+			inst.setLocationRelativeTo(null);
+			inst.setVisible(true);
+		}
+		else
+		{
+			JOptionPane.showMessageDialog(null, "用户名或密码错误");
+		}
 	}
 	private void jExitActionPerformed(ActionEvent evt) {
 		//System.out.println("jExit.actionPerformed, event="+evt);
