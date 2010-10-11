@@ -19,7 +19,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.WindowConstants;
 
-public class MplayerDemo extends WindowAdapter {
+public class Mplayer extends WindowAdapter {
     private static final String mplayerPath =
 "player\\mplayer.exe";
 	JFrame frame;
@@ -122,7 +122,7 @@ Float.valueOf(""+Math.floor(Math.random()*100)).intValue();
 
     };
 
-    public MplayerDemo(String name) {
+    public Mplayer(String name) {
         //final String cmd = mplayerPath + space + flags[0] + space + mediaPath[0];
 		String[] cmd = new String[] {
 				mplayerPath,
@@ -224,7 +224,7 @@ Float.valueOf(""+Math.floor(Math.random()*100)).intValue();
      */
     public static void main(String[] args) {
         // TODO Auto-generated method stub
-        new MplayerDemo(mediaPath[0]);
+        new Mplayer(mediaPath[0]);
     }
     
 	@Override
