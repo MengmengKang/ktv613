@@ -90,7 +90,7 @@ public class Manager extends javax.swing.JFrame {
 				jManageAdmin.setBounds(117, 44, 143, 40);
 				jManageAdmin.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent evt) {
-						jManageAdminActionPerformed(evt);
+						jMainAdminActionPerformed(evt);
 					}
 					});
 			}
@@ -122,10 +122,10 @@ public class Manager extends javax.swing.JFrame {
 	}
 
 
-	private void jManageAdminActionPerformed(ActionEvent evt){
-		//System.out.println("jManageAdmin.actionPerformed, event="+evt);
-		//TODO add your code for jManageAdmin.actionPerformed
-		ManageAdmin inst = new ManageAdmin();
+	private void jMainAdminActionPerformed(ActionEvent evt){
+		//System.out.println("jMainAdmin.actionPerformed, event="+evt);
+		//TODO add your code for jMainAdmin.actionPerformed
+		MainAdmin inst = new MainAdmin();
 		inst.setLocationRelativeTo(null);
 		inst.setVisible(true);
 	}

@@ -26,6 +26,7 @@ import javax.swing.SwingUtilities;
 */
 public class ManageStars extends javax.swing.JFrame {
 	private JButton jEditMessage;
+	private JButton jRefresh;
 	private JLabel jManageStars;
 	private JButton jExit;
 	private JButton jDeleteStars;
@@ -80,13 +81,13 @@ public class ManageStars extends javax.swing.JFrame {
 				jStarsNames = new JList();
 				getContentPane().add(jStarsNames);
 				jStarsNames.setModel(jStarsNamesModel);
-				jStarsNames.setBounds(39, 73, 534, 122);
+				jStarsNames.setBounds(39, 73, 601, 122);
 			}
 			{
 				jAddStars = new JButton();
 				getContentPane().add(jAddStars);
 				jAddStars.setText("\u6dfb\u52a0\u660e\u661f\u4fe1\u606f");
-				jAddStars.setBounds(189, 232, 134, 24);
+				jAddStars.setBounds(172, 232, 134, 24);
 				jAddStars.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent evt) {
 						jAddStarsActionPerformed(evt);
@@ -104,13 +105,13 @@ public class ManageStars extends javax.swing.JFrame {
 				jDeleteStars = new JButton();
 				getContentPane().add(jDeleteStars);
 				jDeleteStars.setText("\u5220\u9664\u660e\u661f\u4fe1\u606f");
-				jDeleteStars.setBounds(346, 232, 134, 24);
+				jDeleteStars.setBounds(311, 232, 134, 24);
 			}
 			{
 				jExit = new JButton();
 				getContentPane().add(jExit);
 				jExit.setText("\u9000\u51fa");
-				jExit.setBounds(511, 232, 62, 24);
+				jExit.setBounds(578, 232, 62, 24);
 				jExit.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent evt) {
 						jExitActionPerformed(evt);}
@@ -119,10 +120,16 @@ public class ManageStars extends javax.swing.JFrame {
 				jManageStars = new JLabel();
 				getContentPane().add(jManageStars);
 				jManageStars.setText("\u660e\u661f\u4fe1\u606f\u7ba1\u7406");
-				jManageStars.setBounds(272, 25, 198, 17);
+				jManageStars.setBounds(301, 25, 198, 17);
+			}
+			{
+				jRefresh = new JButton();
+				getContentPane().add(jRefresh);
+				jRefresh.setText("\u66f4\u65b0\u660e\u661f\u4fe1\u606f");
+				jRefresh.setBounds(450, 233, 123, 22);
 			}
 			pack();
-			setSize(635, 349);
+			this.setSize(700, 349);
 			}}}catch (Exception e) {
 		    //add your error handling code here
 		}	

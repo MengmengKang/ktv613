@@ -2,11 +2,14 @@ package com.xch.server;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.DefaultComboBoxModel;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JList;
 import javax.swing.JRadioButton;
 import javax.swing.JTable;
+import javax.swing.ListModel;
 
 import javax.swing.WindowConstants;
 import javax.swing.table.DefaultTableModel;
@@ -30,11 +33,11 @@ public class ManageUsers extends javax.swing.JFrame {
 	private static final JButton eGViewUsers = null;
 	private JButton RefreshMessage;
 	private JButton jViewUsers;
+	private JList jUsers;
 	private JLabel jManageUsers;
 	private JButton jExit;
 	private JButton jRefreshMessage;
 	private JButton jDeleteUsers;
-	private JTable jUserID;
 
 	/**
 	* Auto-generated main method to display this JFrame
@@ -60,16 +63,6 @@ public class ManageUsers extends javax.swing.JFrame {
 			getContentPane().setLayout(null);
 			this.setTitle("\u7528\u6237\u4fe1\u606f\u7ba1\u7406");
 
-			{
-				TableModel jUserIDModel = 
-					new DefaultTableModel(
-							new String[][]  {{ "UseID", "UseName" }} ,
-							new String[] { "Column 1", "Column 2" });
-				jUserID = new JTable();
-				getContentPane().add(jUserID);
-				jUserID.setModel(jUserIDModel);
-				jUserID.setBounds(43, 83, 542, 132);
-			}
 			{
 				jViewUsers = new JButton();
 				getContentPane().add(jViewUsers);
@@ -113,7 +106,16 @@ public class ManageUsers extends javax.swing.JFrame {
 				jManageUsers = new JLabel();
 				getContentPane().add(jManageUsers);
 				jManageUsers.setText("\u7528\u6237\u4fe1\u606f\u7ba1\u7406");
-				jManageUsers.setBounds(279, 32, 202, 17);
+				jManageUsers.setBounds(273, 22, 202, 17);
+			}
+			{
+				ListModel jUsersModel = 
+					new DefaultComboBoxModel(
+							new String[] { "User 1", "User 2","..." });
+				jUsers = new JList();
+				getContentPane().add(jUsers);
+				jUsers.setModel(jUsersModel);
+				jUsers.setBounds(225, 66, 172, 124);
 			}
 			pack();
 			setSize(653, 363);
