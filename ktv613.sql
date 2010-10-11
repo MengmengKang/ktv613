@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 5.1.39-ndb-7.0.9, for Win32 (ia32)
+-- MySQL dump 10.11
 --
 -- Host: localhost    Database: ktv613
 -- ------------------------------------------------------
--- Server version	5.1.39-ndb-7.0.9-cluster-gpl
+-- Server version	5.0.41-community-nt
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -20,14 +20,11 @@
 --
 
 DROP TABLE IF EXISTS `admins`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `admins` (
-  `Admin` varchar(50) CHARACTER SET utf8 NOT NULL,
-  `PassWord` varchar(50) CHARACTER SET utf8 NOT NULL,
-  PRIMARY KEY (`Admin`)
+  `Admin` varchar(50) character set utf8 NOT NULL,
+  `PassWord` varchar(50) character set utf8 NOT NULL,
+  PRIMARY KEY  (`Admin`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `admins`
@@ -35,6 +32,7 @@ CREATE TABLE `admins` (
 
 LOCK TABLES `admins` WRITE;
 /*!40000 ALTER TABLE `admins` DISABLE KEYS */;
+INSERT INTO `admins` VALUES ('admin','21232F297A57A5A743894A0E4A801FC3');
 /*!40000 ALTER TABLE `admins` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -43,20 +41,17 @@ UNLOCK TABLES;
 --
 
 DROP TABLE IF EXISTS `songs`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `songs` (
   `SongID` int(11) NOT NULL,
-  `SongName` varchar(50) CHARACTER SET utf8 NOT NULL,
-  `SongType` varchar(50) CHARACTER SET utf8 NOT NULL,
+  `SongName` varchar(50) character set utf8 NOT NULL,
+  `SongType` varchar(50) character set utf8 NOT NULL,
   `SoNumber` int(50) NOT NULL,
-  `SoPinYin` varchar(50) CHARACTER SET utf8 NOT NULL,
+  `SoPinYin` varchar(50) character set utf8 NOT NULL,
   `StarID` int(11) NOT NULL,
   `URL` varchar(255) NOT NULL,
-  PRIMARY KEY (`SongID`),
+  PRIMARY KEY  (`SongID`),
   KEY `SongName` (`SongName`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `songs`
@@ -73,17 +68,14 @@ UNLOCK TABLES;
 --
 
 DROP TABLE IF EXISTS `stars`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `stars` (
   `StarID` int(11) NOT NULL,
-  `StarName` varchar(255) CHARACTER SET utf8 NOT NULL,
+  `StarName` varchar(255) character set utf8 NOT NULL,
   `Gender` bit(1) NOT NULL,
-  `StConeFrom` varchar(255) CHARACTER SET utf8 NOT NULL,
-  `StTeam` varchar(255) CHARACTER SET utf8 NOT NULL,
-  PRIMARY KEY (`StarID`)
+  `StConeFrom` varchar(255) character set utf8 NOT NULL,
+  `StTeam` varchar(255) character set utf8 NOT NULL,
+  PRIMARY KEY  (`StarID`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `stars`
@@ -100,19 +92,16 @@ UNLOCK TABLES;
 --
 
 DROP TABLE IF EXISTS `users`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `users` (
   `UserID` int(11) NOT NULL,
-  `UserName` varchar(50) CHARACTER SET utf8 NOT NULL,
-  `PassWord` varchar(50) CHARACTER SET utf8 NOT NULL,
-  `RealName` varchar(50) CHARACTER SET utf8 DEFAULT NULL,
-  `Email` varchar(50) CHARACTER SET utf8 DEFAULT NULL,
-  `Gender` bit(1) DEFAULT NULL,
-  `Interest` varchar(50) CHARACTER SET utf8 DEFAULT NULL,
-  PRIMARY KEY (`UserID`)
+  `UserName` varchar(50) character set utf8 NOT NULL,
+  `PassWord` varchar(50) character set utf8 NOT NULL,
+  `RealName` varchar(50) character set utf8 default NULL,
+  `Email` varchar(50) character set utf8 default NULL,
+  `Gender` bit(1) default NULL,
+  `Interest` varchar(50) character set utf8 default NULL,
+  PRIMARY KEY  (`UserID`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `users`
@@ -120,6 +109,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
+INSERT INTO `users` VALUES (1,'admin','21232F297A57A5A743894A0E4A801FC3','','','\0','');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -132,4 +122,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2010-10-09 16:32:21
+-- Dump completed on 2010-10-11  0:58:33
