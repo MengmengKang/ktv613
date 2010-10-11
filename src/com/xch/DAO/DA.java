@@ -29,7 +29,7 @@ while(result.next()){
 public class DA {
 	static String DB="ktv613";
 	static String ID="root";
-	static String PW="czx";
+	static String PW="";
 	static String CONNECT="jdbc:mysql://localhost:3306/"+DB+"?useUnicode=true&characterEncoding=utf8";
 	
 	static Connection aConnection;
