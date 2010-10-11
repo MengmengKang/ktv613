@@ -3,13 +3,18 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 import javax.swing.WindowConstants;
 import javax.swing.SwingUtilities;
 
+import com.xch.DAO.DA;
 import com.xch.client.Register;
+import com.xch.obj.AdminData;
+import com.xch.obj.UserData;
+import com.xch.server.Manager;
 
 
 /**
@@ -24,7 +29,7 @@ import com.xch.client.Register;
 * THIS MACHINE, SO JIGLOO OR THIS CODE CANNOT BE USED
 * LEGALLY FOR ANY CORPORATE OR COMMERCIAL PURPOSE.
 */
-public class Login extends javax.swing.JFrame {
+public class LoginUser extends javax.swing.JFrame {
 	private JLabel jLabel1;
 	private JLabel jLabel2;
 	private JButton jLogin;
@@ -38,14 +43,14 @@ public class Login extends javax.swing.JFrame {
 	public static void main(String[] args) {
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
-				Login inst = new Login();
+				LoginUser inst = new LoginUser();
 				inst.setLocationRelativeTo(null);
 				inst.setVisible(true);
 			}
 		});
 	}
 	
-	public Login() {
+	public LoginUser() {
 		super();
 		initGUI();
 	}
@@ -77,6 +82,11 @@ public class Login extends javax.swing.JFrame {
 				getContentPane().add(jLogin);
 				jLogin.setText("\u767b\u5f55");
 				jLogin.setBounds(109, 159, 61, 24);
+				jLogin.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent evt) {
+						jLoginActionPerformed(evt);
+					}
+				});
 			}
 			{
 				jRegister = new JButton();
@@ -108,6 +118,35 @@ public class Login extends javax.swing.JFrame {
 		Register inst = new Register();
 		inst.setLocationRelativeTo(null);
 		inst.setVisible(true);
+	}
+	
+	private void jLoginActionPerformed(ActionEvent evt) {
+		//System.out.println("jLogin.actionPerformed, event="+evt);
+		//TODO add your code for jLogin.actionPerformed
+		UserData user=new UserData();
+		if(jUserName.getText().length()==0)
+		{
+			JOptionPane.showMessageDialog(null, "用户名不能为空！");
+			return;
+		}
+		String password=new String(jPassword.getPassword());
+		MD5 md5=new MD5(password);
+		//System.out.println(password);
+		UserData admin=new UserData();
+		user.setUserName(jUserName.getText());
+		user.setPassWord(md5.get());
+		
+		if (DA.loginUser(user))
+		{
+			this.dispose();
+			MainFrame inst = new MainFrame();
+			inst.setLocationRelativeTo(null);
+			inst.setVisible(true);
+		}
+		else
+		{
+			JOptionPane.showMessageDialog(null, "用户名或密码错误");
+		}
 	}
 
 }

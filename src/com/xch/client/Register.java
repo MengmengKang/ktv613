@@ -215,6 +215,7 @@ public class Register extends javax.swing.JFrame {
 			return;
 		}
 		String password=new String(jPassword.getPassword());
+		System.out.println(password);
 		MD5 md5=new MD5(password);
 		user.setUserID(DA.getUserMaxID());
 		user.setUserName(jUserName.getText());

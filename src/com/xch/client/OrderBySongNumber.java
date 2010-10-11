@@ -32,6 +32,7 @@ import com.xch.obj.SongData;
 */
 public class OrderBySongNumber extends javax.swing.JFrame {
 	private JButton jSearch;
+	private JButton jReturn;
 	private JTextField jSongNumber;
 	private JTable jResult;
 	private JLabel jLabel1;
@@ -110,10 +111,21 @@ public class OrderBySongNumber extends javax.swing.JFrame {
 				jOrder = new JButton();
 				getContentPane().add(jOrder);
 				jOrder.setText("\u70b9\u6b4c");
-				jOrder.setBounds(421, 22, 72, 24);
+				jOrder.setBounds(358, 22, 72, 24);
 				jOrder.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent evt) {
 						jOrderActionPerformed(evt);
+					}
+				});
+			}
+			{
+				jReturn = new JButton();
+				getContentPane().add(jReturn);
+				jReturn.setText("\u8fd4\u56de");
+				jReturn.setBounds(463, 23, 72, 24);
+				jReturn.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent evt) {
+						jReturnActionPerformed(evt);
 					}
 				});
 			}
@@ -160,6 +172,15 @@ public class OrderBySongNumber extends javax.swing.JFrame {
 					"\n∏Ë ÷£∫"+jResult.getValueAt(row, 4));
 			
 		}
+	}
+	
+	private void jReturnActionPerformed(ActionEvent evt) {
+		//System.out.println("jReturn.actionPerformed, event="+evt);
+		//TODO add your code for jReturn.actionPerformed
+		this.dispose();
+		MainFrame inst = new MainFrame();
+		inst.setLocationRelativeTo(null);
+		inst.setVisible(true);
 	}
 
 }

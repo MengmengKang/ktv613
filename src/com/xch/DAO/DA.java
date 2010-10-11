@@ -29,7 +29,7 @@ while(result.next()){
 public class DA {
 	static String DB="ktv613";
 	static String ID="root";
-	static String PW="";
+	static String PW="czx";
 	static String CONNECT="jdbc:mysql://localhost:3306/"+DB+"?useUnicode=true&characterEncoding=utf8";
 	
 	static Connection aConnection;
@@ -147,6 +147,8 @@ public class DA {
 			String sql="select username,password from users";
 			ResultSet result=aStatement.executeQuery(sql);
 			while(result.next()){
+				//System.out.println("s "+result.getString(1)+" "+result.getString(2));
+				//System.out.println("t "+user.getUserName()+" "+user.getPassWord());
 				if(result.getString(1).compareTo(user.getUserName())==0&&
 					result.getString(2).compareTo(user.getPassWord())==0)
 				{

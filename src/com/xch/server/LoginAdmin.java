@@ -29,7 +29,7 @@ import com.xch.obj.UserData;
 * THIS MACHINE, SO JIGLOO OR THIS CODE CANNOT BE USED
 * LEGALLY FOR ANY CORPORATE OR COMMERCIAL PURPOSE.
 */
-public class Login extends javax.swing.JFrame {
+public class LoginAdmin extends javax.swing.JFrame {
 	private JLabel jLabel2;
 	private JButton jLogin;
 	private JButton jExit;
@@ -43,14 +43,14 @@ public class Login extends javax.swing.JFrame {
 	public static void main(String[] args) {
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
-				Login inst = new Login();
+				LoginAdmin inst = new LoginAdmin();
 				inst.setLocationRelativeTo(null);
 				inst.setVisible(true);
 			}
 		});
 	}
 	
-	public Login() {
+	public LoginAdmin() {
 		super();
 		initGUI();
 	}
