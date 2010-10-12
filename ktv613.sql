@@ -59,7 +59,7 @@ CREATE TABLE `songs` (
 
 LOCK TABLES `songs` WRITE;
 /*!40000 ALTER TABLE `songs` DISABLE KEYS */;
-INSERT INTO `songs` VALUES (1,'花开的声音','流行歌曲',5,'HUAKAIDESHENGYIN',1,'lib\\test4.mpg'),(2,'祝福','经典老歌',2,'ZHUFU',2,'lib\\test4.mpg'),(3,'忘情水','经典老歌',3,'WANGQINGSHUI',3,'lib\\test4.mpg'),(4,'吻别','经典老歌',2,'WENBIE',2,'lib\\test4.mpg'),(5,'青花瓷','流行歌曲',3,'QINGHUACI',4,'lib\\test4.mpg'),(6,'千里之外','流行歌曲',4,'QIANLIZHIWAI',4,'lib\\test4.mpg'),(7,'跨时代','流行歌曲',3,'KUASHIDAI',4,'lib\\test4.mpg'),(8,'谢谢你的爱','经典老歌',5,'XIEXIENIDEAI',3,'lib\\test4.mpg'),(9,'我相信','流行歌曲',3,'WOXIANGXIN ',1,'lib\\test4.mpg'),(10,'传奇','流行歌曲',2,'CHUANQI',5,'lib\\test4.mpg'),(11,'容易受伤的女人','流行歌曲',7,'RONGYISHOUSHANGDENVREN',5,'lib\\test4.mpg'),(12,'爱','经典老歌',1,'AI',6,'lib\\test4.mpg'),(13,'真心英雄','经典老歌',4,'ZHENXINYINGXIONG',7,'lib\\test4.mpg');
+INSERT INTO `songs` VALUES (1,'这该死的爱','流行歌曲',5,'ZHEGAISIDEAI',1,'lib\\test4.mpg'),(2,'祝福','经典老歌',2,'ZHUFU',2,'lib\\test4.mpg'),(3,'忘情水','经典老歌',3,'WANGQINGSHUI',3,'lib\\test4.mpg'),(4,'吻别','经典老歌',2,'WENBIE',2,'lib\\test4.mpg'),(5,'青花瓷','流行歌曲',3,'QINGHUACI',4,'lib\\test4.mpg'),(6,'千里之外','流行歌曲',4,'QIANLIZHIWAI',4,'lib\\test4.mpg'),(7,'跨时代','流行歌曲',3,'KUASHIDAI',4,'lib\\test4.mpg'),(8,'谢谢你的爱','经典老歌',5,'XIEXIENIDEAI',3,'lib\\test4.mpg'),(9,'我相信','流行歌曲',3,'WOXIANGXIN ',1,'lib\\test4.mpg'),(10,'传奇','流行歌曲',2,'CHUANQI',5,'lib\\test4.mpg'),(11,'容易受伤的女人','流行歌曲',7,'RONGYISHOUSHANGDENVREN',5,'lib\\test4.mpg'),(12,'爱','经典老歌',1,'AI',6,'lib\\test4.mpg'),(13,'真心英雄','经典老歌',4,'ZHENXINYINGXIONG',7,'lib\\test4.mpg');
 /*!40000 ALTER TABLE `songs` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -122,4 +122,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2010-10-11  0:58:33
+-- Dump completed on 2010-10-12  1:24:00
