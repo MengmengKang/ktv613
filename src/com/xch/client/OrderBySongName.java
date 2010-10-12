@@ -1,6 +1,8 @@
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       package com.xch.client;
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       import java.awt.event.ActionEvent;
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       import java.awt.event.ActionListener;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      import java.awt.event.WindowAdapter;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      import java.awt.event.WindowEvent;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -66,6 +68,11 @@ public class OrderBySongName extends javax.swing.JFrame {
 			setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 			getContentPane().setLayout(null);
 			this.setTitle("\u6b4c\u540d\u70b9\u6b4c");
+			this.addWindowListener(new WindowAdapter() {
+				public void windowClosing(WindowEvent evt) {
+					thisWindowClosing(evt);
+				}
+			});
 			{
 				jSearch = new JButton();
 				getContentPane().add(jSearch);
@@ -86,7 +93,7 @@ public class OrderBySongName extends javax.swing.JFrame {
 				jLabel1 = new JLabel();
 				getContentPane().add(jLabel1);
 				jLabel1.setText("\u8bf7\u8f93\u5165\u6b4c\u540d");
-				jLabel1.setBounds(66, 25, 72, 17);
+				jLabel1.setBounds(23, 26, 72, 17);
 			}
 			{
 				jScrollPane1 = new JScrollPane();
@@ -170,6 +177,15 @@ public class OrderBySongName extends javax.swing.JFrame {
 		MainFrame inst = new MainFrame();
 		inst.setLocationRelativeTo(null);
 		inst.setVisible(true);
+	}
+	
+	private void thisWindowClosing(WindowEvent evt) {
+		//System.out.println("this.windowClosing, event="+evt);
+		//TODO add your code for this.windowClosing
+		int response=JOptionPane.showConfirmDialog(null,
+				"确定要退出KTV智能点播系统吗？", "警告", JOptionPane.YES_NO_OPTION);
+		if(response==0) this.dispose();
+		else this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
 	}
 
 }

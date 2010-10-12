@@ -1,6 +1,8 @@
 package com.xch.client;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -60,6 +62,11 @@ public class LoginUser extends javax.swing.JFrame {
 			setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 			getContentPane().setLayout(null);
 			this.setTitle("\u7528\u6237\u767b\u5f55");
+			this.addWindowListener(new WindowAdapter() {
+				public void windowClosing(WindowEvent evt) {
+					thisWindowClosing(evt);
+				}
+			});
 			{
 				jLabel1 = new JLabel();
 				getContentPane().add(jLabel1);
@@ -147,6 +154,15 @@ public class LoginUser extends javax.swing.JFrame {
 		{
 			JOptionPane.showMessageDialog(null, "用户名或密码错误");
 		}
+	}
+	
+	private void thisWindowClosing(WindowEvent evt) {
+		//System.out.println("this.windowClosing, event="+evt);
+		//TODO add your code for this.windowClosing
+		int response=JOptionPane.showConfirmDialog(null,
+				"确定要退出KTV智能点播系统吗？", "警告", JOptionPane.YES_NO_OPTION);
+		if(response==0) this.dispose();
+		else this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE); 
 	}
 
 }

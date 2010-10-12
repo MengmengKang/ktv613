@@ -3,6 +3,8 @@ import com.cloudgarden.layout.AnchorLayout;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import javax.swing.ComboBoxModel;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
@@ -75,6 +77,11 @@ public class Register extends javax.swing.JFrame {
 			setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 			getContentPane().setLayout(null);
 			this.setTitle("\u6ce8\u518c\u65b0\u7528\u6237");
+			this.addWindowListener(new WindowAdapter() {
+				public void windowClosing(WindowEvent evt) {
+					thisWindowClosing(evt);
+				}
+			});
 			{
 				jLabel1 = new JLabel();
 				getContentPane().add(jLabel1);
@@ -233,7 +240,19 @@ public class Register extends javax.swing.JFrame {
 	private void jCancelActionPerformed(ActionEvent evt) {
 		//System.out.println("jCancel.actionPerformed, event="+evt);
 		//TODO add your code for jCancel.actionPerformed
-		Register.this.dispose();
+		int response=JOptionPane.showConfirmDialog(null,
+				"确定要退出注册界面吗？", "警告", JOptionPane.YES_NO_OPTION);
+		if(response==0) this.dispose();
+		else this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE); 
+	}
+	
+	private void thisWindowClosing(WindowEvent evt) {
+		//System.out.println("this.windowClosing, event="+evt);
+		//TODO add your code for this.windowClosing
+		int response=JOptionPane.showConfirmDialog(null,
+				"确定要退出注册界面吗？", "警告", JOptionPane.YES_NO_OPTION);
+		if(response==0) this.dispose();
+		else this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE); 
 	}
 
 }
