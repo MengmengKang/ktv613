@@ -1,8 +1,8 @@
--- MySQL dump 10.11
+-- MySQL dump 10.13  Distrib 5.1.39-ndb-7.0.9, for Win32 (ia32)
 --
 -- Host: localhost    Database: ktv613
 -- ------------------------------------------------------
--- Server version	5.0.41-community-nt
+-- Server version	5.1.39-ndb-7.0.9-cluster-gpl
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -20,11 +20,14 @@
 --
 
 DROP TABLE IF EXISTS `admins`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `admins` (
-  `Admin` varchar(50) character set utf8 NOT NULL,
-  `PassWord` varchar(50) character set utf8 NOT NULL,
-  PRIMARY KEY  (`Admin`)
+  `Admin` varchar(50) CHARACTER SET utf8 NOT NULL,
+  `PassWord` varchar(50) CHARACTER SET utf8 NOT NULL,
+  PRIMARY KEY (`Admin`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `admins`
@@ -41,17 +44,20 @@ UNLOCK TABLES;
 --
 
 DROP TABLE IF EXISTS `songs`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `songs` (
   `SongID` int(11) NOT NULL,
-  `SongName` varchar(50) character set utf8 NOT NULL,
-  `SongType` varchar(50) character set utf8 NOT NULL,
+  `SongName` varchar(50) CHARACTER SET utf8 NOT NULL,
+  `SongType` varchar(50) CHARACTER SET utf8 NOT NULL,
   `SoNumber` int(50) NOT NULL,
-  `SoPinYin` varchar(50) character set utf8 NOT NULL,
+  `SoPinYin` varchar(50) CHARACTER SET utf8 NOT NULL,
   `StarID` int(11) NOT NULL,
-  `URL` varchar(255) NOT NULL,
-  PRIMARY KEY  (`SongID`),
+  `URL` varchar(255) CHARACTER SET utf8 NOT NULL,
+  PRIMARY KEY (`SongID`),
   KEY `SongName` (`SongName`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `songs`
@@ -59,7 +65,7 @@ CREATE TABLE `songs` (
 
 LOCK TABLES `songs` WRITE;
 /*!40000 ALTER TABLE `songs` DISABLE KEYS */;
-INSERT INTO `songs` VALUES (1,'这该死的爱','流行歌曲',5,'ZHEGAISIDEAI',1,'lib\\test4.mpg'),(2,'祝福','经典老歌',2,'ZHUFU',2,'lib\\test4.mpg'),(3,'忘情水','经典老歌',3,'WANGQINGSHUI',3,'lib\\test4.mpg'),(4,'吻别','经典老歌',2,'WENBIE',2,'lib\\test4.mpg'),(5,'青花瓷','流行歌曲',3,'QINGHUACI',4,'lib\\test4.mpg'),(6,'千里之外','流行歌曲',4,'QIANLIZHIWAI',4,'lib\\test4.mpg'),(7,'跨时代','流行歌曲',3,'KUASHIDAI',4,'lib\\test4.mpg'),(8,'谢谢你的爱','经典老歌',5,'XIEXIENIDEAI',3,'lib\\test4.mpg'),(9,'我相信','流行歌曲',3,'WOXIANGXIN ',1,'lib\\test4.mpg'),(10,'传奇','流行歌曲',2,'CHUANQI',5,'lib\\test4.mpg'),(11,'容易受伤的女人','流行歌曲',7,'RONGYISHOUSHANGDENVREN',5,'lib\\test4.mpg'),(12,'爱','经典老歌',1,'AI',6,'lib\\test4.mpg'),(13,'真心英雄','经典老歌',4,'ZHENXINYINGXIONG',7,'lib\\test4.mpg');
+INSERT INTO `songs` VALUES (1,'这该死的爱','流行歌曲',5,'ZHEGAISIDEAI',1,'Media\\这该死的爱.rmvb'),(2,'祝福','经典老歌',2,'ZHUFU',2,'Media\\祝福.rmvb'),(3,'忘情水','经典老歌',3,'WANGQINGSHUI',3,'Media\\忘情水.rmvb'),(4,'吻别','经典老歌',2,'WENBIE',2,'Media\\吻别.rmvb'),(5,'青花瓷','流行歌曲',3,'QINGHUACI',4,'Media\\青花瓷.rmvb'),(6,'千里之外','流行歌曲',4,'QIANLIZHIWAI',4,'Media\\千里之外.rmvb'),(7,'跨时代','流行歌曲',3,'KUASHIDAI',4,'Media\\跨时代.rmvb'),(8,'谢谢你的爱','经典老歌',5,'XIEXIENIDEAI',3,'Media\\谢谢你的爱.rmvb'),(9,'我相信','流行歌曲',3,'WOXIANGXIN ',1,'Media\\我相信.rmvb'),(10,'传奇','流行歌曲',2,'CHUANQI',5,'Media\\传奇.rmvb'),(11,'容易受伤的女人','流行歌曲',7,'RONGYISHOUSHANGDENVREN',5,'Media\\容易受伤的女人.rmvb'),(12,'爱','经典老歌',1,'AI',6,'Media\\爱.rmvb'),(13,'真心英雄','经典老歌',4,'ZHENXINYINGXIONG',7,'Media\\真心英雄.rmvb');
 /*!40000 ALTER TABLE `songs` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -68,14 +74,17 @@ UNLOCK TABLES;
 --
 
 DROP TABLE IF EXISTS `stars`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `stars` (
   `StarID` int(11) NOT NULL,
-  `StarName` varchar(255) character set utf8 NOT NULL,
+  `StarName` varchar(255) CHARACTER SET utf8 NOT NULL,
   `Gender` bit(1) NOT NULL,
-  `StConeFrom` varchar(255) character set utf8 NOT NULL,
-  `StTeam` varchar(255) character set utf8 NOT NULL,
-  PRIMARY KEY  (`StarID`)
+  `StConeFrom` varchar(255) CHARACTER SET utf8 NOT NULL,
+  `StTeam` varchar(255) CHARACTER SET utf8 NOT NULL,
+  PRIMARY KEY (`StarID`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `stars`
@@ -92,16 +101,19 @@ UNLOCK TABLES;
 --
 
 DROP TABLE IF EXISTS `users`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `users` (
   `UserID` int(11) NOT NULL,
-  `UserName` varchar(50) character set utf8 NOT NULL,
-  `PassWord` varchar(50) character set utf8 NOT NULL,
-  `RealName` varchar(50) character set utf8 default NULL,
-  `Email` varchar(50) character set utf8 default NULL,
-  `Gender` bit(1) default NULL,
-  `Interest` varchar(50) character set utf8 default NULL,
-  PRIMARY KEY  (`UserID`)
+  `UserName` varchar(50) CHARACTER SET utf8 NOT NULL,
+  `PassWord` varchar(50) CHARACTER SET utf8 NOT NULL,
+  `RealName` varchar(50) CHARACTER SET utf8 DEFAULT NULL,
+  `Email` varchar(50) CHARACTER SET utf8 DEFAULT NULL,
+  `Gender` bit(1) DEFAULT NULL,
+  `Interest` varchar(50) CHARACTER SET utf8 DEFAULT NULL,
+  PRIMARY KEY (`UserID`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `users`
@@ -122,4 +134,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2010-10-12  1:24:00
+-- Dump completed on 2010-10-12 23:03:57
