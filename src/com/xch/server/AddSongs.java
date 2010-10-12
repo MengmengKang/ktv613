@@ -2,9 +2,13 @@ package com.xch.server;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 import javax.swing.JButton;
+import javax.swing.JFileChooser;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 import javax.swing.WindowConstants;
@@ -25,6 +29,9 @@ import javax.swing.SwingUtilities;
 */
 public class AddSongs extends javax.swing.JFrame {
 	private JButton jConfirm;
+	private JButton jChooseSong;
+	private JTextField jURL;
+	private JLabel jLabel;
 	private JLabel jAddSong;
 	private JTextField jTextField3;
 	private JLabel jSongPinyin;
@@ -56,9 +63,15 @@ public class AddSongs extends javax.swing.JFrame {
 	
 	private void initGUI() {
 		try {
+			setResizable(false);
 			setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 			getContentPane().setLayout(null);
 			this.setTitle("\u6dfb\u52a0\u6b4c\u66f2");
+			this.addWindowListener(new WindowAdapter() {
+				public void windowClosing(WindowEvent evt) {
+					thisWindowClosing(evt);
+				}
+			});
 			{
 				jSongName = new JTextField();
 				getContentPane().add(jSongName);
@@ -69,13 +82,13 @@ public class AddSongs extends javax.swing.JFrame {
 				jConfirm = new JButton();
 				getContentPane().add(jConfirm);
 				jConfirm.setText("\u786e\u8ba4");
-				jConfirm.setBounds(70, 222, 95, 24);
+				jConfirm.setBounds(54, 255, 95, 24);
 			}
 			{
 				jExit = new JButton();
 				getContentPane().add(jExit);
 				jExit.setText("\u9000\u51fa");
-				jExit.setBounds(228, 222, 100, 24);
+				jExit.setBounds(234, 255, 100, 24);
 				jExit.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent evt) {
 						jExitActionPerformed(evt);}
@@ -125,6 +138,29 @@ public class AddSongs extends javax.swing.JFrame {
 				jAddSong.setText("\u6dfb\u52a0\u6b4c\u66f2");
 				jAddSong.setBounds(156, 12, 97, 22);
 			}
+			{
+				jLabel = new JLabel();
+				getContentPane().add(jLabel);
+				jLabel.setText("\u6b4c\u66f2\u5b58\u50a8\u8def\u5f84");
+				jLabel.setBounds(33, 223, 85, 15);
+			}
+			{
+				jURL = new JTextField();
+				getContentPane().add(jURL);
+				jURL.setBounds(118, 220, 180, 22);
+			}
+			{
+				jChooseSong = new JButton();
+				getContentPane().add(jChooseSong);
+				jChooseSong.setText("...");
+				jChooseSong.setBounds(304, 220, 32, 22);
+				jChooseSong.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent evt) {
+						jChooseSongActionPerformed(evt);
+					}
+				});
+
+			}
 			pack();
 			this.setSize(400, 329);
 		} catch (Exception e) {
@@ -134,7 +170,26 @@ public class AddSongs extends javax.swing.JFrame {
 		private void jExitActionPerformed(ActionEvent evt) {
 			//System.out.println("jExit.actionPerformed, event="+evt);
 			//TODO add your code for jExit.actionPerformed
-			this.dispose();
+			int response=JOptionPane.showConfirmDialog(null,
+					"确定要退出添加歌曲界面吗？", "警告", JOptionPane.YES_NO_OPTION);
+			if(response==0) this.dispose();
 	}
+		
+		private void thisWindowClosing(WindowEvent evt) {
+			//System.out.println("this.windowClosing, event="+evt);
+			//TODO add your code for this.windowClosing
+		    int response=JOptionPane.showConfirmDialog(null,
+					"确定要退出添加歌曲界面吗？", "警告", JOptionPane.YES_NO_OPTION);
+			if(response==0) this.dispose();
+			else this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE); 
+		}
+		
+		private void jChooseSongActionPerformed(ActionEvent evt) {
+			//System.out.println("jChooseSong.actionPerformed, event="+evt);
+			//TODO add your code for jChooseSong.actionPerformed
+			ChooseSong inst = new ChooseSong();
+			inst.setLocationRelativeTo(null);
+			inst.setVisible(true);
+		}
 
 }

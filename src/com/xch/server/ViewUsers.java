@@ -1,12 +1,15 @@
 package com.xch.server;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 import javax.swing.ComboBoxModel;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTable;
 import javax.swing.JTextField;
@@ -68,9 +71,15 @@ public class ViewUsers extends javax.swing.JFrame {
 	
 	private void initGUI() {
 		try {
+			setResizable(false);
 			setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 			getContentPane().setLayout(null);
 			this.setTitle("\u4fee\u6539\u7528\u6237\u4fe1\u606f");
+			this.addWindowListener(new WindowAdapter() {
+				public void windowClosing(WindowEvent evt) {
+					thisWindowClosing(evt);
+				}
+			});
 			{
 				jConfirm = new JButton();
 				getContentPane().add(jConfirm);
@@ -183,8 +192,19 @@ public class ViewUsers extends javax.swing.JFrame {
 		private void jExitActionPerformed(ActionEvent evt) {
 			//System.out.println("jExit.actionPerformed, event="+evt);
 			//TODO add your code for jExit.actionPerformed
-			this.dispose();
+			int response=JOptionPane.showConfirmDialog(null,
+					"确定要退出修改用户信息界面吗？", "警告", JOptionPane.YES_NO_OPTION);
+			if(response==0) this.dispose();
 	}
+		
+		private void thisWindowClosing(WindowEvent evt) {
+			//System.out.println("this.windowClosing, event="+evt);
+			//TODO add your code for this.windowClosing
+			 int response=JOptionPane.showConfirmDialog(null,
+						"确定要退出修改明用户信息界面吗？", "警告", JOptionPane.YES_NO_OPTION);
+				if(response==0) this.dispose();
+				else this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE); 
+		}
 
 }
 

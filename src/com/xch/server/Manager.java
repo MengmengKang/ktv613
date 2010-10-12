@@ -51,6 +51,7 @@ public class Manager extends javax.swing.JFrame {
 	
 	private void initGUI() {
 		try {
+			setResizable(false);
 			setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 			getContentPane().setLayout(null);
 			this.setTitle("\u4e3b\u7ba1\u7406\u754c\u9762");
@@ -73,7 +74,7 @@ public class Manager extends javax.swing.JFrame {
 				jManageStar = new JButton();
 				getContentPane().add(jManageStar);
 				jManageStar.setText("\u660e\u661f\u4fe1\u606f\u7ba1\u7406");
-				jManageStar.setBounds(117, 165, 143, 40);
+				jManageStar.setBounds(117, 163, 143, 40);
 				jManageStar.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent evt) {
 						jManageStarActionPerformed(evt);
@@ -160,6 +161,7 @@ public class Manager extends javax.swing.JFrame {
 		ManageStars inst = new ManageStars();
 		inst.setLocationRelativeTo(null);
 		inst.setVisible(true);
+		
 	}
 	
 	private void thisWindowClosing(WindowEvent evt) {
