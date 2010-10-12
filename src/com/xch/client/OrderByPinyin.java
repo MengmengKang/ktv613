@@ -159,23 +159,12 @@ public class OrderByPinyin extends javax.swing.JFrame {
 	private void jOrderActionPerformed(ActionEvent evt) {
 		//System.out.println("jOrder.actionPerformed, event="+evt);
 		//TODO add your code for jOrder.actionPerformed
-		int row=jResult.getSelectedRow();
-		
-		
+		int row=jResult.getSelectedRow();		
 		if(row<0)
 		{
 			JOptionPane.showMessageDialog(null, "您还没用选中任何一行");
 			return ;
 		}
-		/*
-		else
-		{
-			JOptionPane.showMessageDialog(null, "您选中了第"+(row+1)+"行" +
-					"\n歌曲ID："+jResult.getValueAt(row, 0)+
-					"\n歌名："+jResult.getValueAt(row, 2)+
-					"\n歌手："+jResult.getValueAt(row, 4));
-			
-		}*/
 		int SongID=Integer.parseInt(jResult.getValueAt(row, 0).toString());
 		String url=DA.getSongURL(SongID);
 		Player.video();

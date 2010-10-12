@@ -169,17 +169,18 @@ public class OrderBySongNumber extends javax.swing.JFrame {
 	private void jOrderActionPerformed(ActionEvent evt) {
 		//System.out.println("jOrder.actionPerformed, event="+evt);
 		//TODO add your code for jOrder.actionPerformed
-		int row=jResult.getSelectedRow();
-		if(row<0)	
-			JOptionPane.showMessageDialog(null, "您还没用选中任何一行");
-		else
+		int row=jResult.getSelectedRow();		
+		if(row<0)
 		{
-			JOptionPane.showMessageDialog(null, "您选中了第"+(row+1)+"行" +
-					"\n歌曲ID："+jResult.getValueAt(row, 0)+
-					"\n歌名："+jResult.getValueAt(row, 2)+
-					"\n歌手："+jResult.getValueAt(row, 4));
-			
+			JOptionPane.showMessageDialog(null, "您还没用选中任何一行");
+			return ;
 		}
+		int SongID=Integer.parseInt(jResult.getValueAt(row, 0).toString());
+		String url=DA.getSongURL(SongID);
+		Player.video();
+		System.out.println(url);
+		Player.play(url);
+		new Bottom();
 	}
 	
 	private void jReturnActionPerformed(ActionEvent evt) {
