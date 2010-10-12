@@ -11,7 +11,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 
-public class Player extends Thread{
+public class OldPlayer extends Thread{
 	private static final String MPLAYER_PATH = "player\\mplayer.exe";
 	private String[] cmd;
 	public static boolean isPlay;
@@ -24,7 +24,7 @@ public class Player extends Thread{
 	
 	
 	
-	public Player(final String path){
+	public OldPlayer(final String path){
 		//stop();
 		//mediaPath=path;
 		//isPlay=true;
@@ -46,7 +46,7 @@ public class Player extends Thread{
 	}
 	
 	public static void main(String[] args) {
-		new Player("lib\\test4.mpg");
+		new OldPlayer("lib\\test4.mpg");
 	}
 	
 	public void Pause() throws IOException
