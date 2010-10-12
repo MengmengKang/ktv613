@@ -34,6 +34,8 @@ import com.xch.server.Manager;
 public class LoginUser extends javax.swing.JFrame {
 	private JLabel jLabel1;
 	private JLabel jLabel2;
+	private JButton jExit;
+	private JLabel jLabel3;
 	private JButton jLogin;
 	private JButton jRegister;
 	private JPasswordField jPassword;
@@ -59,6 +61,7 @@ public class LoginUser extends javax.swing.JFrame {
 	
 	private void initGUI() {
 		try {
+			setResizable(false);
 			setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 			getContentPane().setLayout(null);
 			this.setTitle("\u7528\u6237\u767b\u5f55");
@@ -71,24 +74,24 @@ public class LoginUser extends javax.swing.JFrame {
 				jLabel1 = new JLabel();
 				getContentPane().add(jLabel1);
 				jLabel1.setText("\u7528\u6237\u540d");
-				jLabel1.setBounds(91, 67, 54, 17);
+				jLabel1.setBounds(65, 67, 54, 17);
 			}
 			{
 				jLabel2 = new JLabel();
 				getContentPane().add(jLabel2);
 				jLabel2.setText("\u5bc6\u7801");
-				jLabel2.setBounds(91, 101, 54, 17);
+				jLabel2.setBounds(65, 101, 54, 17);
 			}
 			{
 				jUserName = new JTextField();
 				getContentPane().add(jUserName);
-				jUserName.setBounds(157, 64, 121, 24);
+				jUserName.setBounds(131, 63, 121, 24);
 			}
 			{
 				jLogin = new JButton();
 				getContentPane().add(jLogin);
 				jLogin.setText("\u767b\u5f55");
-				jLogin.setBounds(109, 159, 61, 24);
+				jLogin.setBounds(97, 158, 61, 24);
 				jLogin.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent evt) {
 						jLoginActionPerformed(evt);
@@ -99,7 +102,7 @@ public class LoginUser extends javax.swing.JFrame {
 				jRegister = new JButton();
 				getContentPane().add(jRegister);
 				jRegister.setText("\u6ce8\u518c");
-				jRegister.setBounds(203, 159, 61, 24);
+				jRegister.setBounds(282, 89, 69, 24);
 				jRegister.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent evt) {
 						jRegisterActionPerformed(evt);
@@ -109,7 +112,24 @@ public class LoginUser extends javax.swing.JFrame {
 			{
 				jPassword = new JPasswordField();
 				getContentPane().add(jPassword);
-				jPassword.setBounds(157, 98, 121, 24);
+				jPassword.setBounds(131, 97, 121, 24);
+			}
+			{
+				jExit = new JButton();
+				getContentPane().add(jExit);
+				jExit.setText("\u9000\u51fa");
+				jExit.setBounds(221, 158, 61, 24);
+				jExit.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent evt) {
+						jExitActionPerformed(evt);
+					}
+				});
+			}
+			{
+				jLabel3 = new JLabel();
+				getContentPane().add(jLabel3);
+				jLabel3.setText("\u6ca1\u6709\u7528\u6237\u540d\uff1f");
+				jLabel3.setBounds(282, 68, 84, 15);
 			}
 			pack();
 			this.setSize(386, 260);
@@ -163,6 +183,14 @@ public class LoginUser extends javax.swing.JFrame {
 				"确定要退出KTV智能点播系统吗？", "警告", JOptionPane.YES_NO_OPTION);
 		if(response==0) this.dispose();
 		else this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE); 
+	}
+	
+	private void jExitActionPerformed(ActionEvent evt) {
+		//System.out.println("jExit.actionPerformed, event="+evt);
+		//TODO add your code for jExit.actionPerformed
+		int response=JOptionPane.showConfirmDialog(null,
+				"确定要退出KTV智能点播系统吗？", "警告", JOptionPane.YES_NO_OPTION);
+		if(response==0) this.dispose();
 	}
 
 }

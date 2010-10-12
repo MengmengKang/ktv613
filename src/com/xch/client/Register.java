@@ -74,6 +74,7 @@ public class Register extends javax.swing.JFrame {
 	
 	private void initGUI() {
 		try {
+			setResizable(false);
 			setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 			getContentPane().setLayout(null);
 			this.setTitle("\u6ce8\u518c\u65b0\u7528\u6237");

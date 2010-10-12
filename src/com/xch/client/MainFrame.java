@@ -49,6 +49,7 @@ public class MainFrame extends javax.swing.JFrame {
 	
 	private void initGUI() {
 		try {
+			setResizable(false);
 			setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 			getContentPane().setLayout(null);
 			this.setTitle("\u70b9\u6b4c\u754c\u9762");

@@ -65,6 +65,7 @@ public class OrderByStar extends javax.swing.JFrame {
 	
 	private void initGUI() {
 		try {
+			setResizable(false);
 			setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 			getContentPane().setLayout(null);
 			this.setTitle("\u6b4c\u661f\u70b9\u6b4c");

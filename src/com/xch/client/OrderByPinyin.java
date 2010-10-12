@@ -66,6 +66,7 @@ public class OrderByPinyin extends javax.swing.JFrame {
 	
 	private void initGUI() {
 		try {
+			setResizable(false);
 			setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 			getContentPane().setLayout(null);
 			this.setTitle("\u62fc\u97f3\u70b9\u6b4c");
