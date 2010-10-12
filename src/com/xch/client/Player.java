@@ -60,7 +60,7 @@ public class Player implements WindowListener{
 		Player player=new Player();
 
 		mainFrame=new JFrame();
-		mainFrame.setBounds(400,35,380,400);
+		mainFrame.setBounds(500,80,380,400);
 		mainFrame.setAlwaysOnTop(true);
 		mainFrame.setUndecorated(true);
 		mainFrame.addWindowListener(player);
@@ -76,7 +76,7 @@ public class Player implements WindowListener{
 	}
 
 	Player(){
-		loadConfig();
+		//loadConfig();
 		videoPalel=new VideoPanel(this);
 		controlBar=new JPanel();
 		controlBar.setLayout(new MigLayout());
@@ -302,10 +302,13 @@ public class Player implements WindowListener{
 		if(proc!=null){
 			proc.destroy();
 		}
-		saveConfig();
-		System.exit(0);
+		//saveConfig();
+		//System.exit(0);
+		//exit();
+		mainFrame.dispose();
+		
 	}
-
+/*
 	//º”‘ÿ≈‰÷√
 	void loadConfig(){
 		FileInputStream bytetIn;
@@ -347,13 +350,7 @@ public class Player implements WindowListener{
 			e.printStackTrace();
 		}
 	}
-	
-	public static void main(String[] args){
-		//new PlayerProgressBar();
-		Player.video();
-		Player.play("lib\\test4.mpg");
-	}
-
+*/
 	public void windowActivated(WindowEvent e) {
 
 	}

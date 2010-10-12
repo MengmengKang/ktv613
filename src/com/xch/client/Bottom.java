@@ -4,9 +4,10 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-public class Bottom extends JPanel implements ActionListener{
+public class Bottom extends JFrame implements ActionListener{
 	/**
 	 * 
 	 */
@@ -24,7 +25,7 @@ public class Bottom extends JPanel implements ActionListener{
 	private int volume;
 
 	public Bottom(){
-		this.setBounds(0, 765, 1280, 35);
+		//this.setBounds(0, 765, 1280, 35);
     	this.setLayout(new GridLayout(1,10));
     	original = new JButton("Ô­³ª");
     	suspend = new JButton("ÔÝÍ£");
@@ -53,6 +54,12 @@ public class Bottom extends JPanel implements ActionListener{
     	volumePlus.addActionListener(this);
     	volumeMinus.addActionListener(this);
     	stop.addActionListener(this);
+    	quit.addActionListener(this);
+    	
+    	this.setUndecorated(true);
+    	this.setLocation(300, 500);
+    	this.setSize(765, 35);
+    	this.setVisible(true);
 	}
 
 	@Override
@@ -60,7 +67,7 @@ public class Bottom extends JPanel implements ActionListener{
 		// TODO Auto-generated method stub
 		if(e.getSource()==quit){
 			Player.exit();
-			System.exit(0);
+			this.dispose();
 		}
 		if(e.getSource()==suspend){
 			if(suspend.getText()=="²¥·Å"){
@@ -84,12 +91,21 @@ public class Bottom extends JPanel implements ActionListener{
 				Player.setVolume(volume);
 			}
 		}
-		/*if(e.getSource()==returnHome){
+		/*
+		if(e.getSource()==returnHome){
 			if(SongPinyin.frame!=null)
             SongPinyin.frame.dispose();
-		}*/
+		}
+		*/
 		if(e.getSource()==stop){
 			Player.stop();
 		}
+	}
+	
+	public static void main(String[] args)
+	{
+		new Bottom();
+		Player.video();
+		Player.play("lib\\test4.mpg");
 	}
 }

@@ -426,6 +426,25 @@ public class DA {
 		return res;		
 	}	
 	
+	public static String getSongURL(int indata)
+	{
+		String res = null;
+		
+		try{
+			open();
+			
+			String sql="select URL from songs where SongID="+indata;
+			ResultSet result=aStatement.executeQuery(sql);
+			result.next();
+			res=result.getString(1);
+			
+			close();
+		} catch (Exception e) {
+			System.out.println();
+		}
+		return res;		
+	}	
+	
 	public static void addSongData(SongData song)
 	{
 		try {

@@ -120,7 +120,7 @@ public class OrderByPinyin extends javax.swing.JFrame {
 				jOrder = new JButton();
 				getContentPane().add(jOrder);
 				jOrder.setText("\u70b9\u6b4c");
-				jOrder.setBounds(358, 22, 72, 24);
+				jOrder.setBounds(358, 23, 72, 24);
 				jOrder.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent evt) {
 						jOrderActionPerformed(evt);
@@ -160,8 +160,14 @@ public class OrderByPinyin extends javax.swing.JFrame {
 		//System.out.println("jOrder.actionPerformed, event="+evt);
 		//TODO add your code for jOrder.actionPerformed
 		int row=jResult.getSelectedRow();
-		if(row<0)	
+		
+		
+		if(row<0)
+		{
 			JOptionPane.showMessageDialog(null, "您还没用选中任何一行");
+			return ;
+		}
+		/*
 		else
 		{
 			JOptionPane.showMessageDialog(null, "您选中了第"+(row+1)+"行" +
@@ -169,7 +175,13 @@ public class OrderByPinyin extends javax.swing.JFrame {
 					"\n歌名："+jResult.getValueAt(row, 2)+
 					"\n歌手："+jResult.getValueAt(row, 4));
 			
-		}
+		}*/
+		int SongID=Integer.parseInt(jResult.getValueAt(row, 0).toString());
+		String url=DA.getSongURL(SongID);
+		Player.video();
+		System.out.println(url);
+		Player.play(url);
+		new Bottom();
 	}
 	
 	private void jReturnActionPerformed(ActionEvent evt) {
