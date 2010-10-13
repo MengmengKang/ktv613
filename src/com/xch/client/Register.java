@@ -215,14 +215,15 @@ public class Register extends javax.swing.JFrame {
 			jPasswordRepeat.setText("");
 			return;
 		}
-		if(jPassword.getPassword().toString().equals(jPasswordRepeat.getPassword().toString()))
+		String password=new String(jPassword.getPassword());
+		String passwordRepeat=new String(jPasswordRepeat.getPassword());
+		if(password.equals(passwordRepeat)==false)
 		{
 			JOptionPane.showMessageDialog(null, "两次密码输入不匹配，请重新输入！");
 			jPassword.setText("");
 			jPasswordRepeat.setText("");
 			return;
 		}
-		String password=new String(jPassword.getPassword());
 		System.out.println(password);
 		MD5 md5=new MD5(password);
 		user.setUserID(DA.getUserMaxID());

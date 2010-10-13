@@ -140,6 +140,11 @@ public class ViewAdmin extends javax.swing.JFrame {
 				getContentPane().add(jAddAdmin);
 				jAddAdmin.setText("\u6dfb\u52a0");
 				jAddAdmin.setBounds(12, 206, 78, 22);
+				jAddAdmin.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent evt) {
+						jAddAdminActionPerformed(evt);
+					}
+				});
 			}
 			pack();
 			setSize(400, 300);
@@ -196,6 +201,14 @@ public class ViewAdmin extends javax.swing.JFrame {
 				TableModel jResultModel = 
 					new DefaultTableModel(res,titles);
 				jMainAdmin.setModel(jResultModel);
+			}
+			
+			private void jAddAdminActionPerformed(ActionEvent evt) {
+				//System.out.println("jAddAdmin.actionPerformed, event="+evt);
+				//TODO add your code for jAddAdmin.actionPerformed
+				AddAdmin inst = new AddAdmin();
+				inst.setLocationRelativeTo(null);
+				inst.setVisible(true);
 			}
 
 }

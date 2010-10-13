@@ -13,6 +13,11 @@ import javax.swing.JTextField;
 import javax.swing.WindowConstants;
 import javax.swing.SwingUtilities;
 
+import com.xch.DAO.DA;
+import com.xch.client.MD5;
+import com.xch.client.Register;
+import com.xch.obj.AdminData;
+
 
 /**
 * This code was edited or generated using CloudGarden's Jigloo
@@ -109,6 +114,11 @@ public class AddAdmin extends javax.swing.JFrame {
 				getContentPane().add(jConfirm);
 				jConfirm.setText("\u786e\u8ba4");
 				jConfirm.setBounds(80, 198, 74, 22);
+				jConfirm.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent evt) {
+						jConfirmActionPerformed(evt);
+					}
+				});
 			}
 			{
 				jExit = new JButton();
@@ -144,6 +154,47 @@ public class AddAdmin extends javax.swing.JFrame {
 				"确定要退出添加管理员界面吗？", "警告", JOptionPane.YES_NO_OPTION);
 		if(response==0) this.dispose();
 		else this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE); 
+	}
+	
+	private void jConfirmActionPerformed(ActionEvent evt) {
+		//System.out.println("jConfirm.actionPerformed, event="+evt);
+		//TODO add your code for jConfirm.actionPerformed
+		if(jAdmin.getText().length()==0)
+		{
+			JOptionPane.showMessageDialog(null, "用户名不能为空！");
+			return;
+		}
+		if(DA.checkAdmin(jAdmin.getText()))
+		{
+			JOptionPane.showMessageDialog(null, "用户名已经被使用！");
+			return;
+		}
+		if(jPassWord.getPassword().length==0||jPassWordRepeat.getPassword().length==0)
+		{
+			JOptionPane.showMessageDialog(null, "密码不能为空！");
+			jPassWord.setText("");
+			jPassWordRepeat.setText("");
+			return;
+		}
+		String password=new String(jPassWord.getPassword());
+		String passwordRepeat=new String(jPassWordRepeat.getPassword());
+		//System.out.println(password+" "+passwordRepeat);
+		if(password.equals(passwordRepeat)==false)
+		{
+			JOptionPane.showMessageDialog(null, "两次密码输入不匹配，请重新输入！");
+			jPassWord.setText("");
+			jPassWordRepeat.setText("");
+			return;
+		}
+		
+		MD5 md5=new MD5(password);
+		AdminData admin = new AdminData();
+		admin.setAdmin(jAdmin.getText());
+		admin.setPassWord(md5.get());
+		
+		DA.addAdmin(admin);
+		JOptionPane.showMessageDialog(null, "注册成功！");
+		this.dispose();
 	}
 
 }

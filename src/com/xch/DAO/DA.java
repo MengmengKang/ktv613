@@ -252,22 +252,6 @@ public class DA {
 		}
 		return flag;
 	}	
-	public static void addAdminData(AdminData admin)
-	{
-		try {
-			open();				
-			String sql="insert admins values('"+admin.getAdmin()+"',";
-			sql=sql+"'"+admin.getPassWord()+"')";
-			
-			System.out.println(sql);
-			
-			aStatement.executeUpdate(sql);
-			close();
-		} catch (Exception e) {
-			// TODO: handle exception
-			System.out.println(e);
-		}
-	}
 
 	public static String[][] orderByPinyin(String indata,int n)
 	{
@@ -574,6 +558,24 @@ public class DA {
 			System.out.println(e);
 		}
 	}	
+	
+	public static void addAdmin(AdminData admin)
+	{
+		try {
+			open();				
+			String sql="insert admins values('"+admin.getAdmin()+"',";
+			sql=sql+"'"+admin.getPassWord()+"')";
+			
+			//System.out.println(sql);
+			
+			aStatement.executeUpdate(sql);
+			close();
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println(e);
+		}
+	}
+
 }
 
 
