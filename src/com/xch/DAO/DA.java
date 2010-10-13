@@ -444,6 +444,41 @@ public class DA {
 		return res;		
 	}
 	
+	public static String[][] listStar()
+	{
+		String[][] res={};
+		int n=5;
+		try{
+			open();
+			
+			String sql="select * from stars";
+			//System.out.println(sql);
+			ResultSet result=aStatement.executeQuery(sql);
+			result.last();    
+			int row=result.getRow();
+			result.beforeFirst();
+			res=new String[row][n];
+			int i=-1;
+			while(result.next()){
+				i++;
+				String[] resLine =new String[n];
+				//System.out.println(result.getString(5)+" "+result.getString(2)+" "+result.getString(3)+" "+result.getString(9));
+				resLine[0]=result.getString(1);
+				resLine[1]=result.getString(2);
+				resLine[3]=result.getString(4);
+				resLine[4]=result.getString(5);
+				if(result.getInt(3)==1)	resLine[2]="ÄÐ";
+				else resLine[2]="Å®";
+				res[i]=resLine;		
+			}
+			
+			close();
+		} catch (Exception e) {
+			System.out.println();
+		}
+		return res;		
+	}
+	
 	public static AdminData getAdmin(String admin)
 	{
 		AdminData res=new AdminData();

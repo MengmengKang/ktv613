@@ -3,7 +3,7 @@ package com.xch.obj;
 public class StarData {
 	private int StarID;
 	private String StarName;
-	private int Gender;
+	private int Gender;   //0ÎªÅ®£¬1ÎªÄÐ
 	private String StConFrom;
 	private String StTeam;
 	

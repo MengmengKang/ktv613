@@ -9,10 +9,17 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.ListModel;
+import javax.swing.ListSelectionModel;
 
 import javax.swing.WindowConstants;
 import javax.swing.SwingUtilities;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+
+import com.xch.DAO.DA;
 
 
 /**
@@ -29,12 +36,14 @@ import javax.swing.SwingUtilities;
 */
 public class ManageStars extends javax.swing.JFrame {
 	private JButton jEditMessage;
+	private JScrollPane jScrollPane1;
 	private JButton jRefresh;
 	private JLabel jManageStars;
 	private JButton jExit;
 	private JButton jDeleteStars;
 	private JButton jAddStars;
-	private JList jStarsNames;
+	private JTable jStarsNames;
+	private static String[] titles={"明星ID","明星姓名","性别","港台或内地","明星组合"};
 
 	/**
 	* Auto-generated main method to display this JFrame
@@ -72,26 +81,17 @@ public class ManageStars extends javax.swing.JFrame {
 				jEditMessage.setBounds(178, 232, 128, 24);
 				jEditMessage.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent evt) {
-						jViewStarsActionPerformed(evt);
+						jEditMessageActionPerformed(evt);
 					}
-
+					
 					private void jViewStarsActionPerformed(ActionEvent evt) {
 						//System.out.println("jViewStars.actionPerformed, event="+evt);
 						//TODO add your code for jViewStars.actionPerformed
-							ManageStars inst = new ManageStars();
-							inst.setLocationRelativeTo(null);
-							inst.setVisible(true);
+						ManageStars inst = new ManageStars();
+						inst.setLocationRelativeTo(null);
+						inst.setVisible(true);
 					}
-			});
-			{
-				ListModel jStarsNamesModel = 
-					new DefaultComboBoxModel(
-							new String[] { "StarName1", "StarName2","StarName3" ,"..."});
-				jStarsNames = new JList();
-				getContentPane().add(jStarsNames);
-				jStarsNames.setModel(jStarsNamesModel);
-				jStarsNames.setBounds(39, 73, 601, 122);
-			}
+				});
 			{
 				jAddStars = new JButton();
 				getContentPane().add(jAddStars);
@@ -123,8 +123,10 @@ public class ManageStars extends javax.swing.JFrame {
 				jExit.setBounds(578, 232, 62, 24);
 				jExit.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent evt) {
-						jExitActionPerformed(evt);}
-			});}
+						jExitActionPerformed(evt);
+					}
+				});
+			}
 			{
 				jManageStars = new JLabel();
 				getContentPane().add(jManageStars);
@@ -136,6 +138,24 @@ public class ManageStars extends javax.swing.JFrame {
 				getContentPane().add(jRefresh);
 				jRefresh.setText("\u66f4\u65b0\u660e\u661f\u4fe1\u606f");
 				jRefresh.setBounds(450, 233, 123, 22);
+			}
+			{
+				jScrollPane1 = new JScrollPane();
+				getContentPane().add(jScrollPane1);
+				jScrollPane1.setBounds(40, 50, 600, 170);
+				{
+					String[][] res=DA.listStar();
+					jStarsNames = new JTable(){
+						public boolean isCellEditable(int row,int col){return false;}
+					};
+					jScrollPane1.setViewportView(jStarsNames);
+					TableModel jStarsNamesModel = 
+						new DefaultTableModel(res,titles);
+					jStarsNames.setModel(jStarsNamesModel);
+					jStarsNames.setBounds(73, 121, 601, 122);
+					jStarsNames.setDragEnabled(true);
+					jStarsNames.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+				}
 			}
 			pack();
 			this.setSize(700, 349);
@@ -158,6 +178,14 @@ public class ManageStars extends javax.swing.JFrame {
 						"确定要退出明星信息管理界面吗？", "警告", JOptionPane.YES_NO_OPTION);
 				if(response==0) this.dispose();
 				else this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE); 
+		}
+		
+		private void jEditMessageActionPerformed(ActionEvent evt) {
+			//System.out.println("jEditMessage.actionPerformed, event="+evt);
+			//TODO add your code for jEditMessage.actionPerformed
+			EditStars inst = new EditStars();
+			inst.setLocationRelativeTo(null);
+			inst.setVisible(true);
 		}
 
 }
