@@ -6,30 +6,10 @@ import com.xch.obj.AdminData;
 import com.xch.obj.SongData;
 import com.xch.obj.UserData;
 
-/*
-String sql="drop table if exists admins";
-aStatement.executeUpdate(sql);
-sql="create table admins(Admin varchar(50),Password varchar(50))";
-aStatement.executeUpdate(sql);
-
-System.out.println("Please Input User ID:");
-sql="insert admins values('"+aS.next();
-System.out.println("Please Input User Password:");
-sql=sql+"','"+aS.next()+"')";
-aStatement.executeUpdate(sql);
-
-sql="select * from admins";
-ResultSet result=aStatement.executeQuery(sql);
-System.out.println("ID	Password");
-while(result.next()){
-	System.out.println(result.getString(1)+"	"+result.getString(2));		
-}
-*/
-
 public class DA {
 	static String DB="ktv613";
 	static String ID="root";
-	static String PW="czx";
+	static String PW="";
 	static String CONNECT="jdbc:mysql://localhost:3306/"+DB+"?useUnicode=true&characterEncoding=utf8";
 	
 	static Connection aConnection;
