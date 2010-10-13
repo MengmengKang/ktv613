@@ -138,6 +138,11 @@ public class ManageStars extends javax.swing.JFrame {
 				getContentPane().add(jRefresh);
 				jRefresh.setText("\u66f4\u65b0\u660e\u661f\u4fe1\u606f");
 				jRefresh.setBounds(450, 233, 123, 22);
+				jRefresh.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent evt) {
+						jRefreshActionPerformed(evt);
+					}
+				});
 			}
 			{
 				jScrollPane1 = new JScrollPane();
@@ -186,6 +191,15 @@ public class ManageStars extends javax.swing.JFrame {
 			EditStars inst = new EditStars();
 			inst.setLocationRelativeTo(null);
 			inst.setVisible(true);
+		}
+		
+		private void jRefreshActionPerformed(ActionEvent evt) {
+			//System.out.println("jRefresh.actionPerformed, event="+evt);
+			//TODO add your code for jRefresh.actionPerformed
+			String[][] res=DA.listStar();
+			TableModel jStarsNamesModel = 
+				new DefaultTableModel(res,titles);
+			jStarsNames.setModel(jStarsNamesModel);
 		}
 
 }

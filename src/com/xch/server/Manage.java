@@ -23,7 +23,7 @@ import javax.swing.SwingUtilities;
 * THIS MACHINE, SO JIGLOO OR THIS CODE CANNOT BE USED
 * LEGALLY FOR ANY CORPORATE OR COMMERCIAL PURPOSE.
 */
-public class Manager extends javax.swing.JFrame {
+public class Manage extends javax.swing.JFrame {
 	private JButton jManageUser;
 	private JLabel jMainManage;
 	private JButton jExit;
@@ -37,14 +37,14 @@ public class Manager extends javax.swing.JFrame {
 	public static void main(String[] args) {
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
-				Manager inst = new Manager();
+				Manage inst = new Manage();
 				inst.setLocationRelativeTo(null);
 				inst.setVisible(true);
 			}
 		});
 	}
 	
-	public Manager() {
+	public Manage() {
 		super();
 		initGUI();
 	}

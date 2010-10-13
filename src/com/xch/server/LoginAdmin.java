@@ -138,7 +138,7 @@ public class LoginAdmin extends javax.swing.JFrame {
 		if (DA.loginAdmin(admin))
 		{
 			this.dispose();
-			Manager inst = new Manager();
+			Manage inst = new Manage();
 			inst.setLocationRelativeTo(null);
 			inst.setVisible(true);
 		}
