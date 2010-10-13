@@ -138,7 +138,28 @@ public class DA {
 		}
 		return flag;
 	}	
+	public static boolean checkAdmin(String admin)
+	{
+		boolean flag = false;
+		try {
+			open();
+			String sql="select admin from admins";
+			ResultSet result=aStatement.executeQuery(sql);
+			while(result.next()){
+				if(result.getString(1).compareTo(admin)==0)
+				{
+					flag = true;
+					break;
+				}
+			}
+			close();
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println(e);
+		}
+		return flag;
 	
+	}			
 	public static boolean loginUser(UserData user)
 	{
 		boolean flag = false;
@@ -163,71 +184,6 @@ public class DA {
 		}
 		return flag;
 	}
-	public static void addUserData(UserData user)
-	{
-		try {
-			open();				
-			String sql="insert users values("+user.getUserID()+",";
-			sql=sql+"'"+user.getUserName()+"',";
-			sql=sql+"'"+user.getPassWord()+"',";
-			sql=sql+"'"+user.getRealName()+"',";
-			sql=sql+"'"+user.getEmail()+"',";
-			sql=sql+user.getGender()+",";
-			sql=sql+"'"+user.getInterest()+"')";
-			
-			System.out.println(sql);
-			
-			aStatement.executeUpdate(sql);
-			close();
-		} catch (Exception e) {
-			// TODO: handle exception
-			System.out.println(e);
-		}
-	}
-	public static void modifyUserData(UserData user)
-	{
-		try {
-			open();				
-			String sql="update users set ";
-			sql=sql+"username='"+user.getUserName()+"',";
-			sql=sql+"password='"+user.getPassWord()+"',";
-			sql=sql+"realname='"+user.getRealName()+"',";
-			sql=sql+"email='"+user.getEmail()+"',";
-			sql=sql+"gender="+user.getGender()+",";
-			sql=sql+"interest='"+user.getInterest()+"' ";
-			sql=sql+"where userid="+user.getUserID();
-			
-			System.out.println(sql);
-			
-			aStatement.executeUpdate(sql);
-			close();
-		} catch (Exception e) {
-			// TODO: handle exception
-			System.out.println(e);
-		}
-	}	
-	public static boolean checkAdmin(String admin)
-	{
-		boolean flag = false;
-		try {
-			open();
-			String sql="select admin from admins";
-			ResultSet result=aStatement.executeQuery(sql);
-			while(result.next()){
-				if(result.getString(1).compareTo(admin)==0)
-				{
-					flag = true;
-					break;
-				}
-			}
-			close();
-		} catch (Exception e) {
-			// TODO: handle exception
-			System.out.println(e);
-		}
-		return flag;
-	
-	}		
 	public static boolean loginAdmin(AdminData admin)
 	{
 		boolean flag = false;
@@ -252,6 +208,9 @@ public class DA {
 		}
 		return flag;
 	}	
+
+
+
 
 	public static String[][] orderByPinyin(String indata,int n)
 	{
@@ -576,6 +535,49 @@ public class DA {
 		}
 	}
 
+	public static void addUserData(UserData user)
+	{
+		try {
+			open();				
+			String sql="insert users values("+user.getUserID()+",";
+			sql=sql+"'"+user.getUserName()+"',";
+			sql=sql+"'"+user.getPassWord()+"',";
+			sql=sql+"'"+user.getRealName()+"',";
+			sql=sql+"'"+user.getEmail()+"',";
+			sql=sql+user.getGender()+",";
+			sql=sql+"'"+user.getInterest()+"')";
+			
+			System.out.println(sql);
+			
+			aStatement.executeUpdate(sql);
+			close();
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println(e);
+		}
+	}
+	public static void modifyUserData(UserData user)
+	{
+		try {
+			open();				
+			String sql="update users set ";
+			sql=sql+"username='"+user.getUserName()+"',";
+			sql=sql+"password='"+user.getPassWord()+"',";
+			sql=sql+"realname='"+user.getRealName()+"',";
+			sql=sql+"email='"+user.getEmail()+"',";
+			sql=sql+"gender="+user.getGender()+",";
+			sql=sql+"interest='"+user.getInterest()+"' ";
+			sql=sql+"where userid="+user.getUserID();
+			
+			System.out.println(sql);
+			
+			aStatement.executeUpdate(sql);
+			close();
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println(e);
+		}
+	}	
 }
 
 
