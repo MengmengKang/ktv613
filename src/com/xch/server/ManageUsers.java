@@ -89,9 +89,16 @@ public class ManageUsers extends javax.swing.JFrame {
 					private void jViewUsersActionPerformed(ActionEvent evt) {
 						//System.out.println("jViewUsers.actionPerformed, event="+evt);
 						//TODO add your code for jViewUsers.actionPerformed
-							EditUsers inst = new EditUsers();
-							inst.setLocationRelativeTo(null);
-							inst.setVisible(true);
+						int row=jUser.getSelectedRow();		
+						if(row<0)
+						{
+							JOptionPane.showMessageDialog(null, "您还没用选中任何一行");
+							return ;
+						}
+						int userid=Integer.parseInt(jUser.getValueAt(row, 0).toString());
+						EditUsers inst = new EditUsers(userid);
+						inst.setLocationRelativeTo(null);
+						inst.setVisible(true);
 					}
 			});
 			{
@@ -189,7 +196,7 @@ public class ManageUsers extends javax.swing.JFrame {
 		private void jRefreshMessageActionPerformed(ActionEvent evt) {
 			//System.out.println("jRefreshMessage.actionPerformed, event="+evt);
 			//TODO add your code for jRefreshMessage.actionPerformed
-			String[][] res=DA.listStar();
+			String[][] res=DA.listUser();
 			TableModel jStarsNamesModel = 
 				new DefaultTableModel(res,titles);
 			jUser.setModel(jStarsNamesModel);

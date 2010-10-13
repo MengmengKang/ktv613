@@ -19,6 +19,8 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.SwingUtilities;
 
+import com.xch.DAO.DA;
+import com.xch.client.MD5;
 import com.xch.obj.UserData;
 
 
@@ -71,8 +73,9 @@ public class EditUsers extends javax.swing.JFrame {
 	}
 	*/
 	
-	public EditUsers() {
+	public EditUsers(int indata) {
 		super();
+		user=DA.getUser(indata);
 		initGUI();
 	}
 	
@@ -91,16 +94,22 @@ public class EditUsers extends javax.swing.JFrame {
 				jConfirm = new JButton();
 				getContentPane().add(jConfirm);
 				jConfirm.setText("\u786e\u8ba4");
-				jConfirm.setBounds(100, 314, 74, 24);
+				jConfirm.setBounds(100, 315, 74, 24);
+				jConfirm.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent evt) {
+						jConfirmActionPerformed(evt);
+					}
+				});
 			}
 			
 			{
 				ComboBoxModel jComboBox1Model = 
 					new DefaultComboBoxModel(
-							new String[] { "男", "女" });
+							new String[] {  "女", "男"});
 				jComboBox1 = new JComboBox();
 				getContentPane().add(jComboBox1);
 				jComboBox1.setModel(jComboBox1Model);
+				jComboBox1.setSelectedIndex(user.getGender());
 				jComboBox1.setBounds(242, 175, 65, 24);
 			}
 			{
@@ -163,6 +172,8 @@ public class EditUsers extends javax.swing.JFrame {
 			{
 				jUserName = new JTextField();
 				getContentPane().add(jUserName);
+				jUserName.setText(user.getUserName());
+				jUserName.setEditable(false);
 				jUserName.setBounds(242, 54, 96, 22);
 			}
 			{
@@ -178,16 +189,19 @@ public class EditUsers extends javax.swing.JFrame {
 			{
 				jRealName = new JTextField();
 				getContentPane().add(jRealName);
+				jRealName.setText(user.getRealName());
 				jRealName.setBounds(242, 148, 96, 22);
 			}
 			{
 				jEmail = new JTextField();
 				getContentPane().add(jEmail);
+				jEmail.setText(user.getEmail());
 				jEmail.setBounds(242, 206, 96, 22);
 			}
 			{
 				jInterest = new JTextField();
 				getContentPane().add(jInterest);
+				jInterest.setText(user.getInterest());
 				jInterest.setBounds(242, 239, 96, 22);
 			}
 			{
@@ -224,6 +238,29 @@ public class EditUsers extends javax.swing.JFrame {
 						"确定要退出修改明用户信息界面吗？", "警告", JOptionPane.YES_NO_OPTION);
 				if(response==0) this.dispose();
 				else this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE); 
+		}
+		
+		private void jConfirmActionPerformed(ActionEvent evt) {
+			//System.out.println("jConfirm.actionPerformed, event="+evt);
+			//TODO add your code for jConfirm.actionPerformed
+			String password=new String(jPassWord.getPassword());
+			String passwordRepeat=new String(jPassWordRepeat.getPassword());
+			if(password.equals(passwordRepeat)==false)
+			{
+				JOptionPane.showMessageDialog(null, "两次密码输入不匹配，请重新输入！");
+				jPassWord.setText("");
+				jPassWordRepeat.setText("");
+				return;
+			}
+			System.out.println(password);
+			MD5 md5=new MD5(password);
+			if(password.length()!=0) user.setPassWord(md5.get());
+			user.setEmail(jEmail.getText());
+			user.setRealName(jRealName.getText());
+			user.setInterest(jInterest.getText());
+			user.setGender(jComboBox1.getSelectedIndex());
+			DA.modifyUser(user);
+			JOptionPane.showMessageDialog(null, "用户信息修改成功！");
 		}
 
 }

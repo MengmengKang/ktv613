@@ -640,7 +640,31 @@ public class DA {
 		}
 		return res;		
 	}
-	
+	public static UserData getUser(int userid)
+	{
+		UserData res=new UserData();
+		try{
+			open();
+			
+			String sql="select * from users where userid='"+userid+"'";
+			System.out.println(sql);
+			ResultSet result=aStatement.executeQuery(sql);
+			result.next();
+			res.setUserID(result.getInt(1));
+			res.setUserName(result.getString(2));
+			res.setPassWord(result.getString(3));
+			res.setRealName(result.getString(4));
+			res.setEmail(result.getString(5));
+			res.setGender(result.getInt(6));
+			res.setInterest(result.getString(7));
+
+			close();
+		} catch (Exception e) {
+			System.out.println();
+		}
+		return res;		
+	}
+		
 	public static void modifyAdmin(AdminData Admin)
 	{
 		try {
@@ -755,7 +779,7 @@ public class DA {
 			System.out.println(e);
 		}
 	}
-	public static void modifyUserData(UserData user)
+	public static void modifyUser(UserData user)
 	{
 		try {
 			open();				
