@@ -42,6 +42,7 @@ public class ManageAdmin extends javax.swing.JFrame {
 	private JButton jDelAdmin;
 	private JButton jAddAdmin;
 	private JScrollPane jScrollPane1;
+	private JButton jRefresh;
 	private JButton jEdit;
 	private static String[] titles={"管理员用户"};
 
@@ -92,13 +93,13 @@ public class ManageAdmin extends javax.swing.JFrame {
 				jLabel1 = new JLabel();
 				getContentPane().add(jLabel1);
 				jLabel1.setText("\u7ba1\u7406\u5458\u4fe1\u606f\u7ba1\u7406");
-				jLabel1.setBounds(146, 12, 84, 15);
+				jLabel1.setBounds(206, 18, 84, 15);
 			}
 			{
 				jExit = new JButton();
 				getContentPane().add(jExit);
 				jExit.setText("\u9000\u51fa");
-				jExit.setBounds(304, 206, 76, 22);
+				jExit.setBounds(401, 206, 76, 22);
 				jExit.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent evt) {
 						jExitActionPerformed(evt);}
@@ -106,7 +107,7 @@ public class ManageAdmin extends javax.swing.JFrame {
 			{
 				jScrollPane1 = new JScrollPane();
 				getContentPane().add(jScrollPane1);
-				jScrollPane1.setBounds(104, 39, 171, 148);
+				jScrollPane1.setBounds(158, 45, 171, 148);
 				{
 					
 
@@ -130,7 +131,7 @@ public class ManageAdmin extends javax.swing.JFrame {
 				jDelAdmin = new JButton();
 				getContentPane().add(jDelAdmin);
 				jDelAdmin.setText("\u5220\u9664");
-				jDelAdmin.setBounds(206, 206, 78, 22);
+				jDelAdmin.setBounds(206, 206, 76, 22);
 				jDelAdmin.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent evt) {
 						jDelAdminActionPerformed(evt);
@@ -148,8 +149,14 @@ public class ManageAdmin extends javax.swing.JFrame {
 					}
 				});
 			}
+			{
+				jRefresh = new JButton();
+				getContentPane().add(jRefresh);
+				jRefresh.setText("\u5237\u65b0");
+				jRefresh.setBounds(304, 205, 73, 24);
+			}
 			pack();
-			setSize(400, 300);
+			this.setSize(511, 315);
 		} catch (Exception e) {
 		    //add your error handling code here
 		}
