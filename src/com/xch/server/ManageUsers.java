@@ -127,7 +127,7 @@ public class ManageUsers extends javax.swing.JFrame {
 					TableModel jUserModel = 
 						new DefaultTableModel(
 								new String[][] { { "One", "Two" }, { "Three", "Four" } },
-								new String[] { "Column 1", "Column 2" });
+								new String[] { "UserID", "UserName","PassWord","RealName","Email","Gender","Interest" });
 					jUser = new JTable();
 					jScrollPane1.setViewportView(jUser);
 					jUser.setModel(jUserModel);

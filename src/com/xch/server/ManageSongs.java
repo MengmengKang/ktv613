@@ -9,9 +9,13 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.ListModel;
 
 import javax.swing.WindowConstants;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 import javax.swing.SwingUtilities;
 
 
@@ -31,9 +35,10 @@ public class ManageSongs extends javax.swing.JFrame {
 	private JButton jAddSongs;
 	private JButton jDeleteSongs;
 	private JButton jRefreshList;
+	private JScrollPane jScrollPane1;
+	private JTable jTable1;
 	private JLabel jManageSongs;
 	private JButton jExit;
-	private JList jSongList;
 
 	/**
 	* Auto-generated main method to display this JFrame
@@ -68,7 +73,7 @@ public class ManageSongs extends javax.swing.JFrame {
 				jAddSongs = new JButton();
 				getContentPane().add(jAddSongs);
 				jAddSongs.setText("\u6dfb\u52a0\u6b4c\u66f2");
-				jAddSongs.setBounds(18, 256, 95, 24);
+				jAddSongs.setBounds(57, 256, 95, 24);
 				jAddSongs.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent evt) {
 						jAddSongActionPerformed(evt);
@@ -87,28 +92,19 @@ public class ManageSongs extends javax.swing.JFrame {
 				jDeleteSongs = new JButton();
 				getContentPane().add(jDeleteSongs);
 				jDeleteSongs.setText("\u5220\u9664\u6b4c\u66f2");
-				jDeleteSongs.setBounds(143, 256, 103, 24);
+				jDeleteSongs.setBounds(203, 256, 103, 24);
 			}
 			{
 				jRefreshList = new JButton();
 				getContentPane().add(jRefreshList);
 				jRefreshList.setText("\u66f4\u65b0\u6b4c\u66f2\u8868");
-				jRefreshList.setBounds(269, 256, 105, 24);
-			}
-			{
-				ListModel jSongListModel = 
-					new DefaultComboBoxModel(
-							new String[] { "Song1", "Song2","Song3","..." });
-				jSongList = new JList();
-				getContentPane().add(jSongList);
-				jSongList.setModel(jSongListModel);
-				jSongList.setBounds(107, 91, 295, 144);
+				jRefreshList.setBounds(358, 256, 105, 24);
 			}
 			{
 				jExit = new JButton();
 				getContentPane().add(jExit);
 				jExit.setText("\u9000\u51fa");
-				jExit.setBounds(413, 256, 63, 24);
+				jExit.setBounds(517, 256, 63, 24);
 				jExit.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent evt) {
 						jExitActionPerformed(evt);}
@@ -117,10 +113,24 @@ public class ManageSongs extends javax.swing.JFrame {
 				jManageSongs = new JLabel();
 				getContentPane().add(jManageSongs);
 				jManageSongs.setText("\u6b4c\u66f2\u4fe1\u606f\u7ba1\u7406");
-				jManageSongs.setBounds(215, 12, 133, 49);
+				jManageSongs.setBounds(285, 7, 133, 49);
+			}
+			{
+				jScrollPane1 = new JScrollPane();
+				getContentPane().add(jScrollPane1);
+				jScrollPane1.setBounds(57, 55, 523, 159);
+				{
+					TableModel jTable1Model = 
+						new DefaultTableModel(
+								new String[][] { { "One", "Two" }, { "Three", "Four" } },
+								new String[] { "SongID", "SongName","Songtype","SoNumber","SoPinyin","StarID","URL" });
+					jTable1 = new JTable();
+					jScrollPane1.setViewportView(jTable1);
+					jTable1.setModel(jTable1Model);
+				}
 			}
 			pack();
-			this.setSize(538, 352);
+			this.setSize(657, 380);
 			}catch (Exception e) {
 		    //add your error handling code here
 		}	
