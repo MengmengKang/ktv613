@@ -33,15 +33,15 @@ import javax.swing.SwingUtilities;
 */
 public class ViewStars extends javax.swing.JFrame {
 	private JButton jConfirm;
-	private JLabel jSex;
 	private JLabel jViewStars;
-	private JLabel jStTeam;
-	private JLabel jStComeFrom;
-	private JTextField jTextField3;
-	private JTextField jTextField2;
+	private JLabel jLabel4;
+	private JTextField jStTeam;
+	private JTextField jStComeFrom;
+	private JTextField jStarName;
+	private JLabel jLabel3;
+	private JLabel jLabel2;
+	private JLabel jLabel1;
 	private JComboBox jComboBox1;
-	private JTextField jTextField1;
-	private JLabel jStarName;
 	private JButton jExit;
 
 	/**
@@ -81,23 +81,6 @@ public class ViewStars extends javax.swing.JFrame {
 			}
 			
 			{
-				jStarName = new JLabel();
-				getContentPane().add(jStarName);
-				jStarName.setText("\u660e\u661f\u59d3\u540d");
-				jStarName.setBounds(92, 68, 76, 17);
-			}
-			{
-				jTextField1 = new JTextField();
-				getContentPane().add(jTextField1);
-				jTextField1.setBounds(194, 65, 97, 24);
-			}
-			{
-				jSex = new JLabel();
-				getContentPane().add(jSex);
-				jSex.setText("\u6027\u522b");
-				jSex.setBounds(92, 109, 46, 17);
-			}
-			{
 				ComboBoxModel jComboBox1Model = 
 					new DefaultComboBoxModel(
 							new String[] { "ÄÐ", "Å®" });
@@ -105,16 +88,6 @@ public class ViewStars extends javax.swing.JFrame {
 				getContentPane().add(jComboBox1);
 				jComboBox1.setModel(jComboBox1Model);
 				jComboBox1.setBounds(194, 105, 52, 24);
-			}
-			{
-				jTextField2 = new JTextField();
-				getContentPane().add(jTextField2);
-				jTextField2.setBounds(194, 141, 97, 24);
-			}
-			{
-				jTextField3 = new JTextField();
-				getContentPane().add(jTextField3);
-				jTextField3.setBounds(194, 180, 97, 24);
 			}
 			{
 				jExit = new JButton();
@@ -126,22 +99,49 @@ public class ViewStars extends javax.swing.JFrame {
 						jExitActionPerformed(evt);}
 			});}
 			{
-				jStComeFrom = new JLabel();
-				getContentPane().add(jStComeFrom);
-				jStComeFrom.setText("\u6e2f\u53f0\u6216\u5185\u5730");
-				jStComeFrom.setBounds(92, 144, 76, 17);
-			}
-			{
-				jStTeam = new JLabel();
-				getContentPane().add(jStTeam);
-				jStTeam.setText("\u660e\u661f\u7ec4\u5408");
-				jStTeam.setBounds(92, 183, 76, 17);
-			}
-			{
 				jViewStars = new JLabel();
 				getContentPane().add(jViewStars);
 				jViewStars.setText("\u4fee\u6539\u660e\u661f\u4fe1\u606f");
 				jViewStars.setBounds(153, 23, 131, 17);
+			}
+			{
+				jLabel1 = new JLabel();
+				getContentPane().add(jLabel1);
+				jLabel1.setText("\u660e\u661f\u59d3\u540d");
+				jLabel1.setBounds(92, 69, 76, 15);
+			}
+			{
+				jLabel2 = new JLabel();
+				getContentPane().add(jLabel2);
+				jLabel2.setText("\u6027\u522b");
+				jLabel2.setBounds(92, 110, 76, 15);
+			}
+			{
+				jLabel3 = new JLabel();
+				getContentPane().add(jLabel3);
+				jLabel3.setText("\u6e2f\u53f0\u6216\u5185\u5730");
+				jLabel3.setBounds(92, 145, 84, 15);
+			}
+			{
+				jLabel4 = new JLabel();
+				getContentPane().add(jLabel4);
+				jLabel4.setText("\u660e\u661f\u7ec4\u5408");
+				jLabel4.setBounds(92, 184, 76, 15);
+			}
+			{
+				jStarName = new JTextField();
+				getContentPane().add(jStarName);
+				jStarName.setBounds(194, 66, 97, 22);
+			}
+			{
+				jStComeFrom = new JTextField();
+				getContentPane().add(jStComeFrom);
+				jStComeFrom.setBounds(194, 142, 97, 22);
+			}
+			{
+				jStTeam = new JTextField();
+				getContentPane().add(jStTeam);
+				jStTeam.setBounds(194, 181, 97, 22);
 			}
 			pack();
 			this.setSize(400, 315);

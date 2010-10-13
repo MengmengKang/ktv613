@@ -34,21 +34,21 @@ import javax.swing.SwingUtilities;
 */
 public class ViewUsers extends javax.swing.JFrame {
 	private JButton jConfirm;
+	private JLabel jLabel4;
+	private JLabel jLabel5;
+	private JTextField jInterest;
+	private JTextField jEmail;
+	private JTextField jRealName;
+	private JPasswordField jPassWordRepeat;
+	private JPasswordField jPassWord;
+	private JTextField jUserName;
+	private JLabel jLabel7;
+	private JLabel jLabel6;
+	private JLabel jLabel3;
+	private JLabel jLabel2;
+	private JLabel jLabel1;
 	private JLabel jViewStars;
-	private JPasswordField jPasswordField1;
-	private JLabel jEnsurePassword;
 	private JComboBox jComboBox1;
-	private JLabel jEmail;
-	private JLabel jSex;
-	private JTextField jTextField5;
-	private JLabel jHobby;
-	private JTextField jTextField4;
-	private JTextField jTextField3;
-	private JLabel jRealName;
-	private JTextField jTextField2;
-	private JLabel jPassword;
-	private JTextField jTextField1;
-	private JLabel jUserID;
 	private JButton jExit;
 
 	/**
@@ -88,67 +88,6 @@ public class ViewUsers extends javax.swing.JFrame {
 			}
 			
 			{
-				jUserID = new JLabel();
-				getContentPane().add(jUserID);
-				jUserID.setText("\u7528\u6237\u540d");
-				jUserID.setBounds(120, 56, 55, 17);
-			}
-			{
-				jTextField1 = new JTextField();
-				getContentPane().add(jTextField1);
-				jTextField1.setBounds(242, 53, 96, 24);
-			}
-			{
-				jPassword = new JLabel();
-				getContentPane().add(jPassword);
-				jPassword.setText("\u5bc6\u7801");
-				jPassword.setBounds(120, 89, 55, 17);
-			}
-			{
-				jTextField2 = new JTextField();
-				getContentPane().add(jTextField2);
-				jTextField2.setBounds(242, 86, 96, 24);
-			}
-			{
-				jRealName = new JLabel();
-				getContentPane().add(jRealName);
-				jRealName.setText("\u771f\u5b9e\u59d3\u540d");
-				jRealName.setBounds(120, 150, 70, 17);
-			}
-			{
-				jTextField3 = new JTextField();
-				getContentPane().add(jTextField3);
-				jTextField3.setBounds(242, 147, 96, 24);
-			}
-			{
-				jEmail = new JLabel();
-				getContentPane().add(jEmail);
-				jEmail.setText("\u7535\u5b50\u90ae\u7bb1");
-				jEmail.setBounds(120, 208, 79, 17);
-			}
-			{
-				jTextField4 = new JTextField();
-				getContentPane().add(jTextField4);
-				jTextField4.setBounds(242, 205, 96, 24);
-			}
-			{
-				jHobby = new JLabel();
-				getContentPane().add(jHobby);
-				jHobby.setText("\u5174\u8da3");
-				jHobby.setBounds(120, 241, 55, 17);
-			}
-			{
-				jTextField5 = new JTextField();
-				getContentPane().add(jTextField5);
-				jTextField5.setBounds(242, 238, 96, 24);
-			}
-			{
-				jSex = new JLabel();
-				getContentPane().add(jSex);
-				jSex.setText("\u6027\u522b");
-				jSex.setBounds(120, 179, 55, 17);
-			}
-			{
 				ComboBoxModel jComboBox1Model = 
 					new DefaultComboBoxModel(
 							new String[] { "ÄÐ", "Å®" });
@@ -173,15 +112,76 @@ public class ViewUsers extends javax.swing.JFrame {
 				jViewStars.setBounds(190, 22, 164, 17);
 			}
 			{
-				jEnsurePassword = new JLabel();
-				getContentPane().add(jEnsurePassword);
-				jEnsurePassword.setText("\u5bc6\u7801\u786e\u8ba4");
-				jEnsurePassword.setBounds(120, 118, 79, 17);
+				jLabel1 = new JLabel();
+				getContentPane().add(jLabel1);
+				jLabel1.setText("\u7528\u6237\u540d");
+				jLabel1.setBounds(120, 57, 79, 15);
 			}
 			{
-				jPasswordField1 = new JPasswordField();
-				getContentPane().add(jPasswordField1);
-				jPasswordField1.setBounds(242, 115, 96, 24);
+				jLabel2 = new JLabel();
+				getContentPane().add(jLabel2);
+				jLabel2.setText("\u5bc6\u7801");
+				jLabel2.setBounds(120, 90, 70, 15);
+			}
+			{
+				jLabel3 = new JLabel();
+				getContentPane().add(jLabel3);
+				jLabel3.setText("\u5bc6\u7801\u786e\u8ba4");
+				jLabel3.setBounds(120, 119, 79, 15);
+			}
+			{
+				jLabel4 = new JLabel();
+				getContentPane().add(jLabel4);
+				jLabel4.setText("\u771f\u5b9e\u59d3\u540d");
+				jLabel4.setBounds(120, 151, 79, 15);
+			}
+			{
+				jLabel5 = new JLabel();
+				getContentPane().add(jLabel5);
+				jLabel5.setText("\u6027\u522b");
+				jLabel5.setBounds(120, 180, 70, 15);
+			}
+			{
+				jLabel6 = new JLabel();
+				getContentPane().add(jLabel6);
+				jLabel6.setText("\u7535\u5b50\u90ae\u7bb1");
+				jLabel6.setBounds(120, 209, 79, 15);
+			}
+			{
+				jLabel7 = new JLabel();
+				getContentPane().add(jLabel7);
+				jLabel7.setText("\u559c\u6b22\u7684\u6b4c");
+				jLabel7.setBounds(120, 242, 79, 15);
+			}
+			{
+				jUserName = new JTextField();
+				getContentPane().add(jUserName);
+				jUserName.setBounds(242, 54, 96, 22);
+			}
+			{
+				jPassWord = new JPasswordField();
+				getContentPane().add(jPassWord);
+				jPassWord.setBounds(242, 87, 96, 22);
+			}
+			{
+				jPassWordRepeat = new JPasswordField();
+				getContentPane().add(jPassWordRepeat);
+				jPassWordRepeat.setBounds(242, 116, 96, 22);
+			}
+			{
+				jRealName = new JTextField();
+				getContentPane().add(jRealName);
+				jRealName.setBounds(242, 148, 96, 22);
+			}
+			{
+				jEmail = new JTextField();
+				getContentPane().add(jEmail);
+				jEmail.setBounds(242, 206, 96, 22);
+			}
+			{
+				jInterest = new JTextField();
+				getContentPane().add(jInterest);
+				jInterest.setBounds(242, 239, 96, 22);
 			}
 			pack();
 			this.setSize(475, 396);

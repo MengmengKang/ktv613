@@ -29,19 +29,19 @@ import javax.swing.SwingUtilities;
 */
 public class AddSongs extends javax.swing.JFrame {
 	private JButton jConfirm;
+	private JLabel jLabel4;
+	private JLabel jLabel5;
+	private JTextField jSoPinyin;
+	private JTextField jSoNumber;
+	private JTextField jSongType;
+	private JTextField jSongName;
+	private JLabel jLabel3;
+	private JLabel jLabel2;
 	private JButton jChooseSong;
 	private JTextField jURL;
-	private JLabel jLabel;
 	private JLabel jAddSong;
-	private JTextField jTextField3;
-	private JLabel jSongPinyin;
-	private JTextField jTextField2;
-	private JLabel jSongNumber;
-	private JTextField jTextField1;
-	private JLabel jSongType;
 	private JLabel jLabel1;
 	private JButton jExit;
-	private JTextField jSongName;
 
 	/**
 	* Auto-generated main method to display this JFrame
@@ -73,12 +73,6 @@ public class AddSongs extends javax.swing.JFrame {
 				}
 			});
 			{
-				jSongName = new JTextField();
-				getContentPane().add(jSongName);
-				jSongName.setBounds(144, 42, 190, 24);
-				jSongName.setBounds(118, 42, 216, 24);
-			}
-			{
 				jConfirm = new JButton();
 				getContentPane().add(jConfirm);
 				jConfirm.setText("\u786e\u8ba4");
@@ -99,39 +93,7 @@ public class AddSongs extends javax.swing.JFrame {
 				jLabel1.setText("\u6b4c\u66f2\u540d\u79f0");
 				jLabel1.setBounds(33, 45, 82, 17);
 			}
-			{
-				jSongType = new JLabel();
-				getContentPane().add(jSongType);
-				jSongType.setText("\u6b4c\u66f2\u7c7b\u578b");
-				jSongType.setBounds(33, 87, 82, 17);
-			}
-			{
-				jTextField1 = new JTextField();
-				getContentPane().add(jTextField1);
-				jTextField1.setBounds(118, 84, 216, 24);
-			}
-			{
-				jSongNumber = new JLabel();
-				getContentPane().add(jSongNumber);
-				jSongNumber.setText("\u6b4c\u540d\u5b57\u6570");
-				jSongNumber.setBounds(33, 133, 82, 17);
-			}
-			{
-				jTextField2 = new JTextField();
-				getContentPane().add(jTextField2);
-				jTextField2.setBounds(118, 133, 216, 24);
-			}
-			{
-				jSongPinyin = new JLabel();
-				getContentPane().add(jSongPinyin);
-				jSongPinyin.setText("\u62fc\u97f3\u6b4c\u540d");
-				jSongPinyin.setBounds(33, 181, 82, 17);
-			}
-			{
-				jTextField3 = new JTextField();
-				getContentPane().add(jTextField3);
-				jTextField3.setBounds(118, 178, 216, 24);
-			}
+			
 			{
 				jAddSong = new JLabel();
 				getContentPane().add(jAddSong);
@@ -139,15 +101,9 @@ public class AddSongs extends javax.swing.JFrame {
 				jAddSong.setBounds(156, 12, 97, 22);
 			}
 			{
-				jLabel = new JLabel();
-				getContentPane().add(jLabel);
-				jLabel.setText("\u6b4c\u66f2\u5b58\u50a8\u8def\u5f84");
-				jLabel.setBounds(33, 223, 85, 15);
-			}
-			{
 				jURL = new JTextField();
 				getContentPane().add(jURL);
-				jURL.setBounds(118, 220, 180, 22);
+				jURL.setBounds(115, 220, 180, 22);
 			}
 			{
 				jChooseSong = new JButton();
@@ -160,6 +116,50 @@ public class AddSongs extends javax.swing.JFrame {
 					}
 				});
 
+			}
+			{
+				jLabel2 = new JLabel();
+				getContentPane().add(jLabel2);
+				jLabel2.setText("\u6b4c\u66f2\u7c7b\u578b");
+				jLabel2.setBounds(33, 88, 67, 15);
+			}
+			{
+				jLabel3 = new JLabel();
+				getContentPane().add(jLabel3);
+				jLabel3.setText("\u6b4c\u540d\u5b57\u6570");
+				jLabel3.setBounds(33, 137, 67, 15);
+			}
+			{
+				jLabel4 = new JLabel();
+				getContentPane().add(jLabel4);
+				jLabel4.setText("\u62fc\u97f3\u6b4c\u540d");
+				jLabel4.setBounds(33, 180, 73, 15);
+			}
+			{
+				jLabel5 = new JLabel();
+				getContentPane().add(jLabel5);
+				jLabel5.setText("\u6b4c\u66f2\u5b58\u50a8\u8def\u5f84");
+				jLabel5.setBounds(33, 223, 82, 15);
+			}
+			{
+				jSongName = new JTextField();
+				getContentPane().add(jSongName);
+				jSongName.setBounds(115, 43, 221, 22);
+			}
+			{
+				jSongType = new JTextField();
+				getContentPane().add(jSongType);
+				jSongType.setBounds(115, 85, 221, 22);
+			}
+			{
+				jSoNumber = new JTextField();
+				getContentPane().add(jSoNumber);
+				jSoNumber.setBounds(115, 137, 221, 22);
+			}
+			{
+				jSoPinyin = new JTextField();
+				getContentPane().add(jSoPinyin);
+				jSoPinyin.setBounds(115, 177, 221, 22);
 			}
 			pack();
 			this.setSize(400, 329);
