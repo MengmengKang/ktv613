@@ -4,49 +4,49 @@ public class StarData {
 	private int StarID;
 	private String StarName;
 	private int Gender;   //0ÎªÅ®£¬1ÎªÄÐ
-	private String StConFrom;
-	private String StTeam;
+	private String ComeFrom;
+	private String Team;
 	
-	public void getStarID(int indata)
+	public void setStarID(int indata)
 	{
 		this.StarID=indata;
 	}
-	public void getStarName(String indata)
+	public void setStarName(String indata)
 	{
 		this.StarName=indata;
 	}
-	public void getGender(int indata)
+	public void setGender(int indata)
 	{
 		this.Gender=indata;
 	}
-	public void getStConFrom(String indata)
+	public void setComeFrom(String indata)
 	{
-		this.StConFrom=indata;
+		this.ComeFrom=indata;
 	}
-	public void getStTeam(String indata)
+	public void setTeam(String indata)
 	{
-		this.StTeam=indata;
+		this.Team=indata;
 	}
 	
-	public int setStarID()
+	public int getStarID()
 	{
 		return this.StarID;
 	}
-	public String setStarName()
+	public String getStarName()
 	{
 		return this.StarName;
 	}
-	public int setGender()
+	public int getGender()
 	{
 		return this.Gender;
 	}
-	public String setStConFrom()
+	public String getComeFrom()
 	{
-		return this.StConFrom;
+		return this.ComeFrom;
 	}
-	public String setStTeam()
+	public String getTeam()
 	{
-		return this.StTeam;
+		return this.Team;
 	}
 
 }

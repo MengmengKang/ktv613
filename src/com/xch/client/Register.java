@@ -147,7 +147,8 @@ public class Register extends javax.swing.JFrame {
 			{
 				ComboBoxModel jGenderModel = 
 					new DefaultComboBoxModel(
-							new String[] { "ÄÐ", "Å®" });
+							new String[] {"Å®", "ÄÐ"});
+				jGender.setSelectedIndex(1);
 				jGender = new JComboBox();
 				getContentPane().add(jGender);
 				jGender.setModel(jGenderModel);

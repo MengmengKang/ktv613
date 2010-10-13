@@ -169,20 +169,22 @@ public class EditAdmin extends javax.swing.JFrame {
 				jPasswordEnsure.setText("");
 				return;
 			}
-			if(jPassword.getPassword().toString().equals(jPasswordEnsure.getPassword().toString()))
+			String password=new String(jPassword.getPassword());
+			String passwordEnsure=new String(jPasswordEnsure.getPassword());
+			if(password.equals(passwordEnsure)==false)
 			{
 				JOptionPane.showMessageDialog(null, "两次密码输入不匹配，请重新输入！");
 				jPassword.setText("");
 				jPasswordEnsure.setText("");
 				return;
 			}
-			String password=new String(jPassword.getPassword());
+			
 			System.out.println(password);
 			MD5 md5=new MD5(password);
 			admin.setPassWord(md5.get());
 			
 			DA.modifyAdmin(admin);
-			JOptionPane.showMessageDialog(null, "修改成功！");
+			JOptionPane.showMessageDialog(null, "管理员密码修改成功！");
 		}
 
 }

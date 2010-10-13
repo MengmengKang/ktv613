@@ -188,7 +188,14 @@ public class ManageStars extends javax.swing.JFrame {
 		private void jEditMessageActionPerformed(ActionEvent evt) {
 			//System.out.println("jEditMessage.actionPerformed, event="+evt);
 			//TODO add your code for jEditMessage.actionPerformed
-			EditStars inst = new EditStars();
+			int row=jStarsNames.getSelectedRow();		
+			if(row<0)
+			{
+				JOptionPane.showMessageDialog(null, "您还没用选中任何一行");
+				return ;
+			}
+			int starid= Integer.parseInt(jStarsNames.getValueAt(row, 0).toString());
+			EditStars inst = new EditStars(starid);
 			inst.setLocationRelativeTo(null);
 			inst.setVisible(true);
 		}

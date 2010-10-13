@@ -16,7 +16,7 @@ import com.xch.DAO.DA;
 import com.xch.client.Register;
 import com.xch.obj.AdminData;
 import com.xch.obj.UserData;
-import com.xch.server.Manager;
+import com.xch.server.Manage;
 
 
 /**

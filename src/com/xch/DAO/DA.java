@@ -4,6 +4,7 @@ import java.sql.*;
 
 import com.xch.obj.AdminData;
 import com.xch.obj.SongData;
+import com.xch.obj.StarData;
 import com.xch.obj.UserData;
 
 public class DA {
@@ -499,13 +500,57 @@ public class DA {
 		return res;		
 	}
 	
+	public static StarData getStar(int starid)
+	{
+		StarData res=new StarData();
+		try{
+			open();
+			
+			String sql="select * from stars where starid='"+starid+"'";
+			//System.out.println(sql);
+			ResultSet result=aStatement.executeQuery(sql);
+			result.next();
+			res.setStarID(result.getInt(1));
+			res.setStarName(result.getString(2));
+			res.setGender(result.getInt(3));
+			res.setComeFrom(result.getString(4));
+			res.setTeam(result.getString(5));
+
+			close();
+		} catch (Exception e) {
+			System.out.println();
+		}
+		return res;		
+	}
+	
 	public static void modifyAdmin(AdminData Admin)
 	{
 		try {
 			open();				
-			String sql="update admins set ";
-			sql=sql+"Admin='"+Admin.getAdmin()+"',";
+			String sql="update admins set ";			
 			sql=sql+"PassWord='"+Admin.getPassWord()+"'";
+			sql=sql+" where Admin='"+Admin.getAdmin()+"'";
+			
+			System.out.println(sql);
+			
+			aStatement.executeUpdate(sql);
+			close();
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println(e);
+		}
+	}	
+	
+	public static void modifyStar(StarData star)
+	{
+		try {
+			open();				
+			String sql="update stars set ";
+			sql=sql+"StarName='"+star.getStarName()+"',";
+			sql=sql+"Gender="+star.getGender()+",";
+			sql=sql+"ComeFrom='"+star.getComeFrom()+"',";
+			sql=sql+"Team='"+star.getTeam()+"'";
+			sql=sql+" where StarID="+star.getStarID();
 			
 			//System.out.println(sql);
 			

@@ -18,6 +18,9 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.SwingUtilities;
 
+import com.xch.DAO.DA;
+import com.xch.obj.StarData;
+
 
 /**
 * This code was edited or generated using CloudGarden's Jigloo
@@ -45,28 +48,32 @@ public class EditStars extends javax.swing.JFrame {
 	private JLabel jLabel1;
 	private JComboBox jComboBox1;
 	private JButton jExit;
+	private StarData star;
 
 	/**
 	* Auto-generated main method to display this JFrame
 	*/
+	/*
 	public static void main(String[] args) {
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
-				EditStars inst = new EditStars();
+				EditStars inst = new EditStars(1);
 				inst.setLocationRelativeTo(null);
 				inst.setVisible(true);
 			}
 		});
 	}
+	*/
 	
-	public EditStars() {
+	public EditStars(int indata) {
 		super();
+		star=DA.getStar(indata);
 		initGUI();
 	}
 	
 	private void initGUI() {
 		try {
-			setResizable(false);
+			//setResizable(false);
 			setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 			getContentPane().setLayout(null);
 			this.setTitle("\u4fee\u6539\u660e\u661f\u4fe1\u606f");
@@ -80,15 +87,21 @@ public class EditStars extends javax.swing.JFrame {
 				getContentPane().add(jConfirm);
 				jConfirm.setText("\u786e\u8ba4");
 				jConfirm.setBounds(62, 225, 88, 24);
+				jConfirm.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent evt) {
+						jConfirmActionPerformed(evt);
+					}
+				});
 			}
 			
 			{
 				ComboBoxModel jComboBox1Model = 
 					new DefaultComboBoxModel(
-							new String[] { "男", "女" });
+							new String[] {"女", "男" });
 				jComboBox1 = new JComboBox();
-				getContentPane().add(jComboBox1);
 				jComboBox1.setModel(jComboBox1Model);
+				getContentPane().add(jComboBox1);
+				jComboBox1.setSelectedIndex(star.getGender());
 				jComboBox1.setBounds(194, 74, 52, 24);
 			}
 			{
@@ -132,17 +145,20 @@ public class EditStars extends javax.swing.JFrame {
 			}
 			{
 				jStarName = new JTextField();
+				jStarName.setText(star.getStarName());
 				getContentPane().add(jStarName);
 				jStarName.setBounds(194, 46, 97, 22);
 			}
 			{
 				jStComeFrom = new JTextField();
 				getContentPane().add(jStComeFrom);
+				jStComeFrom.setText(star.getComeFrom());
 				jStComeFrom.setBounds(194, 111, 97, 22);
 			}
 			{
 				jStTeam = new JTextField();
 				getContentPane().add(jStTeam);
+				jStTeam.setText(star.getTeam());
 				jStTeam.setBounds(194, 144, 97, 22);
 			}
 			{
@@ -154,7 +170,9 @@ public class EditStars extends javax.swing.JFrame {
 			{
 				jStarID = new JTextField();
 				getContentPane().add(jStarID);
+				jStarID.setText(String.valueOf(star.getStarID()));
 				jStarID.setBounds(194, 176, 97, 24);
+				jStarID.setEditable(false);
 			}
 			pack();
 			this.setSize(400, 315);
@@ -177,6 +195,38 @@ public class EditStars extends javax.swing.JFrame {
 						"确定要退出修改明星信息界面吗？", "警告", JOptionPane.YES_NO_OPTION);
 				if(response==0) this.dispose();
 				else this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE); 
+		}
+		
+		private void jConfirmActionPerformed(ActionEvent evt) {
+			//System.out.println("jConfirm.actionPerformed, event="+evt);
+			//TODO add your code for jConfirm.actionPerformed
+			if(jStarName.getText().length()==0)
+			{
+				JOptionPane.showMessageDialog(null, "明星姓名不能为空！");
+				return;
+			}
+			if(jStarName.getText().length()==0)
+			{
+				JOptionPane.showMessageDialog(null, "明星姓名不能为空！");
+				return;
+			}
+			
+			if(jStComeFrom.getText().length()==0)
+			{
+				JOptionPane.showMessageDialog(null, "“港台或内地”不能为空！");
+				return;
+			}
+			if(jStTeam.getText().length()==0)
+			{
+				JOptionPane.showMessageDialog(null, "明星组合不能为空！");
+				return;
+			}
+			star.setStarName(jStarName.getText());
+			star.setGender(jComboBox1.getSelectedIndex());
+			star.setComeFrom(jStComeFrom.getText());
+			star.setTeam(jStTeam.getText());
+			DA.modifyStar(star);
+			JOptionPane.showMessageDialog(null, "明星信息修改成功！");
 		}
 
 }
