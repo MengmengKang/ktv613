@@ -69,7 +69,7 @@ public class ManageStars extends javax.swing.JFrame {
 				jEditMessage = new JButton();
 				getContentPane().add(jEditMessage);
 				jEditMessage.setText("\u660e\u661f\u4fe1\u606f\u4fee\u6539");
-				jEditMessage.setBounds(39, 232, 128, 24);
+				jEditMessage.setBounds(178, 232, 128, 24);
 				jEditMessage.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent evt) {
 						jViewStarsActionPerformed(evt);
@@ -78,7 +78,7 @@ public class ManageStars extends javax.swing.JFrame {
 					private void jViewStarsActionPerformed(ActionEvent evt) {
 						//System.out.println("jViewStars.actionPerformed, event="+evt);
 						//TODO add your code for jViewStars.actionPerformed
-							ViewStars inst = new ViewStars();
+							ManageStars inst = new ManageStars();
 							inst.setLocationRelativeTo(null);
 							inst.setVisible(true);
 					}
@@ -96,7 +96,7 @@ public class ManageStars extends javax.swing.JFrame {
 				jAddStars = new JButton();
 				getContentPane().add(jAddStars);
 				jAddStars.setText("\u6dfb\u52a0\u660e\u661f\u4fe1\u606f");
-				jAddStars.setBounds(172, 232, 134, 24);
+				jAddStars.setBounds(39, 231, 134, 24);
 				jAddStars.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent evt) {
 						jAddStarsActionPerformed(evt);

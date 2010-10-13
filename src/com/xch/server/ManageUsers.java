@@ -11,6 +11,7 @@ import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
+import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.ListModel;
 
@@ -36,7 +37,8 @@ public class ManageUsers extends javax.swing.JFrame {
 	private static final JButton eGViewUsers = null;
 	private JButton RefreshMessage;
 	private JButton jViewUsers;
-	private JList jUsers;
+	private JScrollPane jScrollPane1;
+	private JTable jUser;
 	private JLabel jManageUsers;
 	private JButton jExit;
 	private JButton jRefreshMessage;
@@ -85,7 +87,7 @@ public class ManageUsers extends javax.swing.JFrame {
 					private void jViewUsersActionPerformed(ActionEvent evt) {
 						//System.out.println("jViewUsers.actionPerformed, event="+evt);
 						//TODO add your code for jViewUsers.actionPerformed
-							ViewUsers inst = new ViewUsers();
+							EditUsers inst = new EditUsers();
 							inst.setLocationRelativeTo(null);
 							inst.setVisible(true);
 					}
@@ -118,13 +120,20 @@ public class ManageUsers extends javax.swing.JFrame {
 				jManageUsers.setBounds(273, 22, 202, 17);
 			}
 			{
-				ListModel jUsersModel = 
-					new DefaultComboBoxModel(
-							new String[] { "User 1", "User 2","..." });
-				jUsers = new JList();
-				getContentPane().add(jUsers);
-				jUsers.setModel(jUsersModel);
-				jUsers.setBounds(225, 66, 172, 124);
+				jScrollPane1 = new JScrollPane();
+				getContentPane().add(jScrollPane1);
+				jScrollPane1.setBounds(23, 51, 582, 181);
+				{
+					TableModel jUserModel = 
+						new DefaultTableModel(
+								new String[][] { { "One", "Two" }, { "Three", "Four" } },
+								new String[] { "Column 1", "Column 2" });
+					jUser = new JTable();
+					jScrollPane1.setViewportView(jUser);
+					jUser.setModel(jUserModel);
+					jUser.setBounds(232, 68, 140, 73);
+					jUser.setPreferredSize(new java.awt.Dimension(489, 142));
+				}
 			}
 			pack();
 			setSize(653, 363);

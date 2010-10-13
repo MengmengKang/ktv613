@@ -31,7 +31,7 @@ import javax.swing.SwingUtilities;
 * THIS MACHINE, SO JIGLOO OR THIS CODE CANNOT BE USED
 * LEGALLY FOR ANY CORPORATE OR COMMERCIAL PURPOSE.
 */
-public class ViewStars extends javax.swing.JFrame {
+public class EditStars extends javax.swing.JFrame {
 	private JButton jConfirm;
 	private JLabel jViewStars;
 	private JLabel jLabel4;
@@ -50,14 +50,14 @@ public class ViewStars extends javax.swing.JFrame {
 	public static void main(String[] args) {
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
-				ViewStars inst = new ViewStars();
+				EditStars inst = new EditStars();
 				inst.setLocationRelativeTo(null);
 				inst.setVisible(true);
 			}
 		});
 	}
 	
-	public ViewStars() {
+	public EditStars() {
 		super();
 		initGUI();
 	}

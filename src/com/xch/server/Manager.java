@@ -136,7 +136,7 @@ public class Manager extends javax.swing.JFrame {
 	private void jMainAdminActionPerformed(ActionEvent evt){
 		//System.out.println("jMainAdmin.actionPerformed, event="+evt);
 		//TODO add your code for jMainAdmin.actionPerformed
-		ViewAdmin inst = new ViewAdmin();
+		ManageAdmin inst = new ManageAdmin();
 		inst.setLocationRelativeTo(null);
 		inst.setVisible(true);
 	}
