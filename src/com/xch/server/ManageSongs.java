@@ -123,7 +123,7 @@ public class ManageSongs extends javax.swing.JFrame {
 					TableModel jTable1Model = 
 						new DefaultTableModel(
 								new String[][] { { "One", "Two" }, { "Three", "Four" } },
-								new String[] { "SongID", "SongName","Songtype","SoNumber","SoPinyin","StarID","URL" });
+								new String[] { "¸èÇúID", "¸èÇúÃû","¸èÇúÀàĞÍ","¸èÇú×ÖÊı","¸èÇúÆ´Òô","¸èĞÇID","¸èÇú´æ´¢Â·¾¶" });
 					jTable1 = new JTable();
 					jScrollPane1.setViewportView(jTable1);
 					jTable1.setModel(jTable1Model);
