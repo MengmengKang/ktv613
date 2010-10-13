@@ -161,56 +161,56 @@ public class ManageAdmin extends javax.swing.JFrame {
 					"确定要退出管理员信息管理界面吗？", "警告", JOptionPane.YES_NO_OPTION);
 			if(response==0) this.dispose();
 		}
-			private void jManageAdminActionPerformed(ActionEvent evt){
-				//System.out.println("jManageAdmin.actionPerformed, event="+evt);
-				//TODO add your code for jManageAdmin.actionPerformed
-				int row=jMainAdmin.getSelectedRow();		
-				if(row<0)
-				{
-					JOptionPane.showMessageDialog(null, "您还没用选中任何一行");
-					return ;
-				}
-				String str=jMainAdmin.getValueAt(row, 0).toString();
-				EditAdmin inst = new EditAdmin(str);
-				inst.setLocationRelativeTo(null);
-				inst.setVisible(true);
-	}
-			
-			private void thisWindowClosing(WindowEvent evt) {
-				//System.out.println("this.windowClosing, event="+evt);
-				//TODO add your code for this.windowClosing
-				int response=JOptionPane.showConfirmDialog(null,
-						"确定要退出管理员信息管理界面吗？", "警告", JOptionPane.YES_NO_OPTION);
-				if(response==0) this.dispose();
-				else this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE); 
+		private void jManageAdminActionPerformed(ActionEvent evt){
+			//System.out.println("jManageAdmin.actionPerformed, event="+evt);
+			//TODO add your code for jManageAdmin.actionPerformed
+			int row=jMainAdmin.getSelectedRow();		
+			if(row<0)
+			{
+				JOptionPane.showMessageDialog(null, "您还没用选中任何一行");
+				return ;
 			}
+			String str=jMainAdmin.getValueAt(row, 0).toString();
+			EditAdmin inst = new EditAdmin(str);
+			inst.setLocationRelativeTo(null);
+			inst.setVisible(true);
+		}
 			
-			private void jDelAdminActionPerformed(ActionEvent evt) {
-				//System.out.println("jDelAdmin.actionPerformed, event="+evt);
-				//TODO add your code for jDelAdmin.actionPerformed
-				int row=jMainAdmin.getSelectedRow();		
-				if(row<0)
-				{
-					JOptionPane.showMessageDialog(null, "您还没用选中任何一行");
-					return ;
-				}
-				String str=jMainAdmin.getValueAt(row, 0).toString();
-				int response=JOptionPane.showConfirmDialog(null,
-						"确定要删除管理员用户“"+str+"”吗？", "警告", JOptionPane.YES_NO_OPTION);
-				if(response==0) 
-					DA.delAdmin(str);
-				String[][] res=DA.listAdmin();
-				TableModel jResultModel = 
-					new DefaultTableModel(res,titles);
-				jMainAdmin.setModel(jResultModel);
+		private void thisWindowClosing(WindowEvent evt) {
+			//System.out.println("this.windowClosing, event="+evt);
+			//TODO add your code for this.windowClosing
+			int response=JOptionPane.showConfirmDialog(null,
+					"确定要退出管理员信息管理界面吗？", "警告", JOptionPane.YES_NO_OPTION);
+			if(response==0) this.dispose();
+			else this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE); 
+		}
+		
+		private void jDelAdminActionPerformed(ActionEvent evt) {
+			//System.out.println("jDelAdmin.actionPerformed, event="+evt);
+			//TODO add your code for jDelAdmin.actionPerformed
+			int row=jMainAdmin.getSelectedRow();		
+			if(row<0)
+			{
+				JOptionPane.showMessageDialog(null, "您还没用选中任何一行");
+				return ;
 			}
-			
-			private void jAddAdminActionPerformed(ActionEvent evt) {
-				//System.out.println("jAddAdmin.actionPerformed, event="+evt);
-				//TODO add your code for jAddAdmin.actionPerformed
-				AddAdmin inst = new AddAdmin();
-				inst.setLocationRelativeTo(null);
-				inst.setVisible(true);
-			}
+			String str=jMainAdmin.getValueAt(row, 0).toString();
+			int response=JOptionPane.showConfirmDialog(null,
+					"确定要删除管理员用户“"+str+"”吗？", "警告", JOptionPane.YES_NO_OPTION);
+			if(response==0) 
+				DA.delAdmin(str);
+			String[][] res=DA.listAdmin();
+			TableModel jResultModel = 
+				new DefaultTableModel(res,titles);
+			jMainAdmin.setModel(jResultModel);
+		}
+		
+		private void jAddAdminActionPerformed(ActionEvent evt) {
+			//System.out.println("jAddAdmin.actionPerformed, event="+evt);
+			//TODO add your code for jAddAdmin.actionPerformed
+			AddAdmin inst = new AddAdmin();
+			inst.setLocationRelativeTo(null);
+			inst.setVisible(true);
+		}
 
 }
