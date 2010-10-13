@@ -19,6 +19,8 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.SwingUtilities;
 
+import com.xch.obj.UserData;
+
 
 /**
 * This code was edited or generated using CloudGarden's Jigloo
@@ -52,10 +54,12 @@ public class EditUsers extends javax.swing.JFrame {
 	private JLabel jViewStars;
 	private JComboBox jComboBox1;
 	private JButton jExit;
+	private UserData user;
 
 	/**
 	* Auto-generated main method to display this JFrame
 	*/
+	/*
 	public static void main(String[] args) {
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
@@ -65,6 +69,7 @@ public class EditUsers extends javax.swing.JFrame {
 			}
 		});
 	}
+	*/
 	
 	public EditUsers() {
 		super();
@@ -194,6 +199,8 @@ public class EditUsers extends javax.swing.JFrame {
 			{
 				jUserID = new JTextField();
 				getContentPane().add(jUserID);
+				jUserID.setText(String.valueOf(user.getUserID()));
+				jUserID.setEditable(false);
 				jUserID.setBounds(242, 266, 96, 24);
 			}
 			pack();

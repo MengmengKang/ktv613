@@ -18,6 +18,8 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.SwingUtilities;
 
+import com.xch.DAO.DA;
+
 
 /**
 * This code was edited or generated using CloudGarden's Jigloo
@@ -73,7 +75,7 @@ public class ManageSongs extends javax.swing.JFrame {
 				jAddSongs = new JButton();
 				getContentPane().add(jAddSongs);
 				jAddSongs.setText("\u6dfb\u52a0\u6b4c\u66f2");
-				jAddSongs.setBounds(57, 256, 95, 24);
+				jAddSongs.setBounds(57, 256, 104, 24);
 				jAddSongs.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent evt) {
 						jAddSongActionPerformed(evt);
@@ -123,8 +125,10 @@ public class ManageSongs extends javax.swing.JFrame {
 					TableModel jTable1Model = 
 						new DefaultTableModel(
 								new String[][] { { "One", "Two" }, { "Three", "Four" } },
-								new String[] { "¸èÇúID", "¸èÇúÃû","¸èÇúÀàĞÍ","¸èÇú×ÖÊı","¸èÇúÆ´Òô","¸èĞÇID","¸èÇú´æ´¢Â·¾¶" });
-					jTable1 = new JTable();
+								new String[] { "¸èÇúID", "¸èÇúÃû","¸èÇúÀàĞÍ","¸èÇú×ÖÊı","¸èÇúÆ´Òô","¸èĞÇ","¸èÇú´æ´¢Â·¾¶" });
+					jTable1 = new JTable(){
+						public boolean isCellEditable(int row,int col){return false;}
+					};
 					jScrollPane1.setViewportView(jTable1);
 					jTable1.setModel(jTable1Model);
 				}

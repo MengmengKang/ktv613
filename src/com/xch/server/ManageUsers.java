@@ -20,6 +20,8 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.SwingUtilities;
 
+import com.xch.DAO.DA;
+
 
 /**
 * This code was edited or generated using CloudGarden's Jigloo
@@ -43,7 +45,7 @@ public class ManageUsers extends javax.swing.JFrame {
 	private JButton jExit;
 	private JButton jRefreshMessage;
 	private JButton jDeleteUsers;
-
+	private static String[] titles={"用户ID", "用户名","真实姓名","电子邮件","性别","喜欢的歌"};
 	/**
 	* Auto-generated main method to display this JFrame
 	*/
@@ -77,7 +79,7 @@ public class ManageUsers extends javax.swing.JFrame {
 			{
 				jViewUsers = new JButton();
 				getContentPane().add(jViewUsers);
-				jViewUsers.setText("\u67e5\u770b\u7528\u6237\u4fe1\u606f");
+				jViewUsers.setText("\u4fee\u6539\u7528\u6237\u4fe1\u606f");
 				jViewUsers.setBounds(42, 244, 126, 24);
 				jViewUsers.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent evt) {
@@ -97,12 +99,22 @@ public class ManageUsers extends javax.swing.JFrame {
 				getContentPane().add(jDeleteUsers);
 				jDeleteUsers.setText("\u5220\u9664\u7528\u6237\u4fe1\u606f");
 				jDeleteUsers.setBounds(197, 244, 130, 24);
+				jDeleteUsers.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent evt) {
+						jDeleteUsersActionPerformed(evt);
+					}
+				});
 			}
 			{
 				jRefreshMessage = new JButton();
 				getContentPane().add(jRefreshMessage);
 				jRefreshMessage.setText("\u66f4\u65b0\u7528\u6237\u4fe1\u606f");
 				jRefreshMessage.setBounds(358, 244, 130, 24);
+				jRefreshMessage.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent evt) {
+						jRefreshMessageActionPerformed(evt);
+					}
+				});
 			}
 			{
 				jExit = new JButton();
@@ -124,11 +136,12 @@ public class ManageUsers extends javax.swing.JFrame {
 				getContentPane().add(jScrollPane1);
 				jScrollPane1.setBounds(23, 51, 582, 181);
 				{
+					String[][] res=DA.listUser();
 					TableModel jUserModel = 
-						new DefaultTableModel(
-								new String[][] { { "One", "Two" }, { "Three", "Four" } },
-								new String[] { "用户ID", "用户名","用户密码","真实姓名","电子邮件","性别","喜欢的歌" });
-					jUser = new JTable();
+						new DefaultTableModel(res,titles);
+					jUser = new JTable(){
+						public boolean isCellEditable(int row,int col){return false;}
+					};
 					jScrollPane1.setViewportView(jUser);
 					jUser.setModel(jUserModel);
 					jUser.setBounds(232, 68, 140, 73);
@@ -156,6 +169,30 @@ public class ManageUsers extends javax.swing.JFrame {
 						"确定要退出用户信息管理界面吗？", "警告", JOptionPane.YES_NO_OPTION);
 				if(response==0) this.dispose();
 				else this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE); 
+		}
+		
+		private void jDeleteUsersActionPerformed(ActionEvent evt) {
+			//System.out.println("jDeleteUsers.actionPerformed, event="+evt);
+			//TODO add your code for jDeleteUsers.actionPerformed
+			int row=jUser.getSelectedRow();		
+			if(row<0)
+			{
+				JOptionPane.showMessageDialog(null, "您还没用选中任何一行");
+				return ;
+			}
+			int response=JOptionPane.showConfirmDialog(null,
+					"确定要删除用户"+jUser.getValueAt(row,1)+"的相关信息吗？", "警告", JOptionPane.YES_NO_OPTION);
+			if(response==0) 
+				DA.delUser(Integer.parseInt(jUser.getValueAt(row,0).toString()));
+		}
+		
+		private void jRefreshMessageActionPerformed(ActionEvent evt) {
+			//System.out.println("jRefreshMessage.actionPerformed, event="+evt);
+			//TODO add your code for jRefreshMessage.actionPerformed
+			String[][] res=DA.listStar();
+			TableModel jStarsNamesModel = 
+				new DefaultTableModel(res,titles);
+			jUser.setModel(jStarsNamesModel);
 		}
 
 }

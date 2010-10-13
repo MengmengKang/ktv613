@@ -154,6 +154,11 @@ public class ManageAdmin extends javax.swing.JFrame {
 				getContentPane().add(jRefresh);
 				jRefresh.setText("\u5237\u65b0");
 				jRefresh.setBounds(304, 205, 73, 24);
+				jRefresh.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent evt) {
+						jRefreshActionPerformed(evt);
+					}
+				});
 			}
 			pack();
 			this.setSize(511, 315);
@@ -218,6 +223,15 @@ public class ManageAdmin extends javax.swing.JFrame {
 			AddAdmin inst = new AddAdmin();
 			inst.setLocationRelativeTo(null);
 			inst.setVisible(true);
+		}
+		
+		private void jRefreshActionPerformed(ActionEvent evt) {
+			//System.out.println("jRefresh.actionPerformed, event="+evt);
+			//TODO add your code for jRefresh.actionPerformed
+			String[][] res=DA.listAdmin();
+			TableModel jResultModel = 
+				new DefaultTableModel(res,titles);
+			jMainAdmin.setModel(jResultModel);
 		}
 
 }

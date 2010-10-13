@@ -426,7 +426,7 @@ public class DA {
 			open();				
 			String sql="delete from songs where songid="+songid;
 			
-			System.out.println(sql);
+			//System.out.println(sql);
 			
 			aStatement.executeUpdate(sql);
 			close();
@@ -441,7 +441,7 @@ public class DA {
 			open();				
 			String sql="delete from stars where starid="+starid;
 			
-			System.out.println(sql);
+			//System.out.println(sql);
 			
 			aStatement.executeUpdate(sql);
 			close();
@@ -450,7 +450,21 @@ public class DA {
 			System.out.println(e);
 		}
 	}
-
+	public static void delUser(int userid)
+	{
+		try {
+			open();				
+			String sql="delete from users where userid="+userid;
+			
+			//System.out.println(sql);
+			
+			aStatement.executeUpdate(sql);
+			close();
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println(e);
+		}
+	}
 	public static String[][] listAdmin()
 	{
 		String[][] res={};
@@ -505,6 +519,42 @@ public class DA {
 				resLine[4]=result.getString(5);
 				if(result.getInt(3)==1)	resLine[2]="ÄÐ";
 				else resLine[2]="Å®";
+				res[i]=resLine;		
+			}
+			
+			close();
+		} catch (Exception e) {
+			System.out.println();
+		}
+		return res;		
+	}
+	
+	public static String[][] listUser()
+	{
+		String[][] res={};
+		int n=6;
+		try{
+			open();
+			
+			String sql="select * from users";
+			//System.out.println(sql);
+			ResultSet result=aStatement.executeQuery(sql);
+			result.last();    
+			int row=result.getRow();
+			result.beforeFirst();
+			res=new String[row][n];
+			int i=-1;
+			while(result.next()){
+				i++;
+				String[] resLine =new String[n];
+				//System.out.println(result.getString(5)+" "+result.getString(2)+" "+result.getString(3)+" "+result.getString(9));
+				resLine[0]=result.getString(1);
+				resLine[1]=result.getString(2);
+				resLine[2]=result.getString(4);
+				resLine[3]=result.getString(5);
+				if(result.getInt(6)==1)	resLine[4]="ÄÐ";
+				else resLine[4]="Å®";
+				resLine[5]=result.getString(7);
 				res[i]=resLine;		
 			}
 			
