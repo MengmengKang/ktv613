@@ -62,7 +62,6 @@ public class Bottom extends JFrame implements ActionListener{
     	this.setVisible(true);
 	}
 
-	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		if(e.getSource()==quit){
@@ -101,11 +100,12 @@ public class Bottom extends JFrame implements ActionListener{
 			Player.stop();
 		}
 	}
-	
+	/*
 	public static void main(String[] args)
 	{
 		new Bottom();
 		Player.video();
 		Player.play("lib\\test4.mpg");
 	}
+	*/
 }

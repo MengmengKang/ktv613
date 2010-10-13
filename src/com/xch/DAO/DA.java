@@ -29,7 +29,7 @@ while(result.next()){
 public class DA {
 	static String DB="ktv613";
 	static String ID="root";
-	static String PW="";
+	static String PW="czx";
 	static String CONNECT="jdbc:mysql://localhost:3306/"+DB+"?useUnicode=true&characterEncoding=utf8";
 	
 	static Connection aConnection;
@@ -184,7 +184,7 @@ public class DA {
 			System.out.println(e);
 		}
 	}
-	public static void ModifyUserData(UserData user)
+	public static void modifyUserData(UserData user)
 	{
 		try {
 			open();				
@@ -268,21 +268,7 @@ public class DA {
 			System.out.println(e);
 		}
 	}
-	public static void delAdminData(AdminData admin)
-	{
-		try {
-			open();				
-			String sql="delete from admins where Admin="+admin;
-			
-			System.out.println(sql);
-			
-			aStatement.executeUpdate(sql);
-			close();
-		} catch (Exception e) {
-			// TODO: handle exception
-			System.out.println(e);
-		}
-	}
+
 	public static String[][] orderByPinyin(String indata,int n)
 	{
 		String[][] res={};
@@ -355,6 +341,7 @@ public class DA {
 		}
 		return res;		
 	}
+	
 	
 	public static String[][] orderBySongNumber(int indata,int n)
 	{
@@ -466,7 +453,7 @@ public class DA {
 			System.out.println(e);
 		}
 	}
-	public static void ModifySongData(SongData song)
+	public static void modifySongData(SongData song)
 	{
 		try {
 			open();				
@@ -503,6 +490,90 @@ public class DA {
 			System.out.println(e);
 		}
 	}
+	
+
+	public static String[][] listAdmin()
+	{
+		String[][] res={};
+		int n=1;
+		try{
+			open();
+			
+			String sql="select * from admins";
+			ResultSet result=aStatement.executeQuery(sql);
+			result.last();    
+			int row=result.getRow();
+			result.beforeFirst();
+			res=new String[row][n];
+			int i=-1;
+			while(result.next()){
+				i++;
+				String[] resLine =new String[n];
+				//System.out.println(result.getString(5)+" "+result.getString(2)+" "+result.getString(3)+" "+result.getString(9));
+				resLine[0]=result.getString(1);
+				res[i]=resLine;		
+			}
+			
+			close();
+		} catch (Exception e) {
+			System.out.println();
+		}
+		return res;		
+	}
+	
+	public static AdminData getAdmin(String admin)
+	{
+		AdminData res=new AdminData();
+		try{
+			open();
+			
+			String sql="select * from admins where admin='"+admin+"'";
+			//System.out.println(sql);
+			ResultSet result=aStatement.executeQuery(sql);
+			result.next();
+			res.setAdmin(result.getString(1));
+			res.setPassWord(result.getString(2));
+
+			close();
+		} catch (Exception e) {
+			System.out.println();
+		}
+		return res;		
+	}
+	
+	public static void modifyAdmin(AdminData Admin)
+	{
+		try {
+			open();				
+			String sql="update admins set ";
+			sql=sql+"Admin='"+Admin.getAdmin()+"',";
+			sql=sql+"PassWord='"+Admin.getPassWord()+"'";
+			
+			//System.out.println(sql);
+			
+			aStatement.executeUpdate(sql);
+			close();
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println(e);
+		}
+	}	
+	
+	public static void delAdmin(String Admin)
+	{
+		try {
+			open();				
+			String sql="delete from admins where admin='"+Admin+"'";
+			
+			//System.out.println(sql);
+			
+			aStatement.executeUpdate(sql);
+			close();
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println(e);
+		}
+	}	
 }
 
 

@@ -9,13 +9,12 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
-import javax.swing.JTable;
 import javax.swing.JTextField;
 
 import javax.swing.WindowConstants;
-import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableModel;
-import javax.swing.SwingUtilities;
+import com.xch.client.MD5;
+import com.xch.obj.AdminData;
+import com.xch.DAO.DA;
 
 
 /**
@@ -32,20 +31,20 @@ import javax.swing.SwingUtilities;
 */
 public class ManageAdmin extends javax.swing.JFrame {
 	private JButton jExit;
-	private JButton jDelete;
-	private JButton jCorrect;
 	private JButton jAdd;
-	private JPasswordField jPasswordField1;
-	private JLabel jEnsurePassword;
-	private JPasswordField jPasswordField2;
+	private JPasswordField jPassword;
+	private JLabel jPasswordLable2;
+	private JPasswordField jPasswordEnsure;
 	private JLabel jManageAdmin;
-	private JLabel jPassword;
-	private JTextField jTextField1;
+	private JLabel jPasswordLable1;
+	private JTextField jAdmin;
 	private JLabel jAdminID;
+	private AdminData admin;
 
 	/**
 	* Auto-generated main method to display this JFrame
 	*/
+	/*
 	public static void main(String[] args) {
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
@@ -55,9 +54,11 @@ public class ManageAdmin extends javax.swing.JFrame {
 			}
 		});
 	}
+	*/
 	
-	public ManageAdmin() {
+	public ManageAdmin(String indata) {
 		super();
+		admin=DA.getAdmin(indata);
 		initGUI();
 	}
 	
@@ -75,20 +76,13 @@ public class ManageAdmin extends javax.swing.JFrame {
 			{
 				jAdd = new JButton();
 				getContentPane().add(jAdd);
-				jAdd.setText("\u6dfb\u52a0");
-				jAdd.setBounds(0, 200, 67, 24);
-			}
-			{
-				jCorrect = new JButton();
-				getContentPane().add(jCorrect);
-				jCorrect.setText("\u4fee\u6539");
-				jCorrect.setBounds(107, 200, 66, 24);
-			}
-			{
-				jDelete = new JButton();
-				getContentPane().add(jDelete);
-				jDelete.setText("\u5220\u9664");
-				jDelete.setBounds(211, 200, 69, 24);
+				jAdd.setText("\u4fee\u6539");
+				jAdd.setBounds(87, 205, 67, 24);
+				jAdd.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent evt) {
+						jAddActionPerformed(evt);
+					}
+				});
 			}
 
 			{
@@ -98,37 +92,39 @@ public class ManageAdmin extends javax.swing.JFrame {
 				jAdminID.setBounds(58, 66, 84, 17);
 			}
 			{
-				jTextField1 = new JTextField();
-				getContentPane().add(jTextField1);
-				jTextField1.setBounds(149, 63, 99, 24);
+				jAdmin = new JTextField();
+				getContentPane().add(jAdmin);
+				jAdmin.setText(admin.getAdmin());
+				jAdmin.setEditable(false);
+				jAdmin.setBounds(149, 63, 99, 24);
 			}
 			{
-				jPassword = new JLabel();
+				jPasswordLable1 = new JLabel();
+				getContentPane().add(jPasswordLable1);
+				jPasswordLable1.setText("\u5bc6\u7801");
+				jPasswordLable1.setBounds(58, 109, 57, 17);
+			}
+			{
+				jPassword = new JPasswordField();
 				getContentPane().add(jPassword);
-				jPassword.setText("\u5bc6\u7801");
-				jPassword.setBounds(58, 109, 57, 17);
+				jPassword.setBounds(149, 106, 99, 24);
 			}
 			{
-				jPasswordField1 = new JPasswordField();
-				getContentPane().add(jPasswordField1);
-				jPasswordField1.setBounds(149, 106, 99, 24);
+				jPasswordLable2 = new JLabel();
+				getContentPane().add(jPasswordLable2);
+				jPasswordLable2.setText("\u786e\u8ba4\u5bc6\u7801");
+				jPasswordLable2.setBounds(58, 152, 66, 17);
 			}
 			{
-				jEnsurePassword = new JLabel();
-				getContentPane().add(jEnsurePassword);
-				jEnsurePassword.setText("\u786e\u8ba4\u5bc6\u7801");
-				jEnsurePassword.setBounds(58, 152, 66, 17);
-			}
-			{
-				jPasswordField2 = new JPasswordField();
-				getContentPane().add(jPasswordField2);
-				jPasswordField2.setBounds(149, 149, 99, 24);
+				jPasswordEnsure = new JPasswordField();
+				getContentPane().add(jPasswordEnsure);
+				jPasswordEnsure.setBounds(149, 149, 99, 24);
 			}
 			{
 				jExit = new JButton();
 				getContentPane().add(jExit);
 				jExit.setText("\u9000\u51fa");
-				jExit.setBounds(316, 200, 68, 24);
+				jExit.setBounds(229, 205, 68, 24);
 				jExit.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent evt) {
 						jExitActionPerformed(evt);}
@@ -138,7 +134,7 @@ public class ManageAdmin extends javax.swing.JFrame {
 				getContentPane().add(jManageAdmin);
 				jManageAdmin.setText("\u7ba1\u7406\u5458\u4fe1\u606f\u7ba1\u7406");
 				jManageAdmin.setBounds(142, 17, 147, 29);
-			}
+							}
 			pack();
 			setSize(400, 300);
 		} catch (Exception e) {
@@ -161,6 +157,32 @@ public class ManageAdmin extends javax.swing.JFrame {
 					"确定要退出管理员信息管理界面吗？", "警告", JOptionPane.YES_NO_OPTION);
 			if(response==0) this.dispose();
 			else this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE); 
+		}
+		
+		private void jAddActionPerformed(ActionEvent evt) {
+			//System.out.println("jAdd.actionPerformed, event="+evt);
+			//TODO add your code for jAdd.actionPerformed
+			if(jPassword.getPassword().length==0||jPasswordEnsure.getPassword().length==0)
+			{
+				JOptionPane.showMessageDialog(null, "密码不能为空！");
+				jPassword.setText("");
+				jPasswordEnsure.setText("");
+				return;
+			}
+			if(jPassword.getPassword().toString().equals(jPasswordEnsure.getPassword().toString()))
+			{
+				JOptionPane.showMessageDialog(null, "两次密码输入不匹配，请重新输入！");
+				jPassword.setText("");
+				jPasswordEnsure.setText("");
+				return;
+			}
+			String password=new String(jPassword.getPassword());
+			System.out.println(password);
+			MD5 md5=new MD5(password);
+			admin.setPassWord(md5.get());
+			
+			DA.modifyAdmin(admin);
+			JOptionPane.showMessageDialog(null, "修改成功！");
 		}
 
 }
