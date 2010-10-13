@@ -115,6 +115,11 @@ public class ManageStars extends javax.swing.JFrame {
 				getContentPane().add(jDeleteStars);
 				jDeleteStars.setText("\u5220\u9664\u660e\u661f\u4fe1\u606f");
 				jDeleteStars.setBounds(311, 232, 134, 24);
+				jDeleteStars.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent evt) {
+						jDeleteStarsActionPerformed(evt);
+					}
+				});
 			}
 			{
 				jExit = new JButton();
@@ -179,10 +184,10 @@ public class ManageStars extends javax.swing.JFrame {
 		private void thisWindowClosing(WindowEvent evt) {
 			//System.out.println("this.windowClosing, event="+evt);
 			//TODO add your code for this.windowClosing
-			 int response=JOptionPane.showConfirmDialog(null,
+			int response=JOptionPane.showConfirmDialog(null,
 						"确定要退出明星信息管理界面吗？", "警告", JOptionPane.YES_NO_OPTION);
-				if(response==0) this.dispose();
-				else this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE); 
+			if(response==0) this.dispose();
+			else this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE); 
 		}
 		
 		private void jEditMessageActionPerformed(ActionEvent evt) {
@@ -207,6 +212,21 @@ public class ManageStars extends javax.swing.JFrame {
 			TableModel jStarsNamesModel = 
 				new DefaultTableModel(res,titles);
 			jStarsNames.setModel(jStarsNamesModel);
+		}
+		
+		private void jDeleteStarsActionPerformed(ActionEvent evt) {
+			//System.out.println("jDeleteStars.actionPerformed, event="+evt);
+			//TODO add your code for jDeleteStars.actionPerformed
+			int row=jStarsNames.getSelectedRow();		
+			if(row<0)
+			{
+				JOptionPane.showMessageDialog(null, "您还没用选中任何一行");
+				return ;
+			}
+			int response=JOptionPane.showConfirmDialog(null,
+					"确定要删除歌星"+jStarsNames.getValueAt(row,1)+"的相关信息吗？", "警告", JOptionPane.YES_NO_OPTION);
+			if(response==0) 
+				DA.delStar(Integer.parseInt(jStarsNames.getValueAt(row,0).toString()));
 		}
 
 }

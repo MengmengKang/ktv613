@@ -18,6 +18,9 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.SwingUtilities;
 
+import com.xch.DAO.DA;
+import com.xch.obj.StarData;
+
 
 /**
 * This code was edited or generated using CloudGarden's Jigloo
@@ -43,6 +46,7 @@ public class AddStars extends javax.swing.JFrame {
 	private JLabel jAddStar;
 	private JComboBox jComboBox1;
 	private JButton jExit;
+	private StarData star;
 
 	/**
 	* Auto-generated main method to display this JFrame
@@ -78,6 +82,11 @@ public class AddStars extends javax.swing.JFrame {
 				getContentPane().add(jConfirm);
 				jConfirm.setText("\u786e\u8ba4");
 				jConfirm.setBounds(70, 202, 84, 24);
+				jConfirm.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent evt) {
+						jConfirmActionPerformed(evt);
+					}
+				});
 			}
 			
 			{
@@ -167,6 +176,50 @@ public class AddStars extends javax.swing.JFrame {
 			if(response==0) this.dispose();
 			else this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
 			
+		}
+		
+		private void jConfirmActionPerformed(ActionEvent evt) {
+			//System.out.println("jConfirm.actionPerformed, event="+evt);
+			//TODO add your code for jConfirm.actionPerformed
+			if(jStarName.getText().length()==0)
+			{
+				JOptionPane.showMessageDialog(null, "明星姓名不能为空！");
+				return;
+			}
+			if(DA.checkStarName(jStarName.getText()))
+			{
+				JOptionPane.showMessageDialog(null, "明星姓名不能重复！");
+				return;
+			}
+			if(jStarName.getText().length()==0)
+			{
+				JOptionPane.showMessageDialog(null, "明星姓名不能为空！");
+				return;
+			}
+			if(jStarName.getText().length()==0)
+			{
+				JOptionPane.showMessageDialog(null, "明星姓名不能为空！");
+				return;
+			}
+			
+			if(jStComeFrom.getText().length()==0)
+			{
+				JOptionPane.showMessageDialog(null, "“港台或内地”不能为空！");
+				return;
+			}
+			if(jStTeam.getText().length()==0)
+			{
+				JOptionPane.showMessageDialog(null, "明星组合不能为空！");
+				return;
+			}
+			star=new StarData();
+			star.setStarID(DA.getStarMaxID());
+			star.setStarName(jStarName.getText());
+			star.setGender(jComboBox1.getSelectedIndex());
+			star.setComeFrom(jStComeFrom.getText());
+			star.setTeam(jStTeam.getText());
+			DA.addStar(star);
+			JOptionPane.showMessageDialog(null, "明星信息添加成功！");
 		}
 
 }

@@ -205,6 +205,7 @@ public class EditStars extends javax.swing.JFrame {
 				JOptionPane.showMessageDialog(null, "明星姓名不能为空！");
 				return;
 			}
+
 			if(jStarName.getText().length()==0)
 			{
 				JOptionPane.showMessageDialog(null, "明星姓名不能为空！");

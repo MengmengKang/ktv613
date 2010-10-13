@@ -85,13 +85,13 @@ public class DA {
 		try {
 			open();
 			String sql="select starid from stars order by starid";
+			System.out.println(sql);
 			ResultSet result=aStatement.executeQuery(sql);
 			while(result.next()){
 				if(result.getInt(1)!=MaxID) break;
 				MaxID++;
 			}
 			close();
-
 		} catch (Exception e) {
 			// TODO: handle exception
 			System.out.println(e);
@@ -139,8 +139,29 @@ public class DA {
 			System.out.println(e);
 		}
 		return flag;
-	
 	}			
+	public static boolean checkStarName(String starname)
+	{
+		boolean flag = false;
+		try {
+			open();
+			String sql="select starname from stars";
+			ResultSet result=aStatement.executeQuery(sql);
+			while(result.next()){
+				if(result.getString(1).compareTo(starname)==0)
+				{
+					flag = true;
+					break;
+				}
+			}
+			close();
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println(e);
+		}
+		return flag;
+	}		
+	
 	public static boolean loginUser(UserData user)
 	{
 		boolean flag = false;
@@ -356,7 +377,7 @@ public class DA {
 		return res;		
 	}	
 	
-	public static void addSongData(SongData song)
+	public static void addSong(SongData song)
 	{
 		try {
 			open();				
@@ -399,11 +420,11 @@ public class DA {
 			System.out.println(e);
 		}
 	}	
-	public static void delSongData(SongData song)
+	public static void delSong(int songid)
 	{
 		try {
 			open();				
-			String sql="delete from admins where songid="+song.getSongID();
+			String sql="delete from songs where songid="+songid;
 			
 			System.out.println(sql);
 			
@@ -414,7 +435,21 @@ public class DA {
 			System.out.println(e);
 		}
 	}
-	
+	public static void delStar(int starid)
+	{
+		try {
+			open();				
+			String sql="delete from stars where starid="+starid;
+			
+			System.out.println(sql);
+			
+			aStatement.executeUpdate(sql);
+			close();
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println(e);
+		}
+	}
 
 	public static String[][] listAdmin()
 	{
@@ -479,7 +514,40 @@ public class DA {
 		}
 		return res;		
 	}
-	
+	public static String[][] listSong()
+	{
+		String[][] res={};
+		int n=5;
+		try{
+			open();
+			
+			String sql="select * from songs";
+			//System.out.println(sql);
+			ResultSet result=aStatement.executeQuery(sql);
+			result.last();    
+			int row=result.getRow();
+			result.beforeFirst();
+			res=new String[row][n];
+			int i=-1;
+			while(result.next()){
+				i++;
+				String[] resLine =new String[n];
+				//System.out.println(result.getString(5)+" "+result.getString(2)+" "+result.getString(3)+" "+result.getString(9));
+				resLine[0]=result.getString(1);
+				resLine[1]=result.getString(2);
+				resLine[3]=result.getString(4);
+				resLine[4]=result.getString(5);
+				if(result.getInt(3)==1)	resLine[2]="ÄÐ";
+				else resLine[2]="Å®";
+				res[i]=resLine;		
+			}
+			
+			close();
+		} catch (Exception e) {
+			System.out.println();
+		}
+		return res;		
+	}
 	public static AdminData getAdmin(String admin)
 	{
 		AdminData res=new AdminData();
@@ -560,7 +628,28 @@ public class DA {
 			// TODO: handle exception
 			System.out.println(e);
 		}
-	}	
+	}
+	
+	public static void addStar(StarData star)
+	{
+		try {
+			open();				
+			String sql="insert into stars values (";
+			sql=sql+star.getStarID()+",";
+			sql=sql+"'"+star.getStarName()+"',";
+			sql=sql+star.getGender()+",";
+			sql=sql+"'"+star.getComeFrom()+"',";
+			sql=sql+"'"+star.getTeam()+"')";
+		
+			System.out.println(sql);
+			
+			aStatement.executeUpdate(sql);
+			close();
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println(e);
+		}
+	}
 	
 	public static void delAdmin(String Admin)
 	{
