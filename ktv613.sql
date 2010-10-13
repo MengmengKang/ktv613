@@ -80,8 +80,8 @@ CREATE TABLE `stars` (
   `StarID` int(11) NOT NULL,
   `StarName` varchar(255) CHARACTER SET utf8 NOT NULL,
   `Gender` bit(1) NOT NULL,
-  `StConeFrom` varchar(255) CHARACTER SET utf8 NOT NULL,
-  `StTeam` varchar(255) CHARACTER SET utf8 NOT NULL,
+  `ComeFrom` varchar(255) CHARACTER SET utf8 NOT NULL,
+  `Team` varchar(255) CHARACTER SET utf8 NOT NULL,
   PRIMARY KEY (`StarID`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -134,4 +134,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2010-10-12 23:03:57
+-- Dump completed on 2010-10-13 20:35:42
