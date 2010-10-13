@@ -35,6 +35,8 @@ public class EditStars extends javax.swing.JFrame {
 	private JButton jConfirm;
 	private JLabel jViewStars;
 	private JLabel jLabel4;
+	private JLabel jLabel5;
+	private JTextField jStarID;
 	private JTextField jStTeam;
 	private JTextField jStComeFrom;
 	private JTextField jStarName;
@@ -87,7 +89,7 @@ public class EditStars extends javax.swing.JFrame {
 				jComboBox1 = new JComboBox();
 				getContentPane().add(jComboBox1);
 				jComboBox1.setModel(jComboBox1Model);
-				jComboBox1.setBounds(194, 105, 52, 24);
+				jComboBox1.setBounds(194, 74, 52, 24);
 			}
 			{
 				jExit = new JButton();
@@ -108,40 +110,51 @@ public class EditStars extends javax.swing.JFrame {
 				jLabel1 = new JLabel();
 				getContentPane().add(jLabel1);
 				jLabel1.setText("\u660e\u661f\u59d3\u540d");
-				jLabel1.setBounds(92, 69, 76, 15);
+				jLabel1.setBounds(92, 46, 76, 15);
 			}
 			{
 				jLabel2 = new JLabel();
 				getContentPane().add(jLabel2);
 				jLabel2.setText("\u6027\u522b");
-				jLabel2.setBounds(92, 110, 76, 15);
+				jLabel2.setBounds(92, 79, 76, 15);
 			}
 			{
 				jLabel3 = new JLabel();
 				getContentPane().add(jLabel3);
 				jLabel3.setText("\u6e2f\u53f0\u6216\u5185\u5730");
-				jLabel3.setBounds(92, 145, 84, 15);
+				jLabel3.setBounds(92, 114, 84, 15);
 			}
 			{
 				jLabel4 = new JLabel();
 				getContentPane().add(jLabel4);
 				jLabel4.setText("\u660e\u661f\u7ec4\u5408");
-				jLabel4.setBounds(92, 184, 76, 15);
+				jLabel4.setBounds(92, 147, 76, 15);
 			}
 			{
 				jStarName = new JTextField();
 				getContentPane().add(jStarName);
-				jStarName.setBounds(194, 66, 97, 22);
+				jStarName.setBounds(194, 46, 97, 22);
 			}
 			{
 				jStComeFrom = new JTextField();
 				getContentPane().add(jStComeFrom);
-				jStComeFrom.setBounds(194, 142, 97, 22);
+				jStComeFrom.setBounds(194, 111, 97, 22);
 			}
 			{
 				jStTeam = new JTextField();
 				getContentPane().add(jStTeam);
-				jStTeam.setBounds(194, 181, 97, 22);
+				jStTeam.setBounds(194, 144, 97, 22);
+			}
+			{
+				jLabel5 = new JLabel();
+				getContentPane().add(jLabel5);
+				jLabel5.setText("\u6b4c\u661fID");
+				jLabel5.setBounds(92, 179, 84, 17);
+			}
+			{
+				jStarID = new JTextField();
+				getContentPane().add(jStarID);
+				jStarID.setBounds(194, 176, 97, 24);
 			}
 			pack();
 			this.setSize(400, 315);

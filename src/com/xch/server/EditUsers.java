@@ -36,6 +36,8 @@ public class EditUsers extends javax.swing.JFrame {
 	private JButton jConfirm;
 	private JLabel jLabel4;
 	private JLabel jLabel5;
+	private JTextField jUserID;
+	private JLabel jLabel8;
 	private JTextField jInterest;
 	private JTextField jEmail;
 	private JTextField jRealName;
@@ -84,7 +86,7 @@ public class EditUsers extends javax.swing.JFrame {
 				jConfirm = new JButton();
 				getContentPane().add(jConfirm);
 				jConfirm.setText("\u786e\u8ba4");
-				jConfirm.setBounds(101, 290, 74, 24);
+				jConfirm.setBounds(100, 314, 74, 24);
 			}
 			
 			{
@@ -100,7 +102,7 @@ public class EditUsers extends javax.swing.JFrame {
 				jExit = new JButton();
 				getContentPane().add(jExit);
 				jExit.setText("\u9000\u51fa");
-				jExit.setBounds(287, 290, 81, 24);
+				jExit.setBounds(287, 314, 81, 24);
 				jExit.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent evt) {
 						jExitActionPerformed(evt);}
@@ -182,6 +184,17 @@ public class EditUsers extends javax.swing.JFrame {
 				jInterest = new JTextField();
 				getContentPane().add(jInterest);
 				jInterest.setBounds(242, 239, 96, 22);
+			}
+			{
+				jLabel8 = new JLabel();
+				getContentPane().add(jLabel8);
+				jLabel8.setText("\u7528\u6237ID");
+				jLabel8.setBounds(120, 269, 79, 17);
+			}
+			{
+				jUserID = new JTextField();
+				getContentPane().add(jUserID);
+				jUserID.setBounds(242, 266, 96, 24);
 			}
 			pack();
 			this.setSize(475, 396);

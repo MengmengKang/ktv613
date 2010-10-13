@@ -4,8 +4,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import javax.swing.ComboBoxModel;
+import javax.swing.DefaultComboBoxModel;
 
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -31,6 +34,8 @@ public class AddSongs extends javax.swing.JFrame {
 	private JButton jConfirm;
 	private JLabel jLabel4;
 	private JLabel jLabel5;
+	private JComboBox jStar;
+	private JLabel jLabel6;
 	private JTextField jSoPinyin;
 	private JTextField jSoNumber;
 	private JTextField jSongType;
@@ -103,13 +108,13 @@ public class AddSongs extends javax.swing.JFrame {
 			{
 				jURL = new JTextField();
 				getContentPane().add(jURL);
-				jURL.setBounds(115, 220, 180, 22);
+				jURL.setBounds(112, 173, 180, 22);
 			}
 			{
 				jChooseSong = new JButton();
 				getContentPane().add(jChooseSong);
 				jChooseSong.setText("...");
-				jChooseSong.setBounds(304, 220, 32, 22);
+				jChooseSong.setBounds(301, 173, 32, 22);
 				jChooseSong.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent evt) {
 						jChooseSongActionPerformed(evt);
@@ -121,45 +126,60 @@ public class AddSongs extends javax.swing.JFrame {
 				jLabel2 = new JLabel();
 				getContentPane().add(jLabel2);
 				jLabel2.setText("\u6b4c\u66f2\u7c7b\u578b");
-				jLabel2.setBounds(33, 88, 67, 15);
+				jLabel2.setBounds(33, 79, 67, 15);
 			}
 			{
 				jLabel3 = new JLabel();
 				getContentPane().add(jLabel3);
 				jLabel3.setText("\u6b4c\u540d\u5b57\u6570");
-				jLabel3.setBounds(33, 137, 67, 15);
+				jLabel3.setBounds(33, 113, 67, 15);
 			}
 			{
 				jLabel4 = new JLabel();
 				getContentPane().add(jLabel4);
 				jLabel4.setText("\u62fc\u97f3\u6b4c\u540d");
-				jLabel4.setBounds(33, 180, 73, 15);
+				jLabel4.setBounds(33, 145, 73, 15);
 			}
 			{
 				jLabel5 = new JLabel();
 				getContentPane().add(jLabel5);
 				jLabel5.setText("\u6b4c\u66f2\u5b58\u50a8\u8def\u5f84");
-				jLabel5.setBounds(33, 223, 82, 15);
+				jLabel5.setBounds(33, 176, 82, 15);
 			}
 			{
 				jSongName = new JTextField();
 				getContentPane().add(jSongName);
-				jSongName.setBounds(115, 43, 221, 22);
+				jSongName.setBounds(112, 43, 221, 22);
 			}
 			{
 				jSongType = new JTextField();
 				getContentPane().add(jSongType);
-				jSongType.setBounds(115, 85, 221, 22);
+				jSongType.setBounds(112, 76, 221, 22);
 			}
 			{
 				jSoNumber = new JTextField();
 				getContentPane().add(jSoNumber);
-				jSoNumber.setBounds(115, 137, 221, 22);
+				jSoNumber.setBounds(112, 110, 221, 22);
 			}
 			{
 				jSoPinyin = new JTextField();
 				getContentPane().add(jSoPinyin);
-				jSoPinyin.setBounds(115, 177, 221, 22);
+				jSoPinyin.setBounds(112, 142, 221, 22);
+			}
+			{
+				jLabel6 = new JLabel();
+				getContentPane().add(jLabel6);
+				jLabel6.setText("\u6b4c\u624b");
+				jLabel6.setBounds(33, 212, 67, 17);
+			}
+			{
+				ComboBoxModel jStarModel = 
+					new DefaultComboBoxModel(
+							new String[] { "张靓颖", "张学友","刘德华","周杰伦","王菲","小虎队","成龙" });
+				jStar = new JComboBox();
+				getContentPane().add(jStar);
+				jStar.setModel(jStarModel);
+				jStar.setBounds(112, 208, 96, 24);
 			}
 			pack();
 			this.setSize(400, 329);
