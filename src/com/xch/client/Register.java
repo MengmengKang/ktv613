@@ -235,7 +235,7 @@ public class Register extends javax.swing.JFrame {
 		user.setRealName(jRealName.getText());
 		user.setInterest(jInterest.getText());
 		
-		DA.addUserData(user);
+		DA.addUser(user);
 		JOptionPane.showMessageDialog(null, "×¢²á³É¹¦£¡");
 		Register.this.dispose();
 	}

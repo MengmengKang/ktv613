@@ -377,27 +377,7 @@ public class DA {
 		return res;		
 	}	
 	
-	public static void addSong(SongData song)
-	{
-		try {
-			open();				
-			String sql="insert songs values("+song.getSongID()+",";
-			sql=sql+"'"+song.getSongName()+"',";
-			sql=sql+"'"+song.getSongType()+"',";
-			sql=sql+song.getSoNumber()+",";
-			sql=sql+"'"+song.getSoPinYin()+"',";
-			sql=sql+song.getStarID()+",";
-			sql=sql+"'"+song.getURL()+"')";
-			
-			System.out.println(sql);
-			
-			aStatement.executeUpdate(sql);
-			close();
-		} catch (Exception e) {
-			// TODO: handle exception
-			System.out.println(e);
-		}
-	}
+
 	public static void modifySongData(SongData song)
 	{
 		try {
@@ -567,12 +547,12 @@ public class DA {
 	public static String[][] listSong()
 	{
 		String[][] res={};
-		int n=5;
+		int n=7;
 		try{
 			open();
 			
-			String sql="select * from songs";
-			//System.out.println(sql);
+			String sql="select * from songs,stars where songs.starid=stars.starid";
+			System.out.println(sql);
 			ResultSet result=aStatement.executeQuery(sql);
 			result.last();    
 			int row=result.getRow();
@@ -585,10 +565,11 @@ public class DA {
 				//System.out.println(result.getString(5)+" "+result.getString(2)+" "+result.getString(3)+" "+result.getString(9));
 				resLine[0]=result.getString(1);
 				resLine[1]=result.getString(2);
+				resLine[2]=result.getString(3);
 				resLine[3]=result.getString(4);
 				resLine[4]=result.getString(5);
-				if(result.getInt(3)==1)	resLine[2]="ÄÐ";
-				else resLine[2]="Å®";
+				resLine[5]=result.getString(9);
+				resLine[6]=result.getString(7);
 				res[i]=resLine;		
 			}
 			
@@ -640,6 +621,62 @@ public class DA {
 		}
 		return res;		
 	}
+	
+	public static String[] getStarNameList()
+	{
+		String[] res = null;
+		try{
+			open();
+			
+			String sql="select starname from stars order by starid";
+			//System.out.println(sql);
+			ResultSet result=aStatement.executeQuery(sql);
+			result.last();    
+			int row=result.getRow();
+			result.beforeFirst();
+			res=new String[row];
+			int i=-1;
+			
+			while(result.next())
+			{
+				i++;
+				res[i]=result.getString(1);
+			}
+			
+			close();
+		} catch (Exception e) {
+			System.out.println();
+		}
+		return res;		
+	}
+	public static int[] getStarIDList()
+	{
+		int[] res = null;
+		try{
+			open();
+			
+			String sql="select starid from stars order by starid";
+			//System.out.println(sql);
+			ResultSet result=aStatement.executeQuery(sql);
+			result.last();    
+			int row=result.getRow();
+			result.beforeFirst();
+			res=new int[row];
+			int i=-1;
+			
+			while(result.next())
+			{
+				i++;
+				res[i]=result.getInt(1);
+			}
+			
+			close();
+		} catch (Exception e) {
+			System.out.println();
+		}
+		return res;		
+	}	
+
 	public static UserData getUser(int userid)
 	{
 		UserData res=new UserData();
@@ -758,7 +795,7 @@ public class DA {
 		}
 	}
 
-	public static void addUserData(UserData user)
+	public static void addUser(UserData user)
 	{
 		try {
 			open();				
@@ -769,6 +806,27 @@ public class DA {
 			sql=sql+"'"+user.getEmail()+"',";
 			sql=sql+user.getGender()+",";
 			sql=sql+"'"+user.getInterest()+"')";
+			
+			System.out.println(sql);
+			
+			aStatement.executeUpdate(sql);
+			close();
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println(e);
+		}
+	}
+	public static void addSong(SongData song)
+	{
+		try {
+			open();				
+			String sql="insert songs values("+song.getSongID()+",";
+			sql=sql+"'"+song.getSongName()+"',";
+			sql=sql+"'"+song.getSongType()+"',";
+			sql=sql+song.getSoNumber()+",";
+			sql=sql+"'"+song.getSoPinYin()+"',";
+			sql=sql+song.getStarID()+",";
+			sql=sql+"'"+song.getURL()+"')";
 			
 			System.out.println(sql);
 			

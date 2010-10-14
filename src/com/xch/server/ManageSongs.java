@@ -12,6 +12,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.ListModel;
+import javax.swing.ListSelectionModel;
 
 import javax.swing.WindowConstants;
 import javax.swing.table.DefaultTableModel;
@@ -41,7 +42,8 @@ public class ManageSongs extends javax.swing.JFrame {
 	private JTable jTable1;
 	private JLabel jManageSongs;
 	private JButton jExit;
-
+	private static String[] titles={"歌曲ID", "歌曲名","歌曲类型","歌曲字数","歌曲拼音","歌星","歌曲存储路径"};
+	
 	/**
 	* Auto-generated main method to display this JFrame
 	*/
@@ -101,6 +103,11 @@ public class ManageSongs extends javax.swing.JFrame {
 				getContentPane().add(jRefreshList);
 				jRefreshList.setText("\u66f4\u65b0\u6b4c\u66f2\u8868");
 				jRefreshList.setBounds(358, 256, 105, 24);
+				jRefreshList.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent evt) {
+						jRefreshListActionPerformed(evt);
+					}
+				});
 			}
 			{
 				jExit = new JButton();
@@ -122,15 +129,18 @@ public class ManageSongs extends javax.swing.JFrame {
 				getContentPane().add(jScrollPane1);
 				jScrollPane1.setBounds(57, 55, 523, 159);
 				{
+					String[][] res=DA.listSong();
 					TableModel jTable1Model = 
-						new DefaultTableModel(
-								new String[][] { { "One", "Two" }, { "Three", "Four" } },
-								new String[] { "歌曲ID", "歌曲名","歌曲类型","歌曲字数","歌曲拼音","歌星","歌曲存储路径" });
+						new DefaultTableModel(res,titles);
 					jTable1 = new JTable(){
 						public boolean isCellEditable(int row,int col){return false;}
 					};
+					
 					jScrollPane1.setViewportView(jTable1);
 					jTable1.setModel(jTable1Model);
+					jTable1.setDragEnabled(true);
+					jTable1.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+				
 				}
 			}
 			pack();
@@ -154,6 +164,15 @@ public class ManageSongs extends javax.swing.JFrame {
 						"确定要退出歌曲信息管理界面吗？", "警告", JOptionPane.YES_NO_OPTION);
 				if(response==0) this.dispose();
 				else this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE); 
+		}
+		
+		private void jRefreshListActionPerformed(ActionEvent evt) {
+			//System.out.println("jRefreshList.actionPerformed, event="+evt);
+			//TODO add your code for jRefreshList.actionPerformed
+			String[][] res=DA.listSong();
+			TableModel jTable1Model = 
+				new DefaultTableModel(res,titles);
+			jTable1.setModel(jTable1Model);
 		}
 
 }

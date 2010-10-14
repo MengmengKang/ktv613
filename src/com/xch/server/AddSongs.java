@@ -4,6 +4,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.io.File;
+import java.io.IOException;
+
 import javax.swing.ComboBoxModel;
 import javax.swing.DefaultComboBoxModel;
 
@@ -16,6 +19,9 @@ import javax.swing.JTextField;
 
 import javax.swing.WindowConstants;
 import javax.swing.SwingUtilities;
+
+import com.xch.DAO.DA;
+import com.xch.obj.SongData;
 
 
 /**
@@ -47,6 +53,9 @@ public class AddSongs extends javax.swing.JFrame {
 	private JLabel jAddSong;
 	private JLabel jLabel1;
 	private JButton jExit;
+	private SongData song;
+	private String[] StarNameList;
+	private int[] StarIDList;
 
 	/**
 	* Auto-generated main method to display this JFrame
@@ -173,9 +182,10 @@ public class AddSongs extends javax.swing.JFrame {
 				jLabel6.setBounds(33, 212, 67, 17);
 			}
 			{
+				StarNameList=DA.getStarNameList();
+				StarIDList=DA.getStarIDList();
 				ComboBoxModel jStarModel = 
-					new DefaultComboBoxModel(
-							new String[] { "张靓颖", "张学友","刘德华","周杰伦","王菲","小虎队","成龙" });
+					new DefaultComboBoxModel(StarNameList);
 				jStar = new JComboBox();
 				getContentPane().add(jStar);
 				jStar.setModel(jStarModel);
@@ -204,12 +214,19 @@ public class AddSongs extends javax.swing.JFrame {
 			else this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE); 
 		}
 		
-		private void jChooseSongActionPerformed(ActionEvent evt) {
+		private void jChooseSongActionPerformed(ActionEvent evt){
 			//System.out.println("jChooseSong.actionPerformed, event="+evt);
 			//TODO add your code for jChooseSong.actionPerformed
+			/*
 			ChooseSong inst = new ChooseSong();
 			inst.setLocationRelativeTo(null);
 			inst.setVisible(true);
+			*/
+			JFileChooser chooser =new JFileChooser(); 
+			int state=chooser.showOpenDialog(null); 
+			File file=chooser.getSelectedFile(); 
+			String path = file.getPath(); 
+			//System.out.printf(path);
 		}
 
 }
