@@ -148,11 +148,11 @@ public class Register extends javax.swing.JFrame {
 				ComboBoxModel jGenderModel = 
 					new DefaultComboBoxModel(
 							new String[] {"Å®", "ÄÐ"});
-				jGender.setSelectedIndex(1);
 				jGender = new JComboBox();
 				getContentPane().add(jGender);
 				jGender.setModel(jGenderModel);
 				jGender.setBounds(158, 164, 39, 22);
+				jGender.setSelectedIndex(1);
 			}
 			{
 				jLabel7 = new JLabel();
