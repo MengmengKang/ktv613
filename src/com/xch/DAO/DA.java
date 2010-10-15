@@ -445,6 +445,21 @@ public class DA {
 			System.out.println(e);
 		}
 	}
+	public static void delAdmin(String Admin)
+	{
+		try {
+			open();				
+			String sql="delete from admins where admin='"+Admin+"'";
+			
+			//System.out.println(sql);
+			
+			aStatement.executeUpdate(sql);
+			close();
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println(e);
+		}
+	}	
 	public static String[][] listAdmin()
 	{
 		String[][] res={};
@@ -552,7 +567,7 @@ public class DA {
 			open();
 			
 			String sql="select * from songs,stars where songs.starid=stars.starid";
-			System.out.println(sql);
+			//System.out.println(sql);
 			ResultSet result=aStatement.executeQuery(sql);
 			result.last();    
 			int row=result.getRow();
@@ -684,7 +699,7 @@ public class DA {
 			open();
 			
 			String sql="select * from users where userid='"+userid+"'";
-			System.out.println(sql);
+			//System.out.println(sql);
 			ResultSet result=aStatement.executeQuery(sql);
 			result.next();
 			res.setUserID(result.getInt(1));
@@ -745,14 +760,14 @@ public class DA {
 	{
 		try {
 			open();				
-			String sql="insert into stars values (";
+			String sql="insert stars values (";
 			sql=sql+star.getStarID()+",";
 			sql=sql+"'"+star.getStarName()+"',";
 			sql=sql+star.getGender()+",";
 			sql=sql+"'"+star.getComeFrom()+"',";
 			sql=sql+"'"+star.getTeam()+"')";
 		
-			System.out.println(sql);
+			//System.out.println(sql);
 			
 			aStatement.executeUpdate(sql);
 			close();
@@ -762,21 +777,7 @@ public class DA {
 		}
 	}
 	
-	public static void delAdmin(String Admin)
-	{
-		try {
-			open();				
-			String sql="delete from admins where admin='"+Admin+"'";
-			
-			//System.out.println(sql);
-			
-			aStatement.executeUpdate(sql);
-			close();
-		} catch (Exception e) {
-			// TODO: handle exception
-			System.out.println(e);
-		}
-	}	
+
 	
 	public static void addAdmin(AdminData admin)
 	{
@@ -807,7 +808,7 @@ public class DA {
 			sql=sql+user.getGender()+",";
 			sql=sql+"'"+user.getInterest()+"')";
 			
-			System.out.println(sql);
+			//System.out.println(sql);
 			
 			aStatement.executeUpdate(sql);
 			close();

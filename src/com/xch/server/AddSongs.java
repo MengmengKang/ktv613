@@ -19,6 +19,8 @@ import javax.swing.JTextField;
 
 import javax.swing.WindowConstants;
 import javax.swing.SwingUtilities;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 
 import com.xch.DAO.DA;
 import com.xch.obj.SongData;
@@ -56,6 +58,7 @@ public class AddSongs extends javax.swing.JFrame {
 	private SongData song;
 	private String[] StarNameList;
 	private int[] StarIDList;
+	private String path;
 
 	/**
 	* Auto-generated main method to display this JFrame
@@ -91,6 +94,11 @@ public class AddSongs extends javax.swing.JFrame {
 				getContentPane().add(jConfirm);
 				jConfirm.setText("\u786e\u8ba4");
 				jConfirm.setBounds(54, 255, 95, 24);
+				jConfirm.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent evt) {
+						jConfirmActionPerformed(evt);
+					}
+				});
 			}
 			{
 				jExit = new JButton();
@@ -123,7 +131,7 @@ public class AddSongs extends javax.swing.JFrame {
 				jChooseSong = new JButton();
 				getContentPane().add(jChooseSong);
 				jChooseSong.setText("...");
-				jChooseSong.setBounds(301, 173, 32, 22);
+				jChooseSong.setBounds(304, 173, 29, 22);
 				jChooseSong.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent evt) {
 						jChooseSongActionPerformed(evt);
@@ -168,7 +176,7 @@ public class AddSongs extends javax.swing.JFrame {
 			{
 				jSoNumber = new JTextField();
 				getContentPane().add(jSoNumber);
-				jSoNumber.setBounds(112, 110, 221, 22);
+				jSoNumber.setBounds(112, 111, 221, 22);
 			}
 			{
 				jSoPinyin = new JTextField();
@@ -224,9 +232,59 @@ public class AddSongs extends javax.swing.JFrame {
 			*/
 			JFileChooser chooser =new JFileChooser(); 
 			int state=chooser.showOpenDialog(null); 
-			File file=chooser.getSelectedFile(); 
-			String path = file.getPath(); 
+			if(state==JFileChooser.APPROVE_OPTION)
+			{
+				File file=chooser.getSelectedFile(); 
+				path = file.getPath(); 
+				jURL.setText(path);
+			}
 			//System.out.printf(path);
+		}
+		
+		private void jConfirmActionPerformed(ActionEvent evt) {
+			//System.out.println("jConfirm.actionPerformed, event="+evt);
+			//TODO add your code for jConfirm.actionPerformed
+			int SongNumber = 0;
+			if(jSongName.getText().length()==0)
+			{
+				JOptionPane.showMessageDialog(null, "歌曲名称不能为空！");
+				return;
+			}
+			if(jSongType.getText().length()==0)
+			{
+				JOptionPane.showMessageDialog(null, "歌曲类型不能为空！");
+				return;
+			}
+			if(jSoPinyin.getText().length()==0)
+			{
+				JOptionPane.showMessageDialog(null, "拼音歌名不能为空！");
+				return;
+			}
+			if(jURL.getText().length()==0)
+			{
+				JOptionPane.showMessageDialog(null, "歌曲存储路径不能为空！");
+				return;
+			}
+			try
+			{
+				SongNumber=Integer.parseInt(jSoNumber.getText());
+			}catch(Exception e)
+			{
+				//System.out.println(e);
+				JOptionPane.showMessageDialog(null, "您还没有输入或者输入的不是数字");
+			}
+
+			SongData song=new SongData();
+			song.setSongID(DA.getSongMaxID());
+			song.setSongName(jSongName.getText());
+			song.setSongType(jSongType.getText());
+			song.setSoNumber(SongNumber);
+			song.setSoPinYin(jSoPinyin.getText());
+			song.setURL(jURL.getText());
+			song.setStarID(StarIDList[jStar.getSelectedIndex()]);
+			
+			DA.addSong(song);
+			JOptionPane.showMessageDialog(null, "歌曲信息添加成功！");
 		}
 
 }

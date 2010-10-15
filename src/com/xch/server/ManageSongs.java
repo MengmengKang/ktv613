@@ -97,6 +97,11 @@ public class ManageSongs extends javax.swing.JFrame {
 				getContentPane().add(jDeleteSongs);
 				jDeleteSongs.setText("\u5220\u9664\u6b4c\u66f2");
 				jDeleteSongs.setBounds(203, 256, 103, 24);
+				jDeleteSongs.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent evt) {
+						jDeleteSongsActionPerformed(evt);
+					}
+				});
 			}
 			{
 				jRefreshList = new JButton();
@@ -173,6 +178,27 @@ public class ManageSongs extends javax.swing.JFrame {
 			TableModel jTable1Model = 
 				new DefaultTableModel(res,titles);
 			jTable1.setModel(jTable1Model);
+		}
+		
+		private void jDeleteSongsActionPerformed(ActionEvent evt) {
+			//System.out.println("jDeleteSongs.actionPerformed, event="+evt);
+			//TODO add your code for jDeleteSongs.actionPerformed
+			int row=jTable1.getSelectedRow();		
+			if(row<0)
+			{
+				JOptionPane.showMessageDialog(null, "您还没用选中任何一行");
+				return ;
+			}
+			int songid=Integer.parseInt(jTable1.getValueAt(row, 0).toString());
+			String songname=jTable1.getValueAt(row, 1).toString();
+			int response=JOptionPane.showConfirmDialog(null,
+					"确定要删除歌曲“"+songname+"”吗？", "警告", JOptionPane.YES_NO_OPTION);
+			if(response==0) 
+				DA.delSong(songid);
+			String[][] res=DA.listSong();
+			TableModel jResultModel = 
+				new DefaultTableModel(res,titles);
+			jTable1.setModel(jResultModel);
 		}
 
 }
