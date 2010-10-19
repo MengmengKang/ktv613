@@ -30,7 +30,7 @@ import com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel;
 public class Player implements WindowListener{
 	static Config config;
 	static JFrame mainFrame;
-	static VideoPanel videoPalel;
+	static VideoPanel videoPanel;
 	JPanel controlBar;
 	static PlayerProgressBar progressBar;
 	static String [] cmd ;
@@ -77,7 +77,7 @@ public class Player implements WindowListener{
 
 	Player(){
 		//loadConfig();
-		videoPalel=new VideoPanel(this);
+		videoPanel=new VideoPanel(this);
 		controlBar=new JPanel();
 		controlBar.setLayout(new MigLayout());
 		progressBar=new PlayerProgressBar(this);
@@ -118,10 +118,11 @@ public class Player implements WindowListener{
 		//调用命令行,更多选项请参考mplayer文档
 		cmd = new String[] {
 				mplayerPath,//mplayer路径
-				"-vo","directx",//视频驱动
+				"-af","pan=1:-1:1",//设置滤镜
+				"-vo","directx",//视频驱动				
 				"-identify", //输出详情
 				"-slave", //slave模式播放
-				"-wid",String.valueOf(videoPalel.getWid()),//视频窗口的window handle
+				"-wid",String.valueOf(videoPanel.getWid()),//视频窗口的window handle
 				"-colorkey", "0x030303",//视频窗口的背景色
 				"-osdlevel", String.valueOf(1),//osd样式
 				path //播放文件路径
@@ -187,7 +188,7 @@ public class Player implements WindowListener{
 								String s1 = l.substring(16);
 								videoHeight = Integer.valueOf(s1);
 								rate = (float) videoWidth/ (float) videoHeight;
-								videoPalel.doLayout();
+								videoPanel.doLayout();
 							}
 						}
 						if (l.length() >= 14) {
@@ -290,7 +291,7 @@ public class Player implements WindowListener{
 	}
 
 	Container getVideoPanel(){
-		return videoPalel;
+		return videoPanel;
 	}
 
 	Container getControlBar(){
@@ -377,6 +378,29 @@ public class Player implements WindowListener{
 
 	public void windowOpened(WindowEvent e) {
 
+	}
+
+	public static void setAccompany() {
+		// TODO Auto-generated method stub
+		if (proc != null)
+		{
+			System.out.println("伴唱");
+			PrintStream s = new PrintStream(proc.getOutputStream());
+			s.print("af_add channels\n");
+			//s.print("get_audio_samples\n");
+			s.flush();
+		}
+	}
+
+	public static void setOriginal() {
+		// TODO Auto-generated method stub
+		if (proc != null) {
+			System.out.println("原唱");
+			PrintStream s = new PrintStream(proc.getOutputStream());
+			s.print("af_clr\n");
+			//s.print("get_audio_samples\n");
+			s.flush();
+		}		
 	}
 
 }

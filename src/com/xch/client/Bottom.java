@@ -22,12 +22,14 @@ public class Bottom extends JFrame implements ActionListener{
 	private JButton returnHome;
 	private JButton indexPage;
 	private JButton quit;
+	private JButton accompany;
 	private int volume;
 
 	public Bottom(){
 		//this.setBounds(0, 765, 1280, 35);
-    	this.setLayout(new GridLayout(1,10));
+    	this.setLayout(new GridLayout(1,11));
     	original = new JButton("Ô­³ª");
+    	accompany = new JButton("°é³ª");
     	suspend = new JButton("ÔÝÍ£");
     	volumePlus = new JButton("ÒôÁ¿+");
     	volumeMinus = new JButton("ÒôÁ¿-");
@@ -39,6 +41,7 @@ public class Bottom extends JFrame implements ActionListener{
     	quit = new JButton("ÍË³ö");
     	volume = 100;
     	this.add(original);
+    	this.add(accompany);
     	this.add(suspend);
     	this.add(volumePlus);
     	this.add(volumeMinus);
@@ -55,6 +58,8 @@ public class Bottom extends JFrame implements ActionListener{
     	volumeMinus.addActionListener(this);
     	stop.addActionListener(this);
     	quit.addActionListener(this);
+    	original.addActionListener(this);
+    	accompany.addActionListener(this);
     	
     	this.setUndecorated(true);
     	this.setLocation(300, 500);
@@ -90,6 +95,18 @@ public class Bottom extends JFrame implements ActionListener{
 				Player.setVolume(volume);
 			}
 		}
+		if(e.getSource()==accompany)
+		{
+			
+			Player.setAccompany();
+		}
+		
+		if(e.getSource()==original)
+		{
+			
+			Player.setOriginal();
+		}
+		
 		/*
 		if(e.getSource()==returnHome){
 			if(SongPinyin.frame!=null)
