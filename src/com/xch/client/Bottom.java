@@ -63,7 +63,7 @@ public class Bottom extends JFrame implements ActionListener{
     	
     	this.setUndecorated(true);
     	this.setLocation(300, 500);
-    	this.setSize(765, 35);
+    	this.setSize(770, 35);
     	this.setVisible(true);
 	}
 

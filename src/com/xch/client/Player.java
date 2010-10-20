@@ -118,7 +118,7 @@ public class Player implements WindowListener{
 		//调用命令行,更多选项请参考mplayer文档
 		cmd = new String[] {
 				mplayerPath,//mplayer路径
-				"-af","pan=1:-1:1",//设置滤镜
+				//"-af","pan=1:-1:1",//设置滤镜
 				"-vo","directx",//视频驱动				
 				"-identify", //输出详情
 				"-slave", //slave模式播放
@@ -386,7 +386,7 @@ public class Player implements WindowListener{
 		{
 			System.out.println("伴唱");
 			PrintStream s = new PrintStream(proc.getOutputStream());
-			s.print("af_add channels\n");
+			s.print("af_add pan=1:-1:1\n");
 			//s.print("get_audio_samples\n");
 			s.flush();
 		}
