@@ -3,6 +3,9 @@ package com.xch.client;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -12,7 +15,7 @@ public class Bottom extends JFrame implements ActionListener{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private JButton original;
+	
 	private JButton suspend;
 	private JButton volumePlus;
 	private JButton volumeMinus;
@@ -23,53 +26,69 @@ public class Bottom extends JFrame implements ActionListener{
 	private JButton indexPage;
 	private JButton quit;
 	private JButton accompany;
+	//private JButton original;	
 	private int volume;
+	static private int num=0;
 
 	public Bottom(){
+		
+		num++;
+		System.out.println(num);
+		if(num>1) 
+		{
+			num=1;
+			dispose();
+			return;
+		}
+		System.out.println("num<=1");
 		//this.setBounds(0, 765, 1280, 35);
     	this.setLayout(new GridLayout(1,11));
-    	original = new JButton("Ô­³ª");
+    	//original = new JButton("Ô­³ª");
     	accompany = new JButton("°é³ª");
     	suspend = new JButton("ÔİÍ£");
     	volumePlus = new JButton("ÒôÁ¿+");
     	volumeMinus = new JButton("ÒôÁ¿-");
     	changeSong = new JButton("ÇĞ¸è");
-    	stop = new JButton("Í£Ö¹");
     	playAgain = new JButton("ÖØ²¥");
-    	returnHome = new JButton("·µ»Ø");
-    	indexPage = new JButton("Ö÷Ò³");
+    	stop = new JButton("Í£Ö¹");
     	quit = new JButton("ÍË³ö");
+    	//returnHome = new JButton("·µ»Ø");
+    	//indexPage = new JButton("Ö÷Ò³");
+    	
     	volume = 100;
-    	this.add(original);
-    	this.add(accompany);
+       	this.add(accompany);
     	this.add(suspend);
     	this.add(volumePlus);
     	this.add(volumeMinus);
     	this.add(changeSong);
-    	this.add(stop);
     	this.add(playAgain);
-    	this.add(returnHome);
-    	this.add(indexPage);
+    	this.add(stop);
     	this.add(quit);
+    	//this.add(returnHome);
+    	//this.add(indexPage);
+    	
+    	accompany.addActionListener(this);
     	suspend.addActionListener(this);
     	quit.addActionListener(this);
-    	returnHome.addActionListener(this);
+    	playAgain.addActionListener(this);
     	volumePlus.addActionListener(this);
     	volumeMinus.addActionListener(this);
     	stop.addActionListener(this);
     	quit.addActionListener(this);
-    	original.addActionListener(this);
-    	accompany.addActionListener(this);
-    	
+     	
     	this.setUndecorated(true);
     	this.setLocation(300, 500);
     	this.setSize(770, 35);
     	this.setVisible(true);
+    	this.setAlwaysOnTop(true);
 	}
+
+
 
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		if(e.getSource()==quit){
+			num--;
 			Player.exit();
 			this.dispose();
 		}
@@ -95,18 +114,28 @@ public class Bottom extends JFrame implements ActionListener{
 				Player.setVolume(volume);
 			}
 		}
+		if(e.getSource()==playAgain)
+		{
+			Player.setTime(0);
+		}
 		if(e.getSource()==accompany)
 		{
-			
-			Player.setAccompany();
+			if(accompany.getText()=="°é³ª"){
+				Player.setAccompany();
+				accompany.setText("Ô­³ª");
+			}
+			else{
+				Player.setOriginal();
+				accompany.setText("°é³ª");
+			}
 		}
-		
+		/*
 		if(e.getSource()==original)
 		{
 			
 			Player.setOriginal();
 		}
-		
+		*/
 		/*
 		if(e.getSource()==returnHome){
 			if(SongPinyin.frame!=null)

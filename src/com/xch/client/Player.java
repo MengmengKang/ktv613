@@ -50,7 +50,7 @@ public class Player implements WindowListener{
 	static boolean isPlay=false;
 	static boolean isPause=false;
 
-	public static void video() {
+	public static void video() { 
 		try {
 			UIManager.setLookAndFeel(new NimbusLookAndFeel());
 		} catch (UnsupportedLookAndFeelException e) {
@@ -60,7 +60,7 @@ public class Player implements WindowListener{
 		Player player=new Player();
 
 		mainFrame=new JFrame();
-		mainFrame.setBounds(500,80,380,400);
+		mainFrame.setBounds(850,80,380,400);
 		mainFrame.setAlwaysOnTop(true);
 		mainFrame.setUndecorated(true);
 		mainFrame.addWindowListener(player);
@@ -118,7 +118,6 @@ public class Player implements WindowListener{
 		//调用命令行,更多选项请参考mplayer文档
 		cmd = new String[] {
 				mplayerPath,//mplayer路径
-				//"-af","pan=1:-1:1",//设置滤镜
 				"-vo","directx",//视频驱动				
 				"-identify", //输出详情
 				"-slave", //slave模式播放
@@ -239,7 +238,7 @@ public class Player implements WindowListener{
 	}
 
 	//搜索时间
-	void seekto(int value) {
+	static void seekto(int value) {
 		if(isPlay){
 			isPause=false;
 			if (proc != null&isPlay) {
@@ -384,7 +383,7 @@ public class Player implements WindowListener{
 		// TODO Auto-generated method stub
 		if (proc != null)
 		{
-			System.out.println("伴唱");
+			//System.out.println("伴唱");
 			PrintStream s = new PrintStream(proc.getOutputStream());
 			s.print("af_add pan=1:-1:1\n");
 			//s.print("get_audio_samples\n");
@@ -395,12 +394,18 @@ public class Player implements WindowListener{
 	public static void setOriginal() {
 		// TODO Auto-generated method stub
 		if (proc != null) {
-			System.out.println("原唱");
+			//System.out.println("原唱");
 			PrintStream s = new PrintStream(proc.getOutputStream());
 			s.print("af_clr\n");
 			//s.print("get_audio_samples\n");
 			s.flush();
 		}		
+	}
+
+	public static void setTime(int i) {
+		// TODO Auto-generated method stub
+		progressBar.setValue(i);
+		seekto(0);
 	}
 
 }
