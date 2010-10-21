@@ -60,7 +60,11 @@ public class Player implements WindowListener{
 		Player player=new Player();
 
 		mainFrame=new JFrame();
+<<<<<<< .mine
+		mainFrame.setBounds(800,80,380,400);
+=======
 		mainFrame.setBounds(850,80,380,400);
+>>>>>>> .r141
 		mainFrame.setAlwaysOnTop(true);
 		mainFrame.setUndecorated(true);
 		mainFrame.addWindowListener(player);
@@ -86,6 +90,7 @@ public class Player implements WindowListener{
 		p2.setLayout(new MigLayout("insets 0 0 0 0,align center"));
 		controlBar.add(p2,"width :2000:,span,wrap");
 		//刷新播放进度显示
+		/*
 		Thread setProgressDelay = new Thread() {
 			public void run() {
 				while (true) {
@@ -100,6 +105,35 @@ public class Player implements WindowListener{
 					});
 					try {
 						Thread.sleep(500);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+				}
+
+			}
+		};
+		*/
+		Thread setProgressDelay = new Thread() {
+			public void run() {
+				while (true) {
+					SwingUtilities.invokeLater(new Runnable(){
+						public void run() {
+							if(isPlay){
+								if (progressBar != null) {
+									if(mediaPath!=null){
+										if(playOffset<length) playOffset++;
+										progressBar.setTime(playOffset, length);
+									}
+								}
+							}
+							else{
+								playOffset=0;
+								progressBar.setTime(playOffset, length);
+							}
+						}
+					});
+					try {
+						Thread.sleep(1000);
 					} catch (InterruptedException e) {
 						e.printStackTrace();
 					}
@@ -401,7 +435,16 @@ public class Player implements WindowListener{
 			s.flush();
 		}		
 	}
-
+	public static void addPlay(String path) {
+		// TODO Auto-generated method stub
+		if (proc != null) {
+			System.out.println("增加播放歌曲  "+"loadfile "+path+" 1\n");
+			PrintStream s = new PrintStream(proc.getOutputStream());
+			s.print("loadfile "+path+" 1\n");
+			//s.print("get_audio_samples\n");
+			s.flush();
+		}		
+	}
 	public static void setTime(int i) {
 		// TODO Auto-generated method stub
 		progressBar.setValue(i);

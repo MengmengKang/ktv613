@@ -28,7 +28,7 @@ public class MainFrame extends javax.swing.JFrame {
 	private JButton jOrderBySongNumber;
 	private JButton jOrderByStar;
 	private JButton jOrderBySongName;
-
+	public static boolean playing=false;
 	/**
 	* Auto-generated main method to display this JFrame
 	*/
@@ -45,6 +45,7 @@ public class MainFrame extends javax.swing.JFrame {
 	public MainFrame() {
 		super();
 		initGUI();
+
 	}
 	
 	private void initGUI() {

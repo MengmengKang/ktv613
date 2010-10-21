@@ -169,6 +169,9 @@ public class LoginUser extends javax.swing.JFrame {
 			MainFrame inst = new MainFrame();
 			inst.setLocationRelativeTo(null);
 			inst.setVisible(true);
+			//Player.video();
+			//Player.play();
+			//new Bottom();
 		}
 		else
 		{

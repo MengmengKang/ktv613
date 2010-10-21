@@ -41,6 +41,7 @@ public class PlayerProgressBar extends JProgressBar{
 				progressBar.setValue((int) sel);
 				int length=player.length;
 				int ds = (int) ((sel / progressBar.getMaximum()) * length);
+				player.playOffset=ds;
 				player.seekto(ds);
 			}
 

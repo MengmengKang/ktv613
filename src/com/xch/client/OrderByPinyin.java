@@ -167,10 +167,17 @@ public class OrderByPinyin extends javax.swing.JFrame {
 		}
 		int SongID=Integer.parseInt(jResult.getValueAt(row, 0).toString());
 		String url=DA.getSongURL(SongID);
-		Player.video();
+		
 		System.out.println(url);
-		Player.play(url);
-		new Bottom();
+		
+		if(MainFrame.playing) Player.addPlay(url);
+		else {
+			MainFrame.playing=true;
+			System.out.println(2);	
+			Player.video();
+			Player.play(url);
+			new Bottom();
+		}
 	}
 	
 	private void jReturnActionPerformed(ActionEvent evt) {
