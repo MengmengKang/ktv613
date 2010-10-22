@@ -4,7 +4,6 @@
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       import java.awt.event.WindowAdapter;
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       import java.awt.event.WindowEvent;
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
@@ -18,8 +17,6 @@ import javax.swing.table.TableModel;
 import javax.swing.SwingUtilities;
 
 import com.xch.DAO.DA;
-import com.xch.obj.SongData;
-
 
 /**
 * This code was edited or generated using CloudGarden's Jigloo

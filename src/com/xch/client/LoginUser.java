@@ -14,9 +14,7 @@ import javax.swing.SwingUtilities;
 
 import com.xch.DAO.DA;
 import com.xch.client.Register;
-import com.xch.obj.AdminData;
 import com.xch.obj.UserData;
-import com.xch.server.Manage;
 
 
 /**
@@ -159,7 +157,6 @@ public class LoginUser extends javax.swing.JFrame {
 		String password=new String(jPassword.getPassword());
 		MD5 md5=new MD5(password);
 		//System.out.println(password);
-		UserData admin=new UserData();
 		user.setUserName(jUserName.getText());
 		user.setPassWord(md5.get());
 		
