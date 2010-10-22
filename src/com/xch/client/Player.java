@@ -60,11 +60,8 @@ public class Player implements WindowListener{
 		Player player=new Player();
 
 		mainFrame=new JFrame();
-<<<<<<< .mine
 		mainFrame.setBounds(800,80,380,400);
-=======
 		mainFrame.setBounds(850,80,380,400);
->>>>>>> .r141
 		mainFrame.setAlwaysOnTop(true);
 		mainFrame.setUndecorated(true);
 		mainFrame.addWindowListener(player);
@@ -155,6 +152,7 @@ public class Player implements WindowListener{
 				"-vo","directx",//视频驱动				
 				"-identify", //输出详情
 				"-slave", //slave模式播放
+				//"-loop","0",  //循环播放列表
 				"-wid",String.valueOf(videoPanel.getWid()),//视频窗口的window handle
 				"-colorkey", "0x030303",//视频窗口的背景色
 				"-osdlevel", String.valueOf(1),//osd样式
@@ -300,6 +298,7 @@ public class Player implements WindowListener{
 		if(proc!=null){
 			proc.destroy();
 		}
+
 		playOffset=0;
 		isPause=false;
 		progressBar.setValue(0);
@@ -339,6 +338,7 @@ public class Player implements WindowListener{
 		//saveConfig();
 		//System.exit(0);
 		//exit();
+		MainFrame.playing=false;
 		mainFrame.dispose();
 		
 	}

@@ -37,7 +37,7 @@ public class PlayerProgressBar extends JProgressBar{
 			@SuppressWarnings("static-access")
 			public void mouseReleased(MouseEvent e) {
 				double sel = ((double) e.getX()/ ((double) progressBar.getWidth()) * progressBar.getMaximum());
-				System.out.println(sel);
+				//System.out.println(sel);
 				progressBar.setValue((int) sel);
 				int length=player.length;
 				int ds = (int) ((sel / progressBar.getMaximum()) * length);

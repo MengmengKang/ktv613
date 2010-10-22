@@ -173,7 +173,6 @@ public class OrderByPinyin extends javax.swing.JFrame {
 		if(MainFrame.playing) Player.addPlay(url);
 		else {
 			MainFrame.playing=true;
-			System.out.println(2);	
 			Player.video();
 			Player.play(url);
 			new Bottom();

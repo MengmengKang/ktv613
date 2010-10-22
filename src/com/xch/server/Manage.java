@@ -129,7 +129,10 @@ public class Manage extends javax.swing.JFrame {
 			//TODO add your code for jExit.actionPerformed
 			int response=JOptionPane.showConfirmDialog(null,
 					"确定要退出主管理界面吗？", "警告", JOptionPane.YES_NO_OPTION);
-			if(response==0) this.dispose();
+			if(response==0){
+				this.dispose();
+				System.exit(0);
+			}
 	}
 
 
@@ -169,7 +172,10 @@ public class Manage extends javax.swing.JFrame {
 		//TODO add your code for this.windowClosing
 		int response=JOptionPane.showConfirmDialog(null,
 				"确定要退出主管理界面吗？", "警告", JOptionPane.YES_NO_OPTION);
-		if(response==0) this.dispose();
+		if(response==0){
+			this.dispose();
+			System.exit(0);
+		}
 		else this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE); 
 	}
 
