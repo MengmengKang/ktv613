@@ -81,7 +81,7 @@ public class Player implements WindowListener{
 		p2.setLayout(new MigLayout("insets 0 0 0 0,align center"));
 		controlBar.add(p2,"width :2000:,span,wrap");
 		//刷新播放进度显示
-		/*
+		
 		Thread setProgressDelay = new Thread() {
 			public void run() {
 				while (true) {
@@ -103,7 +103,7 @@ public class Player implements WindowListener{
 
 			}
 		};
-		*/
+		/*
 		Thread setProgressDelay = new Thread() {
 			public void run() {
 				while (true) {
@@ -124,7 +124,7 @@ public class Player implements WindowListener{
 						}
 					});
 					try {
-						Thread.sleep(1000);
+						Thread.sleep(100);
 					} catch (InterruptedException e) {
 						e.printStackTrace();
 					}
@@ -132,6 +132,7 @@ public class Player implements WindowListener{
 
 			}
 		};
+		*/
 		setProgressDelay.start();
 	}
 
@@ -145,8 +146,8 @@ public class Player implements WindowListener{
 				mplayerPath,//mplayer路径
 				"-vo","directx",//视频驱动				
 				"-identify", //输出详情
+				"-msglevel","identify=7",  //输出详情
 				"-slave", //slave模式播放
-				//"-loop","0",  //循环播放列表
 				"-wid",String.valueOf(videoPanel.getWid()),//视频窗口的window handle
 				"-colorkey", "0x030303",//视频窗口的背景色
 				"-osdlevel", String.valueOf(1),//osd样式
@@ -182,6 +183,7 @@ public class Player implements WindowListener{
 					final BufferedReader lReader = new BufferedReader(new InputStreamReader(is2));
 					String l="";
 					while ((l=lReader.readLine())!=null) {
+						System.out.println(l);
 						if (l.length() >= 10) {
 							String s2 = l.substring(0, 9);
 							if (s2.equals("ID_LENGTH")) {

@@ -29,10 +29,10 @@ public class Bottom extends JFrame implements ActionListener{
 	private JButton accompany;
 	//private JButton original;	
 	private int volume;
-	static private int num=0;
+	//static private int num=0;
 	
 	public Bottom(){
-		
+		/*
 		num++;
 		System.out.println(num);
 		if(num>1) 
@@ -41,6 +41,7 @@ public class Bottom extends JFrame implements ActionListener{
 			dispose();
 			return;
 		}
+		*/
 		System.out.println("num<=1");
 		//this.setBounds(0, 765, 1280, 35);
     	this.setLayout(new GridLayout(1,11));
@@ -92,7 +93,7 @@ public class Bottom extends JFrame implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		if(e.getSource()==quit){
-			num--;
+			//num--;
 			Player.exit();
 			this.dispose();
 		}
