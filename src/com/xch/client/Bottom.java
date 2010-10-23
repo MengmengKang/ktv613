@@ -1,9 +1,15 @@
 package com.xch.client;
 
 import java.awt.GridLayout;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.net.URL;
+import java.net.URLClassLoader;
 
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 
@@ -24,7 +30,7 @@ public class Bottom extends JFrame implements ActionListener{
 	//private JButton original;	
 	private int volume;
 	static private int num=0;
-
+	
 	public Bottom(){
 		
 		num++;
@@ -41,7 +47,10 @@ public class Bottom extends JFrame implements ActionListener{
     	//original = new JButton("‘≠≥™");
     	accompany = new JButton("∞È≥™");
     	suspend = new JButton("‘›Õ£");
+    	//ImageIcon img = new ImageIcon("img/volumePlus.jpg");
     	volumePlus = new JButton("“Ù¡ø+");
+    	
+    	//volumePlus.setIcon(getImage("img\\volumePlus"));
     	volumeMinus = new JButton("“Ù¡ø-");
     	changeSong = new JButton("«–∏Ë");
     	playAgain = new JButton("÷ÿ≤•");
