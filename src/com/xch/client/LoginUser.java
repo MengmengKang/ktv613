@@ -1,11 +1,15 @@
 package com.xch.client;
+import java.awt.Container;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
@@ -62,45 +66,24 @@ public class LoginUser extends javax.swing.JFrame {
 			setResizable(false);
 			setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 			getContentPane().setLayout(null);
-			this.setTitle("\u7528\u6237\u767b\u5f55");
-			this.addWindowListener(new WindowAdapter() {
-				public void windowClosing(WindowEvent evt) {
-					thisWindowClosing(evt);
-				}
-			});
+			
+			setBak();
+			Container c = getContentPane(); //获取JFrame面板
+			c.setBounds(28, -29, 792, 566);
+			JPanel jp = new JPanel();      //创建个JPanel
+			jp.setOpaque(false);           //把JPanel设置为透明 这样就不会遮住后面的背景  这样你就能在JPanel随意加组件了
+			c.add(jp); 
 			{
-				jLabel1 = new JLabel();
-				getContentPane().add(jLabel1);
-				jLabel1.setText("\u7528\u6237\u540d");
-				jLabel1.setBounds(65, 67, 54, 17);
-			}
-			{
-				jLabel2 = new JLabel();
-				getContentPane().add(jLabel2);
-				jLabel2.setText("\u5bc6\u7801");
-				jLabel2.setBounds(65, 101, 54, 17);
-			}
-			{
-				jUserName = new JTextField();
-				getContentPane().add(jUserName);
-				jUserName.setBounds(131, 63, 121, 24);
-			}
-			{
-				jLogin = new JButton();
-				getContentPane().add(jLogin);
-				jLogin.setText("\u767b\u5f55");
-				jLogin.setBounds(97, 158, 61, 24);
-				jLogin.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent evt) {
-						jLoginActionPerformed(evt);
-					}
-				});
+				jLabel3 = new JLabel();
+				c.add(jLabel3);
+				jLabel3.setText("\u6ca1\u6709\u7528\u6237\u540d\uff1f");
+				jLabel3.setBounds(650, 278, 84, 15);
 			}
 			{
 				jRegister = new JButton();
-				getContentPane().add(jRegister);
+				c.add(jRegister);
 				jRegister.setText("\u6ce8\u518c");
-				jRegister.setBounds(282, 89, 69, 24);
+				jRegister.setBounds(650, 299, 69, 24);
 				jRegister.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent evt) {
 						jRegisterActionPerformed(evt);
@@ -108,15 +91,20 @@ public class LoginUser extends javax.swing.JFrame {
 				});
 			}
 			{
+				jUserName = new JTextField();
+				c.add(jUserName);
+				jUserName.setBounds(369, 273, 121, 24);
+			}
+			{
 				jPassword = new JPasswordField();
-				getContentPane().add(jPassword);
-				jPassword.setBounds(131, 97, 121, 24);
+				c.add(jPassword);
+				jPassword.setBounds(369, 333, 121, 24);
 			}
 			{
 				jExit = new JButton();
-				getContentPane().add(jExit);
+				c.add(jExit);
 				jExit.setText("\u9000\u51fa");
-				jExit.setBounds(221, 158, 61, 24);
+				jExit.setBounds(420, 395, 61, 24);
 				jExit.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent evt) {
 						jExitActionPerformed(evt);
@@ -124,13 +112,36 @@ public class LoginUser extends javax.swing.JFrame {
 				});
 			}
 			{
-				jLabel3 = new JLabel();
-				getContentPane().add(jLabel3);
-				jLabel3.setText("\u6ca1\u6709\u7528\u6237\u540d\uff1f");
-				jLabel3.setBounds(282, 68, 84, 15);
+				jLogin = new JButton();
+				c.add(jLogin);
+				jLogin.setText("\u767b\u5f55");
+				jLogin.setBounds(301, 395, 61, 24);
+				jLogin.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent evt) {
+						jLoginActionPerformed(evt);
+					}
+				});
 			}
+			{
+				jLabel1 = new JLabel();
+				c.add(jLabel1);
+				jLabel1.setText("\u7528\u6237\u540d");
+				jLabel1.setBounds(277, 277, 54, 17);
+			}
+			{
+				jLabel2 = new JLabel();
+				c.add(jLabel2);
+				jLabel2.setText("\u5bc6\u7801");
+				jLabel2.setBounds(277, 337, 54, 17);
+			}
+			this.setTitle("\u7528\u6237\u767b\u5f55");
+			this.addWindowListener(new WindowAdapter() {
+				public void windowClosing(WindowEvent evt) {
+					thisWindowClosing(evt);
+				}
+			});
 			pack();
-			this.setSize(386, 260);
+			this.setSize(800, 600);
 		} catch (Exception e) {
 		    //add your error handling code here
 			e.printStackTrace();
@@ -192,5 +203,10 @@ public class LoginUser extends javax.swing.JFrame {
 				"确定要退出KTV智能点播系统吗？", "警告", JOptionPane.YES_NO_OPTION);
 		if(response==0) this.dispose();
 	}
-
+	public void setBak(){ 
+		  ((JPanel)this.getContentPane()).setOpaque(false);
+		   ImageIcon img = new ImageIcon("img/Loading04.jpg"); 
+		   JLabel background = new JLabel(img);this.getLayeredPane().add(background, new Integer(Integer.MIN_VALUE)); 
+		   background.setBounds(0, 0, img.getIconWidth(), img.getIconHeight()); 
+		  } 
 }

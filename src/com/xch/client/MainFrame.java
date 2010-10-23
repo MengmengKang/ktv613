@@ -1,11 +1,15 @@
 package com.xch.client;
+import java.awt.Container;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import javax.swing.JButton;
 
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.WindowConstants;
 import javax.swing.SwingUtilities;
 
@@ -53,28 +57,29 @@ public class MainFrame extends javax.swing.JFrame {
 			setResizable(false);
 			setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 			getContentPane().setLayout(null);
-			this.setTitle("\u70b9\u6b4c\u754c\u9762");
-			this.addWindowListener(new WindowAdapter() {
-				public void windowClosing(WindowEvent evt) {
-					thisWindowClosing(evt);
-				}
-			});
+			
+			setBak();
+			Container c = getContentPane(); //获取JFrame面板
+			c.setBounds(28, -29, 792, 566);
+			JPanel jp = new JPanel();      //创建个JPanel
+			jp.setOpaque(false);           //把JPanel设置为透明 这样就不会遮住后面的背景  这样你就能在JPanel随意加组件了
+			c.add(jp);
 			{
-				jOrderByPinyin = new JButton();
-				getContentPane().add(jOrderByPinyin);
-				jOrderByPinyin.setText("\u62fc\u97f3\u70b9\u6b4c");
-				jOrderByPinyin.setBounds(43, 29, 93, 46);
-				jOrderByPinyin.addActionListener(new ActionListener() {
+				jExit = new JButton();
+				c.add(jExit);
+				jExit.setText("\u9000\u51fa");
+				jExit.setBounds(334, 491, 103, 29);
+				jExit.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent evt) {
-						jOrderByPinyinActionPerformed(evt);
+						jExitActionPerformed(evt);
 					}
 				});
 			}
 			{
 				jOrderBySongName = new JButton();
-				getContentPane().add(jOrderBySongName);
+				c.add(jOrderBySongName);
 				jOrderBySongName.setText("\u6b4c\u540d\u70b9\u6b4c");
-				jOrderBySongName.setBounds(173, 29, 93, 46);
+				jOrderBySongName.setBounds(480, 66, 200, 100);
 				jOrderBySongName.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent evt) {
 						jOrderBySongNameActionPerformed(evt);
@@ -82,21 +87,21 @@ public class MainFrame extends javax.swing.JFrame {
 				});
 			}
 			{
-				jOrderByStar = new JButton();
-				getContentPane().add(jOrderByStar);
-				jOrderByStar.setText("\u6b4c\u661f\u70b9\u6b4c");
-				jOrderByStar.setBounds(43, 106, 93, 46);
-				jOrderByStar.addActionListener(new ActionListener() {
+				jOrderByPinyin = new JButton();
+				c.add(jOrderByPinyin);
+				jOrderByPinyin.setText("\u62fc\u97f3\u70b9\u6b4c");
+				jOrderByPinyin.setBounds(93, 66, 200, 100);
+				jOrderByPinyin.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent evt) {
-						jOrderByStarActionPerformed(evt);
+						jOrderByPinyinActionPerformed(evt);
 					}
 				});
 			}
 			{
 				jOrderBySongNumber = new JButton();
-				getContentPane().add(jOrderBySongNumber);
+				c.add(jOrderBySongNumber);
 				jOrderBySongNumber.setText("\u5b57\u6570\u70b9\u6b4c");
-				jOrderBySongNumber.setBounds(173, 106, 93, 46);
+				jOrderBySongNumber.setBounds(480, 265, 200, 100);
 				jOrderBySongNumber.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent evt) {
 						jOrderBySongNumberActionPerformed(evt);
@@ -104,18 +109,25 @@ public class MainFrame extends javax.swing.JFrame {
 				});
 			}
 			{
-				jExit = new JButton();
-				getContentPane().add(jExit);
-				jExit.setText("\u9000\u51fa");
-				jExit.setBounds(103, 182, 103, 29);
-				jExit.addActionListener(new ActionListener() {
+				jOrderByStar = new JButton();
+				c.add(jOrderByStar);
+				jOrderByStar.setText("\u6b4c\u661f\u70b9\u6b4c");
+				jOrderByStar.setBounds(93, 265, 200, 100);
+				jOrderByStar.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent evt) {
-						jExitActionPerformed(evt);
+						jOrderByStarActionPerformed(evt);
 					}
 				});
 			}
+			
+			this.setTitle("\u70b9\u6b4c\u754c\u9762");
+			this.addWindowListener(new WindowAdapter() {
+				public void windowClosing(WindowEvent evt) {
+					thisWindowClosing(evt);
+				}
+			});
 			pack();
-			this.setSize(333, 266);
+			this.setSize(800, 600);
 		} catch (Exception e) {
 		    //add your error handling code here
 			e.printStackTrace();
@@ -181,4 +193,10 @@ public class MainFrame extends javax.swing.JFrame {
 		else this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE); 
 	}
 
+	public void setBak(){ 
+		  ((JPanel)this.getContentPane()).setOpaque(false);
+		   ImageIcon img = new ImageIcon("img/Loading03.jpg"); 
+		   JLabel background = new JLabel(img);this.getLayeredPane().add(background, new Integer(Integer.MIN_VALUE)); 
+		   background.setBounds(0, 0, img.getIconWidth(), img.getIconHeight()); 
+		  }
 }
