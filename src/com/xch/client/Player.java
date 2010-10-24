@@ -38,7 +38,9 @@ public class Player implements WindowListener{
 	static int videoHeight;//视频高
 	static float rate=1.2f;//宽高比
 	static int playOffset=0;//当前播放时间
-
+	
+	static boolean nextSong=false;
+	static String nextURL;
 	
 	int volume=100;//音量
 
@@ -210,12 +212,15 @@ public class Player implements WindowListener{
 						
 						if (l.startsWith("ID_EXIT=EOF"))
 						{
-							isPlay=false;
+							playComplete();
 							String URL=SongList.getSongURL();
 							if(URL.compareTo("ERROR")!=0)
 							{
-								play(URL);
+								nextURL=URL;
+								nextSong=true;
+								//play(URL);
 							}
+							
 						}
 					}
 				} catch (Throwable t) {
@@ -237,6 +242,11 @@ public class Player implements WindowListener{
 					t1.interrupt();
 					t2.interrupt();
 					playComplete();
+					if(nextSong)
+					{
+						nextSong=false;
+						play(nextURL);
+					}
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
@@ -415,11 +425,25 @@ public class Player implements WindowListener{
 	public static void addPlay(String name,String URL) {
 		// TODO Auto-generated method stub
 		SongList.addSong(name, URL);
+		if(!isPlay)
+		{
+			String url=SongList.getSongURL();
+			play(url);
+		}
 	}
 	public static void setTime(int i) {
 		// TODO Auto-generated method stub
 		progressBar.setValue(i);
 		seekto(0);
+	}
+
+	public static void nextSong() {
+		// TODO Auto-generated method stub
+		String URL=SongList.getSongURL();
+		if(URL.compareTo("ERROR")!=0)
+		{
+			play(URL);
+		}
 	}
 
 }

@@ -78,6 +78,7 @@ public class Bottom extends JFrame implements ActionListener{
     	playAgain.addActionListener(this);
     	volumePlus.addActionListener(this);
     	volumeMinus.addActionListener(this);
+    	changeSong.addActionListener(this);
     	stop.addActionListener(this);
     	quit.addActionListener(this);
      	
@@ -134,21 +135,11 @@ public class Bottom extends JFrame implements ActionListener{
 				accompany.setText("°é³ª");
 			}
 		}
-		/*
-		if(e.getSource()==original)
-		{
-			
-			Player.setOriginal();
-		}
-		*/
-		/*
-		if(e.getSource()==returnHome){
-			if(SongPinyin.frame!=null)
-            SongPinyin.frame.dispose();
-		}
-		*/
 		if(e.getSource()==stop){
 			Player.stop();
+		}
+		if(e.getSource()==changeSong){
+			Player.nextSong();
 		}
 	}
 	/*

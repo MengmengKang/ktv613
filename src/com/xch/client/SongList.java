@@ -32,6 +32,7 @@ public class SongList
 				songURL[i-1]=songURL[i];
 				songName[i-1]=songName[i];
 			}
+			num--;
 			return res;
 		}
 	}
