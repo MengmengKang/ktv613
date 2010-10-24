@@ -165,10 +165,17 @@ public class OrderByStar extends javax.swing.JFrame {
 		}
 		int SongID=Integer.parseInt(jResult.getValueAt(row, 0).toString());
 		String url=DA.getSongURL(SongID);
-		Player.video();
+		String name=jResult.getValueAt(row, 2).toString()+"£¨"+
+					jResult.getValueAt(row, 4)+"£©";
+		
 		System.out.println(url);
-		Player.play(url);
-		new Bottom();
+		
+		if(MainFrame.playing) Player.addPlay(name,url);
+		else {
+			Player.video();
+			Player.play(url);
+			new Bottom();
+		}
 	}
 	
 	private void jReturnActionPerformed(ActionEvent evt) {
