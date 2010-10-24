@@ -246,6 +246,7 @@ public class Player implements WindowListener{
 					if(nextSong)
 					{
 						nextSong=false;
+						Bottom.refreshSongList();
 						play(nextURL);
 					}
 				} catch (InterruptedException e) {
@@ -427,9 +428,11 @@ public class Player implements WindowListener{
 	public static void addPlay(String name,String URL) {
 		// TODO Auto-generated method stub
 		SongList.addSong(name, URL);
+		Bottom.refreshSongList();
 		if(!isPlay)
 		{
 			String url=SongList.getSongURL();
+			Bottom.refreshSongList();
 			play(url);
 		}
 	}

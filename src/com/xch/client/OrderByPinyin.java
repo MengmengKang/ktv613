@@ -164,7 +164,8 @@ public class OrderByPinyin extends javax.swing.JFrame {
 		}
 		int SongID=Integer.parseInt(jResult.getValueAt(row, 0).toString());
 		String url=DA.getSongURL(SongID);
-		String name=jResult.getValueAt(row, 2).toString();
+		String name=jResult.getValueAt(row, 2).toString()+"£¨"+
+					jResult.getValueAt(row, 4)+"£©";
 		
 		System.out.println(url);
 		
