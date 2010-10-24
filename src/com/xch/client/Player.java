@@ -167,6 +167,7 @@ public class Player implements WindowListener{
 						}
 						//解析播放时间
 						if(l.length()>70&&l.startsWith("A:")){
+							isPlay=true;
 							int index = l.indexOf(".");
 							String s3 = l.substring(2, index);
 							int index2 = 0;
@@ -212,7 +213,7 @@ public class Player implements WindowListener{
 						
 						if (l.startsWith("ID_EXIT=EOF"))
 						{
-							playComplete();
+							//playComplete();
 							String URL=SongList.getSongURL();
 							if(URL.compareTo("ERROR")!=0)
 							{
@@ -282,6 +283,7 @@ public class Player implements WindowListener{
 
 	static //停止
 	void stop(){
+
 		if(proc!=null){
 			proc.destroy();
 		}
@@ -437,13 +439,14 @@ public class Player implements WindowListener{
 		seekto(0);
 	}
 
-	public static void nextSong() {
+	public static String nextSong() {
 		// TODO Auto-generated method stub
 		String URL=SongList.getSongURL();
-		if(URL.compareTo("ERROR")!=0)
-		{
-			play(URL);
-		}
+		if(URL.compareTo("ERROR")==0) return URL;
+		t1.interrupt();
+		t2.interrupt();
+		stop();
+		return URL;
 	}
 
 }

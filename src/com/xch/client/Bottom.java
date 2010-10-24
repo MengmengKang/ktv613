@@ -14,11 +14,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 
 public class Bottom extends JFrame implements ActionListener{
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	
+		
 	private JButton suspend;
 	private JButton volumePlus;
 	private JButton volumeMinus;
@@ -42,7 +38,7 @@ public class Bottom extends JFrame implements ActionListener{
 			return;
 		}
 		*/
-		System.out.println("num<=1");
+		//System.out.println("num<=1");
 		//this.setBounds(0, 765, 1280, 35);
     	this.setLayout(new GridLayout(1,11));
     	//original = new JButton("Ô­³ª");
@@ -139,15 +135,9 @@ public class Bottom extends JFrame implements ActionListener{
 			Player.stop();
 		}
 		if(e.getSource()==changeSong){
-			Player.nextSong();
+			String res=Player.nextSong();
+			if(res.compareTo("ERROR")!=0)
+				Player.play(res);
 		}
 	}
-	/*
-	public static void main(String[] args)
-	{
-		new Bottom();
-		Player.video();
-		Player.play("lib\\test4.mpg");
-	}
-	*/
 }
