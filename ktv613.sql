@@ -65,7 +65,7 @@ CREATE TABLE `songs` (
 
 LOCK TABLES `songs` WRITE;
 /*!40000 ALTER TABLE `songs` DISABLE KEYS */;
-INSERT INTO `songs` VALUES (1,'这该死的爱','流行歌曲',5,'ZHEGAISIDEAI',1,'Media\\这该死的爱.rmvb'),(2,'祝福','经典老歌',2,'ZHUFU',2,'Media\\祝福.rmvb'),(3,'忘情水','经典老歌',3,'WANGQINGSHUI',3,'Media\\忘情水.rmvb'),(4,'吻别','经典老歌',2,'WENBIE',2,'Media\\吻别.rmvb'),(5,'青花瓷','流行歌曲',3,'QINGHUACI',4,'Media\\青花瓷.rmvb'),(6,'千里之外','流行歌曲',4,'QIANLIZHIWAI',4,'Media\\千里之外.rmvb'),(7,'跨时代','流行歌曲',3,'KUASHIDAI',4,'Media\\跨时代.rmvb'),(8,'谢谢你的爱','经典老歌',5,'XIEXIENIDEAI',3,'Media\\谢谢你的爱.rmvb'),(9,'我相信','流行歌曲',3,'WOXIANGXIN ',1,'Media\\我相信.rmvb'),(10,'传奇','流行歌曲',2,'CHUANQI',5,'Media\\传奇.rmvb'),(11,'容易受伤的女人','流行歌曲',7,'RONGYISHOUSHANGDENVREN',5,'Media\\容易受伤的女人.rmvb'),(12,'爱','经典老歌',1,'AI',6,'Media\\爱.rmvb'),(13,'真心英雄','经典老歌',4,'ZHENXINYINGXIONG',7,'Media\\真心英雄.rmvb');
+INSERT INTO `songs` VALUES (1,'这该死的爱','流行歌曲',5,'ZHEGAISIDEAI',1,'Media\\这该死的爱.rmvb'),(2,'我愿意','经典老歌',3,'WOYUANYI',5,'Media\\我愿意.rmvb'),(3,'忘情水','经典老歌',3,'WANGQINGSHUI',3,'Media\\忘情水.rmvb'),(4,'执迷不悔','经典老歌',4,'ZHIMIBUHUI',5,'Media\\执迷不悔.rmvb'),(5,'青花瓷','流行歌曲',3,'QINGHUACI',4,'Media\\青花瓷.rmvb'),(6,'千里之外','流行歌曲',4,'QIANLIZHIWAI',4,'Media\\千里之外.rmvb'),(7,'跨时代','流行歌曲',3,'KUASHIDAI',4,'Media\\跨时代.rmvb'),(8,'谢谢你的爱','经典老歌',5,'XIEXIENIDEAI',3,'Media\\谢谢你的爱.rmvb'),(9,'我相信','流行歌曲',3,'WOXIANGXIN ',1,'Media\\我相信.rmvb'),(10,'传奇','流行歌曲',2,'CHUANQI',5,'Media\\传奇.rmvb'),(11,'容易受伤的女人','流行歌曲',7,'RONGYISHOUSHANGDENVREN',5,'Media\\容易受伤的女人.rmvb'),(12,'爱','经典老歌',1,'AI',6,'Media\\爱.rmvb'),(13,'真心英雄','经典老歌',4,'ZHENXINYINGXIONG',7,'Media\\真心英雄.rmvb');
 /*!40000 ALTER TABLE `songs` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -121,7 +121,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'admin','21232F297A57A5A743894A0E4A801FC3','xc','xc@xch.pp.ru','','computer');
+INSERT INTO `users` VALUES (1,'admin','21232F297A57A5A743894A0E4A801FC3','xc','xc@xch.pp.ru','','computer'),(2,'luolei','ECC2334467ED410B50501DA7140B7B33','luolei','ddd','','ddd');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -134,4 +134,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2010-10-13 21:34:57
+-- Dump completed on 2010-10-24 20:40:43
