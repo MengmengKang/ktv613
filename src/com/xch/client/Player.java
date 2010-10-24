@@ -38,6 +38,8 @@ public class Player implements WindowListener{
 	static int videoHeight;//视频高
 	static float rate=1.2f;//宽高比
 	static int playOffset=0;//当前播放时间
+
+	
 	int volume=100;//音量
 
 	//播放器状态
@@ -52,7 +54,7 @@ public class Player implements WindowListener{
 		}
 		//实例化一个播放器
 		Player player=new Player();
-
+		MainFrame.playing=true;
 		mainFrame=new JFrame();
 		mainFrame.setBounds(800,80,380,400);
 		mainFrame.setBounds(850,80,380,400);
@@ -103,36 +105,6 @@ public class Player implements WindowListener{
 
 			}
 		};
-		/*
-		Thread setProgressDelay = new Thread() {
-			public void run() {
-				while (true) {
-					SwingUtilities.invokeLater(new Runnable(){
-						public void run() {
-							if(isPlay){
-								if (progressBar != null) {
-									if(mediaPath!=null){
-										if(playOffset<length) playOffset++;
-										progressBar.setTime(playOffset, length);
-									}
-								}
-							}
-							else{
-								playOffset=0;
-								progressBar.setTime(playOffset, length);
-							}
-						}
-					});
-					try {
-						Thread.sleep(100);
-					} catch (InterruptedException e) {
-						e.printStackTrace();
-					}
-				}
-
-			}
-		};
-		*/
 		setProgressDelay.start();
 	}
 
@@ -146,7 +118,6 @@ public class Player implements WindowListener{
 				mplayerPath,//mplayer路径
 				"-vo","directx",//视频驱动				
 				"-identify", //输出详情
-				"-msglevel","identify=7",  //输出详情
 				"-slave", //slave模式播放
 				"-wid",String.valueOf(videoPanel.getWid()),//视频窗口的window handle
 				"-colorkey", "0x030303",//视频窗口的背景色
@@ -234,6 +205,16 @@ public class Player implements WindowListener{
 								String value = l.substring(index + 1);
 								float intvalue=Float.valueOf(value);
 								length=(int)intvalue;
+							}
+						}
+						
+						if (l.startsWith("ID_EXIT=EOF"))
+						{
+							isPlay=false;
+							String URL=SongList.getSongURL();
+							if(URL.compareTo("ERROR")!=0)
+							{
+								play(URL);
 							}
 						}
 					}
@@ -431,15 +412,9 @@ public class Player implements WindowListener{
 			s.flush();
 		}		
 	}
-	public static void addPlay(String path) {
+	public static void addPlay(String name,String URL) {
 		// TODO Auto-generated method stub
-		if (proc != null) {
-			System.out.println("增加播放歌曲  "+"loadfile "+path+" 1\n");
-			PrintStream s = new PrintStream(proc.getOutputStream());
-			s.print("loadfile "+path+" 1\n");
-			//s.print("get_audio_samples\n");
-			s.flush();
-		}		
+		SongList.addSong(name, URL);
 	}
 	public static void setTime(int i) {
 		// TODO Auto-generated method stub

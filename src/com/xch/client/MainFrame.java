@@ -64,6 +64,8 @@ public class MainFrame extends javax.swing.JFrame {
 			JPanel jp = new JPanel();      //创建个JPanel
 			jp.setOpaque(false);           //把JPanel设置为透明 这样就不会遮住后面的背景  这样你就能在JPanel随意加组件了
 			c.add(jp);
+			
+			SongList.newList();
 			{
 				jExit = new JButton();
 				c.add(jExit);
