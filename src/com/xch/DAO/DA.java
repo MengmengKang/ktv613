@@ -10,7 +10,7 @@ import com.xch.obj.UserData;
 public class DA {
 	final static String DB="ktv613";
 	final static String ID="root";
-	final static String PW="czx";
+	final static String PW="";
 	final static String CONNECT="jdbc:mysql://localhost:3306/"+DB+"?useUnicode=true&characterEncoding=utf8";
 	
 	static Connection aConnection;

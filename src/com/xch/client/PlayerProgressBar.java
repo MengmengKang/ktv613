@@ -44,7 +44,7 @@ public class PlayerProgressBar extends JProgressBar{
 				player.playOffset=ds;
 				//System.out.println("ds ="+ds);
 				player.seekto(ds);
-				player.pause();
+				//player.pause();
 			}
 
 		});
