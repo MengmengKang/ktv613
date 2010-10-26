@@ -1,5 +1,4 @@
 @echo off
 cd ..
-cd bin
+set classpath=%CD%\lib;%CD%\bin;%CD%;%classpath%
 java com.xch.server.LoginAdmin
-pause
