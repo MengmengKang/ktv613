@@ -111,6 +111,7 @@ public class OrderBySongNumber extends javax.swing.JFrame {
 					jResult.setModel(jResultModel);
 					jResult.setBounds(12, 60, 157, 191);
 					jResult.setDragEnabled(true);
+					jResult.getTableHeader().setReorderingAllowed(false);
 					jResult.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 				}
 			}
