@@ -22,7 +22,7 @@ import com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel;
 
 
 public class Player implements WindowListener{
-	static Config config;
+	//static Config config;
 	static JFrame mainFrame;
 	static VideoPanel videoPanel;
 	JPanel controlBar;
