@@ -195,11 +195,13 @@ public class ManageSongs extends javax.swing.JFrame {
 			int response=JOptionPane.showConfirmDialog(null,
 					"确定要删除歌曲“"+songname+"”吗？", "警告", JOptionPane.YES_NO_OPTION);
 			if(response==0) 
+			{
 				DA.delSong(songid);
-			String[][] res=DA.listSong();
-			TableModel jResultModel = 
-				new DefaultTableModel(res,titles);
-			jTable1.setModel(jResultModel);
+				String[][] res=DA.listSong();
+				TableModel jResultModel = 
+					new DefaultTableModel(res,titles);
+				jTable1.setModel(jResultModel);
+			}
 		}
 
 }

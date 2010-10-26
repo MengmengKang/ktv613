@@ -225,9 +225,15 @@ public class ManageStars extends javax.swing.JFrame {
 				return ;
 			}
 			int response=JOptionPane.showConfirmDialog(null,
-					"确定要删除歌星"+jStarsNames.getValueAt(row,1)+"的相关信息吗？", "警告", JOptionPane.YES_NO_OPTION);
+					"确定要删除歌星"+jStarsNames.getValueAt(row,1)+"的相关信息吗？\n该歌星的所有歌曲信息将会一并被删除！！！", "警告", JOptionPane.YES_NO_OPTION);
 			if(response==0) 
+			{
 				DA.delStar(Integer.parseInt(jStarsNames.getValueAt(row,0).toString()));
+				String[][] res=DA.listStar();
+				TableModel jStarsNamesModel = 
+					new DefaultTableModel(res,titles);
+				jStarsNames.setModel(jStarsNamesModel);
+			}
 		}
 
 }

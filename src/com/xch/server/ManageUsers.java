@@ -191,7 +191,13 @@ public class ManageUsers extends javax.swing.JFrame {
 			int response=JOptionPane.showConfirmDialog(null,
 					"确定要删除用户"+jUser.getValueAt(row,1)+"的相关信息吗？", "警告", JOptionPane.YES_NO_OPTION);
 			if(response==0) 
+			{
 				DA.delUser(Integer.parseInt(jUser.getValueAt(row,0).toString()));
+				String[][] res=DA.listUser();
+				TableModel jStarsNamesModel = 
+					new DefaultTableModel(res,titles);
+				jUser.setModel(jStarsNamesModel);
+			}
 		}
 		
 		private void jRefreshMessageActionPerformed(ActionEvent evt) {

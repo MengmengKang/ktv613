@@ -210,11 +210,13 @@ public class ManageAdmin extends javax.swing.JFrame {
 			int response=JOptionPane.showConfirmDialog(null,
 					"确定要删除管理员用户“"+str+"”吗？", "警告", JOptionPane.YES_NO_OPTION);
 			if(response==0) 
+			{
 				DA.delAdmin(str);
-			String[][] res=DA.listAdmin();
-			TableModel jResultModel = 
-				new DefaultTableModel(res,titles);
-			jMainAdmin.setModel(jResultModel);
+				String[][] res=DA.listAdmin();
+				TableModel jResultModel = 
+					new DefaultTableModel(res,titles);
+				jMainAdmin.setModel(jResultModel);
+			}
 		}
 		
 		private void jAddAdminActionPerformed(ActionEvent evt) {
