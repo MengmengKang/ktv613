@@ -51,7 +51,6 @@ public class AddSongs extends javax.swing.JFrame {
 	private JLabel jAddSong;
 	private JLabel jLabel1;
 	private JButton jExit;
-	private SongData song;
 	private String[] StarNameList;
 	private int[] StarIDList;
 	private String path;
@@ -59,6 +58,7 @@ public class AddSongs extends javax.swing.JFrame {
 	/**
 	* Auto-generated main method to display this JFrame
 	*/
+	/*
 	public static void main(String[] args) {
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
@@ -68,7 +68,7 @@ public class AddSongs extends javax.swing.JFrame {
 			}
 		});
 	}
-	
+	*/
 	public AddSongs() {
 		super();
 		initGUI();

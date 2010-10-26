@@ -47,6 +47,7 @@ public class ManageSongs extends javax.swing.JFrame {
 	/**
 	* Auto-generated main method to display this JFrame
 	*/
+	/*
 	public static void main(String[] args) {
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
@@ -56,7 +57,7 @@ public class ManageSongs extends javax.swing.JFrame {
 			}
 		});
 	}
-	
+	*/
 	public ManageSongs() {
 		super();
 		initGUI();

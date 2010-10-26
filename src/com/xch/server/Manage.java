@@ -34,6 +34,7 @@ public class Manage extends javax.swing.JFrame {
 	/**
 	* Auto-generated main method to display this JFrame
 	*/
+	/*
 	public static void main(String[] args) {
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
@@ -43,7 +44,7 @@ public class Manage extends javax.swing.JFrame {
 			}
 		});
 	}
-	
+	*/
 	public Manage() {
 		super();
 		initGUI();

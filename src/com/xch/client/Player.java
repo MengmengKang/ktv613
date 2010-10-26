@@ -182,6 +182,8 @@ public class Player implements WindowListener{
 							String s4 = s3.substring(index2);
 							playOffset = Integer.valueOf(s4);
 						}
+						
+						
 						if (l.length() >= 15) {
 							String s4 = l.substring(0, 15);
 							//解析视频宽度
@@ -208,6 +210,7 @@ public class Player implements WindowListener{
 								String value = l.substring(index + 1);
 								float intvalue=Float.valueOf(value);
 								length=(int)intvalue;
+								System.out.printf("歌曲长度="+length);
 							}
 						}
 						
@@ -223,6 +226,7 @@ public class Player implements WindowListener{
 							}
 							
 						}
+
 					}
 				} catch (Throwable t) {
 					t.printStackTrace();
@@ -265,6 +269,7 @@ public class Player implements WindowListener{
 			if (proc != null&isPlay) {
 				PrintStream s = new PrintStream(proc.getOutputStream());
 				String command = "seek " + value + " 2\n";
+				System.out.println(command);
 				s.print(command);
 				s.flush();
 			}
@@ -404,29 +409,22 @@ public class Player implements WindowListener{
 	}
 
 	public static void setAccompany() {
-		// TODO Auto-generated method stub
 		if (proc != null)
 		{
-			//System.out.println("伴唱");
 			PrintStream s = new PrintStream(proc.getOutputStream());
 			s.print("af_add pan=1:-1:1\n");
-			//s.print("get_audio_samples\n");
 			s.flush();
 		}
 	}
 
 	public static void setOriginal() {
-		// TODO Auto-generated method stub
 		if (proc != null) {
-			//System.out.println("原唱");
 			PrintStream s = new PrintStream(proc.getOutputStream());
 			s.print("af_clr\n");
-			//s.print("get_audio_samples\n");
 			s.flush();
 		}		
 	}
 	public static void addPlay(String name,String URL) {
-		// TODO Auto-generated method stub
 		SongList.addSong(name, URL);
 		Bottom.refreshSongList();
 		if(!isPlay)
@@ -437,13 +435,11 @@ public class Player implements WindowListener{
 		}
 	}
 	public static void setTime(int i) {
-		// TODO Auto-generated method stub
 		progressBar.setValue(i);
 		seekto(0);
 	}
 
 	public static String nextSong() {
-		// TODO Auto-generated method stub
 		String URL=SongList.getSongURL();
 		if(URL.compareTo("ERROR")==0) return URL;
 		t1.interrupt();

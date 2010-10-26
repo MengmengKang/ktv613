@@ -174,6 +174,7 @@ public class LoginUser extends javax.swing.JFrame {
 		if (DA.loginUser(user))
 		{
 			this.dispose();
+			SongList.newList();
 			MainFrame inst = new MainFrame();
 			inst.setLocationRelativeTo(null);
 			inst.setVisible(true);

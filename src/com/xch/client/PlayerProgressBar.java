@@ -40,9 +40,11 @@ public class PlayerProgressBar extends JProgressBar{
 				System.out.println("seek to "+sel+" isPlay="+player.isPlay);
 				progressBar.setValue((int) sel);
 				int length=player.length;
-				int ds = (int) ((sel / progressBar.getMaximum()) * length);
+				int ds = (int) (sel / progressBar.getMaximum() * length);
 				player.playOffset=ds;
+				//System.out.println("ds ="+ds);
 				player.seekto(ds);
+				player.pause();
 			}
 
 		});

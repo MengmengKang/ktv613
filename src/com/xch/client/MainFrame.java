@@ -36,6 +36,7 @@ public class MainFrame extends javax.swing.JFrame {
 	/**
 	* Auto-generated main method to display this JFrame
 	*/
+	/*
 	public static void main(String[] args) {
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
@@ -45,7 +46,7 @@ public class MainFrame extends javax.swing.JFrame {
 			}
 		});
 	}
-	
+	*/
 	public MainFrame() {
 		super();
 		initGUI();
@@ -63,9 +64,7 @@ public class MainFrame extends javax.swing.JFrame {
 			c.setBounds(28, -29, 792, 566);
 			JPanel jp = new JPanel();      //创建个JPanel
 			jp.setOpaque(false);           //把JPanel设置为透明 这样就不会遮住后面的背景  这样你就能在JPanel随意加组件了
-			c.add(jp);
-			
-			SongList.newList();
+			c.add(jp);			
 			{
 				jExit = new JButton();
 				c.add(jExit);

@@ -8,10 +8,10 @@ import com.xch.obj.StarData;
 import com.xch.obj.UserData;
 
 public class DA {
-	static String DB="ktv613";
-	static String ID="root";
-	static String PW="";
-	static String CONNECT="jdbc:mysql://localhost:3306/"+DB+"?useUnicode=true&characterEncoding=utf8";
+	final static String DB="ktv613";
+	final static String ID="root";
+	final static String PW="czx";
+	final static String CONNECT="jdbc:mysql://localhost:3306/"+DB+"?useUnicode=true&characterEncoding=utf8";
 	
 	static Connection aConnection;
 	static Statement aStatement;
