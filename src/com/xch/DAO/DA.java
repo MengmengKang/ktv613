@@ -1,6 +1,12 @@
 package com.xch.DAO;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.sql.*;
+
+import javax.swing.JOptionPane;
 
 import com.xch.obj.AdminData;
 import com.xch.obj.SongData;
@@ -9,12 +15,41 @@ import com.xch.obj.UserData;
 
 public class DA {
 	final static String DB="ktv613";
-	final static String ID="root";
-	final static String PW="";
+	//final static String ID="root";
+	//final static String PW="";
+	static String ID=null;
+	static String PW=null;
 	final static String CONNECT="jdbc:mysql://localhost:3306/"+DB+"?useUnicode=true&characterEncoding=utf8";
 	
 	static Connection aConnection;
 	static Statement aStatement;
+
+	public static void readConfig() 
+	{
+		File file = new File("config.ini");  
+
+		try {
+			BufferedReader reader = new BufferedReader(new FileReader(file));
+			
+			String tempString;
+			
+			while ((tempString = reader.readLine()) != null){  
+				//显示行号  
+				if(tempString.startsWith("ID="))
+					ID=tempString.substring(3);
+				if(tempString.startsWith("PW="))
+					PW=tempString.substring(3);
+			}
+		
+			reader.close();
+			
+			DA.open();
+			DA.close();
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+	}
 	
 	public static void open()
 	{
@@ -23,8 +58,11 @@ public class DA {
 			aConnection = DriverManager.getConnection(CONNECT,ID,PW);
 			aStatement= aConnection.createStatement();
 		} catch (Exception e) {
+			
 			// TODO: handle exception
 			System.out.println(e);
+			JOptionPane.showMessageDialog(null, "数据库连接失败！\n请检查配置文件“config.ini”中的用户名以及密码是否错误");
+			System.exit(0);
 		}
 	}
 	
