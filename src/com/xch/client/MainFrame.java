@@ -178,6 +178,7 @@ public class MainFrame extends javax.swing.JFrame {
 				"确定要退出KTV智能点播系统吗？", "警告", JOptionPane.YES_NO_OPTION);
 		if(response==0){
 			this.dispose();
+			Player.exit();
 			System.exit(0);
 		}
 	}
@@ -189,6 +190,7 @@ public class MainFrame extends javax.swing.JFrame {
 				"确定要退出KTV智能点播系统吗？", "警告", JOptionPane.YES_NO_OPTION);
 		if(response==0){
 			this.dispose();
+			Player.exit();
 			System.exit(0);
 		}
 		else this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE); 

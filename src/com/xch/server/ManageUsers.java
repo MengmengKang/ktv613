@@ -14,6 +14,7 @@ import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.ListModel;
+import javax.swing.ListSelectionModel;
 
 import javax.swing.WindowConstants;
 import javax.swing.table.DefaultTableModel;
@@ -153,7 +154,8 @@ public class ManageUsers extends javax.swing.JFrame {
 					jScrollPane1.setViewportView(jUser);
 					jUser.setModel(jUserModel);
 					jUser.setBounds(232, 68, 140, 73);
-					jUser.setPreferredSize(new java.awt.Dimension(489, 142));
+					//jUser.setPreferredSize(new java.awt.Dimension(489, 142));
+					jUser.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 				}
 			}
 			pack();

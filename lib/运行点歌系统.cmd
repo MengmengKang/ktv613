@@ -1,5 +1,5 @@
 @echo off
 cd ..
 cd bin
-java com.xch.client.MainFrame
+java com.xch.client.LoginUser
 pause

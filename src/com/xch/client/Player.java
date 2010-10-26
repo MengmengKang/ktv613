@@ -58,8 +58,8 @@ public class Player implements WindowListener{
 		Player player=new Player();
 		MainFrame.playing=true;
 		mainFrame=new JFrame();
-		mainFrame.setBounds(800,80,380,400);
-		mainFrame.setBounds(850,80,380,400);
+		int screenWidth = ((int)java.awt.Toolkit.getDefaultToolkit().getScreenSize().width);
+		mainFrame.setBounds(screenWidth-380,80,380,400);
 		mainFrame.setAlwaysOnTop(true);
 		mainFrame.setUndecorated(true);
 		mainFrame.addWindowListener(player);
@@ -448,4 +448,5 @@ public class Player implements WindowListener{
 		return URL;
 	}
 
+	
 }

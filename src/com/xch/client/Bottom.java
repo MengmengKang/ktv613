@@ -124,7 +124,8 @@ public class Bottom extends JFrame implements ActionListener{
     	quit.addActionListener(this);
      	
     	this.setUndecorated(true);
-    	this.setLocation(900, 480);
+    	int screenWidth = ((int)java.awt.Toolkit.getDefaultToolkit().getScreenSize().width);
+    	this.setLocation(screenWidth-310, 480);
     	this.setSize(240, 240);
     	this.setVisible(true);
     	this.setAlwaysOnTop(true);
