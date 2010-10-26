@@ -65,7 +65,7 @@ CREATE TABLE `songs` (
 
 LOCK TABLES `songs` WRITE;
 /*!40000 ALTER TABLE `songs` DISABLE KEYS */;
-INSERT INTO `songs` VALUES (1,'这该死的爱','流行歌曲',5,'ZHEGAISIDEAI',1,'Media\\这该死的爱.rmvb'),(2,'我愿意','经典老歌',3,'WOYUANYI',5,'Media\\我愿意.rmvb'),(3,'忘情水','经典老歌',3,'WANGQINGSHUI',3,'Media\\忘情水.rmvb'),(4,'执迷不悔','经典老歌',4,'ZHIMIBUHUI',5,'Media\\执迷不悔.rmvb'),(5,'青花瓷','流行歌曲',3,'QINGHUACI',4,'Media\\青花瓷.rmvb'),(6,'千里之外','流行歌曲',4,'QIANLIZHIWAI',4,'Media\\千里之外.rmvb'),(7,'跨时代','流行歌曲',3,'KUASHIDAI',4,'Media\\跨时代.rmvb'),(8,'谢谢你的爱','经典老歌',5,'XIEXIENIDEAI',3,'Media\\谢谢你的爱.rmvb'),(9,'我相信','流行歌曲',3,'WOXIANGXIN ',1,'Media\\我相信.rmvb'),(10,'传奇','流行歌曲',2,'CHUANQI',5,'Media\\传奇.rmvb'),(11,'容易受伤的女人','流行歌曲',7,'RONGYISHOUSHANGDENVREN',5,'Media\\容易受伤的女人.rmvb'),(12,'爱','经典老歌',1,'AI',6,'Media\\爱.rmvb'),(13,'真心英雄','经典老歌',4,'ZHENXINYINGXIONG',7,'Media\\真心英雄.rmvb'),(14,'大城小爱','流行',4,'DACHENGXIAOAI',9,'Media\\大城小爱.rmvb'),(15,'花田错','流行',3,'HUATIANCUO',9,'Media\\花田错.rmvb'),(16,'日不落','流行',3,'RIBULUO',8,'Media\\日不落.rmvb'),(17,'爱无赦','流行',3,'AIWUSHE',8,'Media\\爱无赦.rmvb'),(18,'心跳','流行',2,'XINTIAO',9,'Media\\心跳.rmvb');
+INSERT INTO `songs` VALUES (1,'这该死的爱','流行歌曲',5,'ZHEGAISIDEAI',1,'Media\\这该死的爱.rmvb'),(2,'我愿意','经典老歌',3,'WOYUANYI',5,'Media\\我愿意.rmvb'),(3,'忘情水','经典老歌',3,'WANGQINGSHUI',3,'Media\\忘情水.rmvb'),(5,'青花瓷','流行歌曲',3,'QINGHUACI',4,'Media\\青花瓷.rmvb'),(6,'千里之外','流行歌曲',4,'QIANLIZHIWAI',4,'Media\\千里之外.rmvb'),(8,'谢谢你的爱','经典老歌',5,'XIEXIENIDEAI',3,'Media\\谢谢你的爱.rmvb'),(9,'我相信','流行歌曲',3,'WOXIANGXIN ',1,'Media\\我相信.rmvb'),(10,'传奇','流行歌曲',2,'CHUANQI',5,'Media\\传奇.rmvb'),(11,'容易受伤的女人','流行歌曲',7,'RONGYISHOUSHANGDENVREN',5,'Media\\容易受伤的女人.rmvb'),(12,'爱','经典老歌',1,'AI',6,'Media\\爱.rmvb'),(13,'真心英雄','经典老歌',4,'ZHENXINYINGXIONG',7,'Media\\真心英雄.rmvb'),(14,'大城小爱','流行',4,'DACHENGXIAOAI',9,'Media\\大城小爱.rmvb'),(15,'花田错','流行',3,'HUATIANCUO',9,'Media\\花田错.rmvb'),(16,'日不落','流行',3,'RIBULUO',8,'Media\\日不落.rmvb'),(17,'爱无赦','流行',3,'AIWUSHE',8,'Media\\爱无赦.rmvb'),(18,'心跳','流行',2,'XINTIAO',9,'Media\\心跳.rmvb');
 /*!40000 ALTER TABLE `songs` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -134,4 +134,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2010-10-26 18:02:49
+-- Dump completed on 2010-10-26 18:57:55
