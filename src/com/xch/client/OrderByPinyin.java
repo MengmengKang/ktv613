@@ -99,20 +99,6 @@ public class OrderByPinyin extends javax.swing.JFrame {
 				jScrollPane1 = new JScrollPane();
 				getContentPane().add(jScrollPane1);
 				jScrollPane1.setBounds(23, 57, 525, 214);
-				{
-					TableModel jResultModel = 
-						new DefaultTableModel(
-								new String[][] {},titles);
-					jResult = new JTable()
-					{
-						public boolean isCellEditable(int row,int col){return false;}
-					};
-					jScrollPane1.setViewportView(jResult);
-					jResult.setModel(jResultModel);
-					jResult.setBounds(12, 60, 157, 191);
-					jResult.setDragEnabled(true);
-					jResult.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-				}
 			}
 			{
 				jOrder = new JButton();
@@ -135,6 +121,20 @@ public class OrderByPinyin extends javax.swing.JFrame {
 						jReturnActionPerformed(evt);
 					}
 				});
+			}
+			{
+				TableModel jResultModel = 
+					new DefaultTableModel(
+							new String[][] {},titles);
+				jResult = new JTable()
+				{
+					public boolean isCellEditable(int row,int col){return false;}
+				};
+				getContentPane().add(jResult);
+				jResult.setModel(jResultModel);
+				jResult.setBounds(-35, 67, 507, 208);
+				jResult.setDragEnabled(true);
+				jResult.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 			}
 			pack();
 			this.setSize(582, 321);
