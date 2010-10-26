@@ -47,6 +47,7 @@ public class DA {
 			DA.close();
 		} catch (IOException e1) {
 			// TODO Auto-generated catch block
+			JOptionPane.showMessageDialog(null, "无法打开配置文件“config.ini”\n请检查该配置文件是否存在");
 			e1.printStackTrace();
 		}
 	}
