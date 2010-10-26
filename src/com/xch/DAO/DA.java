@@ -420,8 +420,10 @@ public class DA {
 		try {
 			open();				
 			String sql="delete from stars where starid="+starid;
+
+			aStatement.executeUpdate(sql);
 			
-			//System.out.println(sql);
+			sql="delete from songs where starid="+starid;
 			
 			aStatement.executeUpdate(sql);
 			close();
