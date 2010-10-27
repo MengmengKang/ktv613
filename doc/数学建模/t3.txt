@@ -1,0 +1,55 @@
+model:
+sets:
+subclass/1..2/; 
+class/1..2/;
+day/1..7/;
+dayandday(day,day);
+dayandtype(class,day,day):demand,price;
+dayandsubtype(subclass,class,day,day):var,subprice;
+available(class,day):capacity;
+endsets
+data:
+demand=
+2  20  6  10  15  18  7
+0  5  0  8  10  10  20
+0  0  12  17  14  9  30
+0  0  0  0  6  15  20
+0  0  0  0  30  27  20
+0  0  0  0  0  18  10
+0  0  0  0  0  0  22
+12  8  6  10  5  4  7
+0  9  12  10  9  5  2
+0  0  12  7  6  5  2
+0  0  0  8  7  5  1
+0  0  0  0  5  8  24
+0  0  0  0  0  26  18
+0  0  0  0  0  0  0;
+price =
+888	1680  2530  3197  3996  4795  4973
+0	888  1680  2530  3197  3996  4262
+0  0  888  1680  2530  3374  3552
+0  0  0  888  1776  2664  3197
+0  0  0  0  999  1998  2697
+0  0  0  0  0  999  1680
+0  0  0  0  0  0  888
+1100  2200  3000  4000  5000  5800  6000
+0  1100  2200  3000  4000  5000  5800
+0  0  1100  2200  3000  4000  5000
+0  0  0  1100  2200  3300  4000
+0  0  0  0  1200  2400  3300
+0  0  0  0  0  1200  2300
+0  0  0  0  0  0  1100;
+capacity=
+100  140  160  188  150  150  150
+80  120  120  120  120  120  120;
+enddata
+alpha=0.9;
+@for(dayandday(i,j):subprice(1,1,i,j)=price(1,i,j));
+@for(dayandday(i,j):subprice(2,1,i,j)=alpha*price(1,i,j));
+@for(dayandday(i,j):subprice(2,2,i,j)=price(2,i,j));
+@for(dayandday(i,j):subprice(1,2,i,j)=alpha*price(2,i,j));
+max=@sum(dayandsubtype(u,k,i,j):var(u,k,i,j)*subprice(u,k,i,j));
+@for(dayandtype(k,i,j):@sum(subclass(u):var(k,u,i,j))<demand(k,i,j));
+@for(available(k,l):@sum(dayandtype(u,i,j)|(i#le#l)#and#(j#ge#l):var(u,k,i,j))<capacity(k,l));
+@for(dayandsubtype:@gin(var));
+end
