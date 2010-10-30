@@ -184,7 +184,6 @@ public class Bottom extends JFrame implements ActionListener{
 			String res=Player.nextSong();
 			if(res.compareTo("ERROR")!=0)
 			{
-				refreshSongList();
 				Player.play(res);
 			}
 		}
