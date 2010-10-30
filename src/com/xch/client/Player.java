@@ -431,7 +431,6 @@ public class Player implements WindowListener{
 		if(!isPlay)
 		{
 			String url=SongList.getSongURL();
-			Bottom.refreshSongList();
 			play(url);
 		}
 	}

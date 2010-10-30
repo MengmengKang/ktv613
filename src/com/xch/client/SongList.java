@@ -33,6 +33,7 @@ public class SongList
 				songName[i-1]=songName[i];
 			}
 			num--;
+			Bottom.refreshSongList();
 			return res;
 		}
 	}
