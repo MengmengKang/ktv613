@@ -92,7 +92,7 @@ CREATE TABLE `stars` (
 
 LOCK TABLES `stars` WRITE;
 /*!40000 ALTER TABLE `stars` DISABLE KEYS */;
-INSERT INTO `stars` VALUES (1,'张靓颖','\0','内地','无'),(2,'张学友','','香港','无'),(3,'刘德华','','香港','无'),(4,'周杰伦','','台湾','无'),(5,'王菲','\0','香港','无'),(6,'小虎队','','台湾','小虎队'),(7,'成龙','','香港','无'),(8,'蔡依林','','港台','无'),(9,'王力宏','','港台','无');
+INSERT INTO `stars` VALUES (1,'张靓颖','\0','内地','无'),(2,'张学友','','香港','无'),(3,'刘德华','','香港','无'),(4,'周杰伦','','台湾','无'),(5,'王菲','\0','香港','无'),(6,'小虎队','','台湾','小虎队'),(7,'成龙','','香港','无'),(8,'蔡依林','\0','港台','无'),(9,'王力宏','','港台','无');
 /*!40000 ALTER TABLE `stars` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -134,4 +134,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2010-10-31  1:59:46
+-- Dump completed on 2010-10-31  3:23:04
