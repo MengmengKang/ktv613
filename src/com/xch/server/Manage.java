@@ -21,7 +21,7 @@ import javax.swing.SwingUtilities;
 * Use of Jigloo implies acceptance of these licensing terms.
 * A COMMERCIAL LICENSE HAS NOT BEEN PURCHASED FOR
 * THIS MACHINE, SO JIGLOO OR THIS CODE CANNOT BE USED
-* LEGALLY FOR ANY CORPORATE OR COMMERCIAL PURPOSE.
+* LEGALLY FOR ANY CORPORATE OR COMMERCIAL PURPOSE.a
 */
 public class Manage extends javax.swing.JFrame {
 	private JButton jManageUser;

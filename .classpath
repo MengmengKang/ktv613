@@ -4,5 +4,6 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="lib" path="lib/mysql-connector-java-5.0.4-bin.jar"/>
 	<classpathentry kind="lib" path="lib/miglayout-3.7-swing.jar"/>
+	<classpathentry kind="lib" path="/pinyin4j-2.5.0/lib/pinyin4j-2.5.0.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

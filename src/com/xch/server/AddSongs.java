@@ -1,6 +1,8 @@
 package com.xch.server;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.File;
@@ -17,6 +19,13 @@ import javax.swing.JTextField;
 
 import javax.swing.WindowConstants;
 import javax.swing.SwingUtilities;
+
+import net.sourceforge.pinyin4j.PinyinHelper;
+import net.sourceforge.pinyin4j.format.HanyuPinyinCaseType;
+import net.sourceforge.pinyin4j.format.HanyuPinyinOutputFormat;
+import net.sourceforge.pinyin4j.format.HanyuPinyinToneType;
+import net.sourceforge.pinyin4j.format.HanyuPinyinVCharType;
+import net.sourceforge.pinyin4j.format.exception.BadHanyuPinyinOutputFormatCombination;
 
 import com.xch.DAO.DA;
 import com.xch.obj.SongData;
@@ -69,6 +78,7 @@ public class AddSongs extends javax.swing.JFrame {
 		});
 	}
 	*/
+	
 	public AddSongs() {
 		super();
 		initGUI();
@@ -163,6 +173,11 @@ public class AddSongs extends javax.swing.JFrame {
 				jSongName = new JTextField();
 				getContentPane().add(jSongName);
 				jSongName.setBounds(112, 43, 221, 22);
+				jSongName.addKeyListener(new KeyAdapter() {
+					public void keyReleased(KeyEvent evt) {
+						jSongNameKeyReleased(evt);
+					}
+				});
 			}
 			{
 				jSongType = new JTextField();
@@ -240,6 +255,7 @@ public class AddSongs extends javax.swing.JFrame {
 		private void jConfirmActionPerformed(ActionEvent evt) {
 			//System.out.println("jConfirm.actionPerformed, event="+evt);
 			//TODO add your code for jConfirm.actionPerformed
+			//System.out.println(jSongName.getText().length());
 			int SongNumber = 0;
 			if(jSongName.getText().length()==0)
 			{
@@ -281,6 +297,20 @@ public class AddSongs extends javax.swing.JFrame {
 			
 			DA.addSong(song);
 			JOptionPane.showMessageDialog(null, "歌曲信息添加成功！");
+		}
+		
+		private void jSongNameKeyTyped(KeyEvent evt) {
+			//System.out.println("jSongName.keyTyped, event="+evt);
+			//TODO add your code for jSongName.keyTyped		
+			
+		}
+		
+		private void jSongNameKeyReleased(KeyEvent evt) {
+			//System.out.println("jSongName.keyReleased, event="+evt);
+			//TODO add your code for jSongName.keyReleased
+			jSoNumber.setText(String.valueOf(jSongName.getText().length()));
+			Chinese2Pinyin py=new Chinese2Pinyin(jSongName.getText());
+			jSoPinyin.setText(py.getPinyin());
 		}
 
 }

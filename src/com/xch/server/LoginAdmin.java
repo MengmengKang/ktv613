@@ -1,6 +1,8 @@
 package com.xch.server;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import javax.swing.JButton;
@@ -87,6 +89,13 @@ public class LoginAdmin extends javax.swing.JFrame {
 				jUserName = new JTextField();
 				getContentPane().add(jUserName);
 				jUserName.setBounds(157, 64, 121, 24);
+				jUserName.addKeyListener(new KeyAdapter() { 
+					public void keyPressed(KeyEvent e) 
+					{ 
+						if(KeyEvent.VK_ENTER   ==   e.getKeyCode()) 
+							jLoginActionPerformed(); 
+					} 
+				});
 			}
 			{
 				jLogin = new JButton();
@@ -95,7 +104,7 @@ public class LoginAdmin extends javax.swing.JFrame {
 				jLogin.setBounds(109, 159, 61, 24);
 				jLogin.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent evt) {
-						jLoginActionPerformed(evt);
+						jLoginActionPerformed();
 					}
 				});
 
@@ -104,6 +113,13 @@ public class LoginAdmin extends javax.swing.JFrame {
 				jPassword = new JPasswordField();
 				getContentPane().add(jPassword);
 				jPassword.setBounds(157, 98, 121, 24);
+				jPassword.addKeyListener(new KeyAdapter() { 
+					public void keyPressed(KeyEvent e) 
+					{ 
+						if(KeyEvent.VK_ENTER   ==   e.getKeyCode()) 
+							jLoginActionPerformed(); 
+					} 
+				});
 			}
 			{
 				jManagerID = new JLabel();
@@ -128,7 +144,7 @@ public class LoginAdmin extends javax.swing.JFrame {
 		}
 	}
 	
-	private void jLoginActionPerformed(ActionEvent evt) {
+	private void jLoginActionPerformed() {
 		//System.out.println("jLogin.actionPerformed, event="+evt);
 		//TODO add your code for jLogin.actionPerformed
 		AdminData user=new AdminData();
@@ -166,7 +182,11 @@ public class LoginAdmin extends javax.swing.JFrame {
 		//TODO add your code for jExit.actionPerformed
 		int response=JOptionPane.showConfirmDialog(null,
 				"确定要退出管理员登录界面吗？", "警告", JOptionPane.YES_NO_OPTION);
-		if(response==0) this.dispose();
+		if(response==0)
+		{
+			this.dispose();
+			System.exit(0);
+		}
 	}
 	
 	private void thisWindowClosing(WindowEvent evt) {
@@ -174,7 +194,11 @@ public class LoginAdmin extends javax.swing.JFrame {
 		//TODO add your code for this.windowClosing
 		int response=JOptionPane.showConfirmDialog(null,
 				"确定要退出管理员登录界面吗？", "警告", JOptionPane.YES_NO_OPTION);
-		if(response==0) this.dispose();
+		if(response==0)
+		{
+			this.dispose();
+			System.exit(0);
+		}
 		else this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE); 
 	}
 }
