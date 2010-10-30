@@ -90,7 +90,7 @@ public class AddStars extends javax.swing.JFrame {
 			{
 				ComboBoxModel jComboBox1Model = 
 					new DefaultComboBoxModel(
-							new String[] { "ÄÐ", "Å®" });
+							new String[] { "Å®", "ÄÐ" });
 				jComboBox1 = new JComboBox();
 				getContentPane().add(jComboBox1);
 				jComboBox1.setModel(jComboBox1Model);
