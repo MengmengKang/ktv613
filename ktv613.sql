@@ -65,7 +65,7 @@ CREATE TABLE `songs` (
 
 LOCK TABLES `songs` WRITE;
 /*!40000 ALTER TABLE `songs` DISABLE KEYS */;
-INSERT INTO `songs` VALUES (1,'这该死的爱','流行歌曲',5,'ZHEGAISIDEAI',1,'Media\\这该死的爱.rmvb'),(2,'我愿意','经典老歌',3,'WOYUANYI',5,'Media\\我愿意.rmvb'),(3,'忘情水','经典老歌',3,'WANGQINGSHUI',3,'Media\\忘情水.rmvb'),(5,'青花瓷','流行歌曲',3,'QINGHUACI',4,'Media\\青花瓷.rmvb'),(6,'千里之外','流行歌曲',4,'QIANLIZHIWAI',4,'Media\\千里之外.rmvb'),(8,'谢谢你的爱','经典老歌',5,'XIEXIENIDEAI',3,'Media\\谢谢你的爱.rmvb'),(9,'我相信','流行歌曲',3,'WOXIANGXIN ',1,'Media\\我相信.rmvb'),(10,'容易受伤的女人','流行歌曲',7,'RONGYISHOUSHANGDENVREN',5,'Media\\容易受伤的女人.rmvb'),(11,'爱','经典老歌',1,'AI',6,'Media\\爱.rmvb'),(12,'真心英雄','经典老歌',4,'ZHENXINYINGXIONG',7,'Media\\真心英雄.rmvb'),(13,'大城小爱','流行歌曲',4,'DACHENGXIAOAI',9,'Media\\大城小爱.rmvb'),(14,'花田错','流行歌曲',3,'HUATIANCUO',9,'Media\\花田错.rmvb'),(15,'日不落','流行歌曲',3,'RIBULUO',8,'Media\\日不落.rmvb'),(16,'爱无赦','流行歌曲',3,'AIWUSHE',8,'Media\\爱无赦.rmvb'),(17,'心跳','流行歌曲',2,'XINTIAO',9,'Media\\心跳.rmvb');
+INSERT INTO `songs` VALUES (1,'这该死的爱','流行歌曲',5,'ZGSDA',1,'Media\\这该死的爱.rmvb'),(2,'我愿意','经典老歌',3,'WYY',5,'Media\\我愿意.rmvb'),(3,'忘情水','经典老歌',3,'WQS',3,'Media\\忘情水.rmvb'),(5,'青花瓷','流行歌曲',3,'QHC',4,'Media\\青花瓷.rmvb'),(6,'千里之外','流行歌曲',4,'QLZW',4,'Media\\千里之外.rmvb'),(8,'谢谢你的爱','经典老歌',5,'XXNDA',3,'Media\\谢谢你的爱.rmvb'),(9,'我相信','流行歌曲',3,'WXX',1,'Media\\我相信.rmvb'),(10,'容易受伤的女人','流行歌曲',7,'RYSSDNR',5,'Media\\容易受伤的女人.rmvb'),(11,'爱','经典老歌',1,'A',6,'Media\\爱.rmvb'),(12,'真心英雄','经典老歌',4,'ZXYX',7,'Media\\真心英雄.rmvb'),(13,'大城小爱','流行歌曲',4,'DCXA',9,'Media\\大城小爱.rmvb'),(14,'花田错','流行歌曲',3,'HTC',9,'Media\\花田错.rmvb'),(15,'日不落','流行歌曲',3,'RBL',8,'Media\\日不落.rmvb'),(16,'爱无赦','流行歌曲',3,'AWS',8,'Media\\爱无赦.rmvb'),(17,'心跳','流行歌曲',2,'XT',9,'Media\\心跳.rmvb');
 /*!40000 ALTER TABLE `songs` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -134,4 +134,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2010-10-31  1:46:35
+-- Dump completed on 2010-10-31  1:59:46
