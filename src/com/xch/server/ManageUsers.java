@@ -154,7 +154,8 @@ public class ManageUsers extends javax.swing.JFrame {
 					jScrollPane1.setViewportView(jUser);
 					jUser.setModel(jUserModel);
 					jUser.setBounds(232, 68, 140, 73);
-					//jUser.setPreferredSize(new java.awt.Dimension(489, 142));
+					jUser.setDragEnabled(true);
+					jUser.getTableHeader().setReorderingAllowed(false);
 					jUser.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 				}
 			}

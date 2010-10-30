@@ -145,6 +145,7 @@ public class ManageSongs extends javax.swing.JFrame {
 					jScrollPane1.setViewportView(jTable1);
 					jTable1.setModel(jTable1Model);
 					jTable1.setDragEnabled(true);
+					jTable1.getTableHeader().setReorderingAllowed(false);
 					jTable1.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 				
 				}

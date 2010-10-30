@@ -165,6 +165,7 @@ public class ManageStars extends javax.swing.JFrame {
 					jStarsNames.setModel(jStarsNamesModel);
 					jStarsNames.setBounds(73, 121, 601, 122);
 					jStarsNames.setDragEnabled(true);
+					jStarsNames.getTableHeader().setReorderingAllowed(false);
 					jStarsNames.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 				}
 			}

@@ -861,14 +861,24 @@ public class DA {
 	public static void addSong(SongData song)
 	{
 		try {
-			open();				
+			open();			
+			
+			String oldurl=song.getURL();
+			String url="";
+			for(int i=0;i<oldurl.length();i++)
+			{
+				url=url.concat(oldurl.substring(i,i+1));
+				if(oldurl.substring(i,i+1).compareTo("\\")==0)
+					url=url.concat(oldurl.substring(i,i+1));	
+			}
+			
 			String sql="insert songs values("+song.getSongID()+",";
 			sql=sql+"'"+song.getSongName()+"',";
 			sql=sql+"'"+song.getSongType()+"',";
 			sql=sql+song.getSoNumber()+",";
 			sql=sql+"'"+song.getSoPinYin()+"',";
 			sql=sql+song.getStarID()+",";
-			sql=sql+"'"+song.getURL()+"')";
+			sql=sql+"'"+url+"')";
 			
 			System.out.println(sql);
 			

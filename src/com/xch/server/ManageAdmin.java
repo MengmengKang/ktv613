@@ -124,6 +124,7 @@ public class ManageAdmin extends javax.swing.JFrame {
 					jScrollPane1.setViewportView(jMainAdmin);
 					jMainAdmin.setBounds(134, 48, 115, 142);
 					jMainAdmin.setDragEnabled(true);
+					jMainAdmin.getTableHeader().setReorderingAllowed(false);
 					jMainAdmin.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 				}
 			}
