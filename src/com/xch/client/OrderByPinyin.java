@@ -3,9 +3,12 @@
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       import java.awt.event.ActionListener;
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       import java.awt.event.WindowAdapter;
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       import java.awt.event.WindowEvent;
+
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
@@ -64,6 +67,7 @@ public class OrderByPinyin extends javax.swing.JFrame {
 	
 	private void initGUI() {
 		try {
+			setBak();
 			setResizable(false);
 			setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 			getContentPane().setLayout(null);
@@ -202,5 +206,10 @@ public class OrderByPinyin extends javax.swing.JFrame {
 		if(response==0) this.dispose();
 		else this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE); 
 	}
-
+	public void setBak(){ 
+		  ((JPanel)this.getContentPane()).setOpaque(false);
+		   ImageIcon img = new ImageIcon("img/p2.jpg"); 
+		   JLabel background = new JLabel(img);this.getLayeredPane().add(background, new Integer(Integer.MIN_VALUE)); 
+		   background.setBounds(0, 0, img.getIconWidth(), img.getIconHeight()); 
+		  }
 }
