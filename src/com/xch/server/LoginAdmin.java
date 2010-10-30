@@ -8,10 +8,13 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 
 import javax.swing.WindowConstants;
 import javax.swing.SwingUtilities;
 
+import com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel;
 import com.xch.DAO.DA;
 import com.xch.client.MD5;
 import com.xch.client.Register;
@@ -44,6 +47,11 @@ public class LoginAdmin extends javax.swing.JFrame {
 	*/
 	public static void main(String[] args) {
 		DA.readConfig();
+		try {
+			UIManager.setLookAndFeel(new NimbusLookAndFeel());
+		} catch (UnsupportedLookAndFeelException e) {
+			e.printStackTrace();
+		}
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
 				LoginAdmin inst = new LoginAdmin();
@@ -130,6 +138,11 @@ public class LoginAdmin extends javax.swing.JFrame {
 			return;
 		}
 		String password=new String(jPassword.getPassword());
+		if(password.length()==0)
+		{
+			JOptionPane.showMessageDialog(null, "ÃÜÂë²»ÄÜÎª¿Õ£¡");
+			return;
+		}
 		MD5 md5=new MD5(password);
 		//System.out.println(password);
 		AdminData admin=new AdminData();

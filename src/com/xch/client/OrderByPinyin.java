@@ -1,5 +1,6 @@
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       package com.xch.client;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      import java.awt.event.ActionEvent;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      import java.awt.Color;
+import java.awt.event.ActionEvent;
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       import java.awt.event.ActionListener;
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       import java.awt.event.WindowAdapter;
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       import java.awt.event.WindowEvent;
@@ -98,6 +99,7 @@ public class OrderByPinyin extends javax.swing.JFrame {
 				getContentPane().add(jLabel1);
 				jLabel1.setText("\u8bf7\u8f93\u5165\u62fc\u97f3");
 				jLabel1.setBounds(23, 26, 72, 17);
+				jLabel1.setForeground(Color.RED);
 			}
 			{
 				jScrollPane1 = new JScrollPane();
@@ -208,7 +210,7 @@ public class OrderByPinyin extends javax.swing.JFrame {
 	}
 	public void setBak(){ 
 		  ((JPanel)this.getContentPane()).setOpaque(false);
-		   ImageIcon img = new ImageIcon("img/p2.jpg"); 
+		   ImageIcon img = new ImageIcon("img/p1.jpg"); 
 		   JLabel background = new JLabel(img);this.getLayeredPane().add(background, new Integer(Integer.MIN_VALUE)); 
 		   background.setBounds(0, 0, img.getIconWidth(), img.getIconHeight()); 
 		  }

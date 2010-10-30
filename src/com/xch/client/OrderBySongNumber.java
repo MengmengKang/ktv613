@@ -1,11 +1,15 @@
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       package com.xch.client;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      import java.awt.event.ActionEvent;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      import java.awt.Color;
+import java.awt.event.ActionEvent;
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       import java.awt.event.ActionListener;
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       import java.awt.event.WindowAdapter;
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       import java.awt.event.WindowEvent;
+
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
@@ -64,6 +68,7 @@ public class OrderBySongNumber extends javax.swing.JFrame {
 	
 	private void initGUI() {
 		try {
+			setBak();
 			setResizable(false);
 			setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 			getContentPane().setLayout(null);
@@ -94,6 +99,7 @@ public class OrderBySongNumber extends javax.swing.JFrame {
 				getContentPane().add(jLabel1);
 				jLabel1.setText("\u8bf7\u8f93\u5165\u6b4c\u540d\u5b57\u6570");
 				jLabel1.setBounds(23, 26, 98, 17);
+				jLabel1.setForeground(Color.RED);
 			}
 			{
 				jScrollPane1 = new JScrollPane();
@@ -213,5 +219,10 @@ public class OrderBySongNumber extends javax.swing.JFrame {
 		if(response==0) this.dispose();
 		else this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE); 
 	}
-
+	public void setBak(){ 
+		  ((JPanel)this.getContentPane()).setOpaque(false);
+		   ImageIcon img = new ImageIcon("img/p3.jpg"); 
+		   JLabel background = new JLabel(img);this.getLayeredPane().add(background, new Integer(Integer.MIN_VALUE)); 
+		   background.setBounds(0, 0, img.getIconWidth(), img.getIconHeight()); 
+		  }
 }

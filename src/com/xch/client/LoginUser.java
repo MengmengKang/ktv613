@@ -1,7 +1,12 @@
 package com.xch.client;
+import java.awt.Color;
+import java.awt.Component;
 import java.awt.Container;
+import java.awt.FocusTraversalPolicy;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
@@ -12,10 +17,14 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 
 import javax.swing.WindowConstants;
 import javax.swing.SwingUtilities;
-
+import java.util.Arrays;  
+import java.util.ArrayList;
+import com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel;
 import com.xch.DAO.DA;
 import com.xch.client.Register;
 import com.xch.obj.UserData;
@@ -48,6 +57,12 @@ public class LoginUser extends javax.swing.JFrame {
 	*/
 	public static void main(String[] args) {
 		DA.readConfig();
+		try {
+			UIManager.setLookAndFeel(new NimbusLookAndFeel());
+			//UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+		} catch (UnsupportedLookAndFeelException e) {
+			e.printStackTrace();
+		}
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
 				LoginUser inst = new LoginUser();
@@ -79,27 +94,32 @@ public class LoginUser extends javax.swing.JFrame {
 				c.add(jLabel3);
 				jLabel3.setText("\u6ca1\u6709\u7528\u6237\u540d\uff1f");
 				jLabel3.setBounds(650, 278, 84, 15);
+				jLabel3.setForeground(Color.RED);
 			}
-			{
-				jRegister = new JButton();
-				c.add(jRegister);
-				jRegister.setText("\u6ce8\u518c");
-				jRegister.setBounds(650, 299, 69, 24);
-				jRegister.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent evt) {
-						jRegisterActionPerformed(evt);
-					}
-				});
-			}
+			
 			{
 				jUserName = new JTextField();
 				c.add(jUserName);
 				jUserName.setBounds(369, 273, 121, 24);
+				jUserName.addKeyListener(new KeyAdapter() { 
+					public void keyPressed(KeyEvent e) 
+					{ 
+						if(KeyEvent.VK_ENTER   ==   e.getKeyCode()) 
+							jLoginActionPerformed(); 
+					} 
+				});
 			}
 			{
 				jPassword = new JPasswordField();
 				c.add(jPassword);
 				jPassword.setBounds(369, 333, 121, 24);
+				jPassword.addKeyListener(new KeyAdapter() { 
+					public void keyPressed(KeyEvent e) 
+					{ 
+						if(KeyEvent.VK_ENTER   ==   e.getKeyCode()) 
+							jLoginActionPerformed(); 
+					} 
+				});
 			}
 			{
 				jExit = new JButton();
@@ -119,7 +139,7 @@ public class LoginUser extends javax.swing.JFrame {
 				jLogin.setBounds(301, 395, 61, 24);
 				jLogin.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent evt) {
-						jLoginActionPerformed(evt);
+						jLoginActionPerformed();
 					}
 				});
 			}
@@ -135,14 +155,57 @@ public class LoginUser extends javax.swing.JFrame {
 				jLabel2.setText("\u5bc6\u7801");
 				jLabel2.setBounds(277, 337, 54, 17);
 			}
+			{
+				jRegister = new JButton();
+				c.add(jRegister);
+				jRegister.setText("\u6ce8\u518c");
+				jRegister.setBounds(650, 299, 69, 24);
+				jRegister.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent evt) {
+						jRegisterActionPerformed(evt);
+					}
+				});
+			}
 			this.setTitle("\u7528\u6237\u767b\u5f55");
 			this.addWindowListener(new WindowAdapter() {
 				public void windowClosing(WindowEvent evt) {
 					thisWindowClosing(evt);
 				}
 			});
-			pack();
-			this.setSize(800, 600);
+			
+			ArrayList<Component> list = new ArrayList<Component>();  
+		       
+		    list.add(jUserName);  
+		    list.add(jPassword);  
+		    list.add(jLogin);  
+		    list.add(jExit);  
+		    list.add(jRegister);  
+		    final ArrayList comList = list;  
+		    FocusTraversalPolicy policy = new FocusTraversalPolicy() {  
+				public Component getFirstComponent(Container focusCycleRoot) {  
+					return  (Component)comList.get(0);  
+				}  
+				public Component getLastComponent(Container focusCycleRoot) {  
+					return (Component) comList.get(comList.size()-1);  
+				}  
+		        public Component getComponentAfter(Container focusCycleRoot,   
+		            Component aComponent) {  
+		        int index = comList.indexOf(aComponent);    
+		        	return (Component) comList.get((index + 1) % comList.size());  
+				}  
+		        public Component getComponentBefore(Container focusCycleRoot,   
+					Component aComponent) {  
+					int index = comList.indexOf(aComponent);  
+					return (Component) comList.get((index - 1 + comList.size()) % comList.size());  
+				}  
+				public Component getDefaultComponent(Container focusCycleRoot) {  
+					return (Component) comList.get(0);  
+				}  
+		    };  
+		    setFocusTraversalPolicy(policy);  
+		    pack();
+			setSize(800, 600);
+			
 		} catch (Exception e) {
 		    //add your error handling code here
 			e.printStackTrace();
@@ -157,7 +220,7 @@ public class LoginUser extends javax.swing.JFrame {
 		inst.setVisible(true);
 	}
 	
-	private void jLoginActionPerformed(ActionEvent evt) {
+	private void jLoginActionPerformed() {
 		//System.out.println("jLogin.actionPerformed, event="+evt);
 		//TODO add your code for jLogin.actionPerformed
 		UserData user=new UserData();
@@ -167,6 +230,11 @@ public class LoginUser extends javax.swing.JFrame {
 			return;
 		}
 		String password=new String(jPassword.getPassword());
+		if(password.length()==0)
+		{
+			JOptionPane.showMessageDialog(null, "ÃÜÂë²»ÄÜÎª¿Õ£¡");
+			return;
+		}
 		MD5 md5=new MD5(password);
 		//System.out.println(password);
 		user.setUserName(jUserName.getText());

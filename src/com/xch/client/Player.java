@@ -49,11 +49,13 @@ public class Player implements WindowListener{
 	static boolean isPause=false;
 
 	public static void video() { 
+		/*
 		try {
 			UIManager.setLookAndFeel(new NimbusLookAndFeel());
 		} catch (UnsupportedLookAndFeelException e) {
 			e.printStackTrace();
 		}
+		*/
 		//实例化一个播放器
 		Player player=new Player();
 		MainFrame.playing=true;
@@ -335,7 +337,6 @@ public class Player implements WindowListener{
 		//exit();
 		MainFrame.playing=false;
 		mainFrame.dispose();
-		
 	}
 /*
 	//加载配置
