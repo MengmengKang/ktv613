@@ -17,8 +17,8 @@ public class DA {
 	final static String DB="ktv613";
 	//final static String ID="root";
 	//final static String PW="";
-	static String ID=null;
-	static String PW=null;
+	static String ID="";
+	static String PW="";
 	final static String CONNECT="jdbc:mysql://localhost:3306/"+DB+"?useUnicode=true&characterEncoding=utf8";
 	
 	static Connection aConnection;
