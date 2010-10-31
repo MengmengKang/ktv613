@@ -261,9 +261,7 @@ public class DA {
 			open();
 			
 			String sql="select * from songs,stars where (SoPinYin like '"+indata+
-					"' OR SoPinYin like '%"+indata+
-					"' OR SoPinYin like '"+indata+
-					"%' OR SoPinYin like '%"+indata+
+					"%' OR SoPinYin like '"+indata+
 					"%') AND songs.StarID=stars.StarID";
 			ResultSet result=aStatement.executeQuery(sql);
 			result.last();    
