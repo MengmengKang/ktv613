@@ -168,16 +168,20 @@ public class OrderBySongNumber extends javax.swing.JFrame {
 		{
 			//System.out.println(e);
 			JOptionPane.showMessageDialog(null, "您还没有输入或者输入的不是数字");
+			return;
+			
 		}
-		
+		if(jResult.getRowCount()==0)
+		{
+			JOptionPane.showMessageDialog(null, "很抱歉，没有查找到任何符合条件的歌曲");
+		}
 	}
 	
 	private void jOrderActionPerformed(ActionEvent evt) {
 		//System.out.println("jOrder.actionPerformed, event="+evt);
 		//TODO add your code for jOrder.actionPerformed
 		int row=jResult.getSelectedRow();		
-		if(row<0)
-		{
+		if(row<0){
 			JOptionPane.showMessageDialog(null, "您还没用选中任何一行");
 			return ;
 		}

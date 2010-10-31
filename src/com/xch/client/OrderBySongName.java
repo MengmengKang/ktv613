@@ -160,6 +160,10 @@ public class OrderBySongName extends javax.swing.JFrame {
 		TableModel jResultModel = 
 			new DefaultTableModel(res,titles);
 		jResult.setModel(jResultModel);
+		if(jResult.getRowCount()==0)
+		{
+			JOptionPane.showMessageDialog(null, "很抱歉，没有查找到任何符合条件的歌曲");
+		}
 	}
 	
 	private void jOrderActionPerformed(ActionEvent evt) {
