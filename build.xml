@@ -7,6 +7,7 @@
     <property name="build" location="build"/>
     <property name="dist"  location="dist"/>
     <property name="lib"  location="lib"/>
+    <property name="test.report"  location="report"/>
 
     <target name="init">
         <!-- Create the time stamp -->
@@ -40,11 +41,37 @@
             </manifest>
         </jar>
     </target>
+    
+    <target name="junit" depends="compile">
+        <tstamp/>
+        <mkdir dir="${test.report}"/>
+        <mkdir dir="${test.report}/framework-${DSTAMP}-${TSTAMP}"/>
+        <junit printsummary="true">
+            <classpath >
+                <pathelement path="${src}"/>
+                <pathelement path="D:/P_TOOL/junit4.11/junit-4.11.jar"/>
+                <fileset dir="${lib}">
+                    <include name="**/*.jar"/>
+                </fileset>
+            </classpath>
+            <!--
+            <test name="Ldbs1AdslSectionBaseinfoModelServiceTest"></test>
+            -->
+            <formatter type="plain"/>
+            <!-- she zhi yao ce shi de wen jian ji he .-->
+            <batchtest fork="yes" todir="${test.report}/framework-${DSTAMP}-${TSTAMP}">
+                <fileset dir="${src}">
+                    <include name="**/*Test.java"/>
+                </fileset>
+            </batchtest>
+        </junit>
+    </target>
 
     <target name="clean"
             description="clean up" >
         <!-- Delete the ${build} and ${dist} directory trees -->
         <delete dir="${build}"/>
         <delete dir="${dist}"/>
+        <delete dir="${test.report}"/>
     </target>
 </project>
