@@ -45,8 +45,8 @@
     
     <target name="junit" depends="compile" description="run junit test" >
         <tstamp/>
-        <mkdir dir="${test.report}"/>
-        <mkdir dir="${test.report}/framework-${DSTAMP}-${TSTAMP}"/>
+        <mkdir dir="${report}"/>
+        <mkdir dir="${report}/framework-${DSTAMP}-${TSTAMP}"/>
         <junit printsummary="true">
             <classpath >
                 <pathelement path="${src}"/>
@@ -69,6 +69,7 @@
     </target>
     
     <target name="pmd" depends="compile" description="run pmd check" >
+        <mkdir dir="${report}"/>
         <path id="pmd.classpath">
             <pathelement location="${build}"/>
             <fileset dir="D:/P_TOOL/pmd-bin-5.0.1">
@@ -80,11 +81,26 @@
         <pmd shortFilenames="true">          
             <ruleset>rulesets/java/design.xml</ruleset>
             <ruleset>java-basic</ruleset>
-            <formatter type="html" toFile="${report}/pmd_report.html"/>
+            <formatter type="html" toFile="${report}/REPORT_pmd.html"/>
             <fileset dir="${src}">
                     <include name="**/*.java"/>
             </fileset>
         </pmd>
+    </target>
+    
+    <target name="style" depends="compile" description="run style check" >
+        <mkdir dir="${report}"/>
+        <property name="style"  location="D:/P_TOOL/checkstyle-5.6"/>
+        <taskdef resource="checkstyletask.properties" classpath="${style}/checkstyle-5.6-all.jar"/>
+        
+        <checkstyle config="${style}/sun_checks.xml">
+            <fileset dir="${src}" includes="**/*.java"/>
+            <formatter type="plain"/>
+            <formatter type="xml" toFile="${report}/REPORT_style.xml"/>
+        </checkstyle>
+        
+        <style in="${report}/.xml" out="${report}/REPORT_style.html"
+                style="${style}/contrib/checkstyle-frames.xsl"/>
     </target>
   
     <target name="clean"
