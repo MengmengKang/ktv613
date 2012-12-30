@@ -9,12 +9,14 @@
     <property name="lib"  location="lib"/>
     
     <property name="report"  location="report"/>
+    <property name="report.html"  location="${report}/html.style"/>
 
-    <target name="init">
+    <target name="init" depends="clean">
         <!-- Create the time stamp -->
         <tstamp/>
         <!-- Create the build directory structure used by compile -->
         <mkdir dir="${build}"/>
+        <mkdir dir="${report}"/>
     </target>
 
     <target name="compile" depends="init"
@@ -69,7 +71,6 @@
     </target>
     
     <target name="pmd" depends="compile" description="run pmd check" >
-        <mkdir dir="${report}"/>
         <path id="pmd.classpath">
             <pathelement location="${build}"/>
             <fileset dir="D:/P_TOOL/pmd-bin-5.0.1">
@@ -89,18 +90,19 @@
     </target>
     
     <target name="style" depends="compile" description="run style check" >
-        <mkdir dir="${report}"/>
         <property name="style"  location="D:/P_TOOL/checkstyle-5.6"/>
         <taskdef resource="checkstyletask.properties" classpath="${style}/checkstyle-5.6-all.jar"/>
         
-        <checkstyle config="${style}/sun_checks.xml">
+        <checkstyle config="${style}/sun_checks.xml" failOnViolation="false">
             <fileset dir="${src}" includes="**/*.java"/>
             <formatter type="plain"/>
-            <formatter type="xml" toFile="${report}/REPORT_style.xml"/>
+            <formatter type="xml" toFile="${report}/checkstyle_report.xml"/>
         </checkstyle>
         
-        <style in="${report}/.xml" out="${report}/REPORT_style.html"
-                style="${style}/contrib/checkstyle-frames.xsl"/>
+        <xslt basedir="${report}" destdir="${report.html}" extension=".html" 
+                style="${style}/contrib/checkstyle-frames.xsl">  
+            <param name="output.dir" expression="${report.html}" />  
+        </xslt>  
     </target>
   
     <target name="clean"
