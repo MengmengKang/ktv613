@@ -10,6 +10,8 @@
     
     <property name="report"  location="report"/>
     <property name="report.html"  location="${report}/html.style"/>
+    
+    <property name="findbugs" value="D:\P_TOOL\findbugs-2.0.2" />
 
     <target name="init" depends="clean">
         <!-- Create the time stamp -->
@@ -77,7 +79,8 @@
                 <include name="**/*.jar"/>
             </fileset>
         </path>
-        <taskdef name="pmd" classname="net.sourceforge.pmd.ant.PMDTask" classpathref="pmd.classpath"/>
+        <taskdef name="pmd" classname="net.sourceforge.pmd.ant.PMDTask" 
+                classpathref="pmd.classpath"/>
         
         <pmd shortFilenames="true">          
             <ruleset>rulesets/java/design.xml</ruleset>
@@ -87,6 +90,9 @@
                     <include name="**/*.java"/>
             </fileset>
         </pmd>
+    </target>
+    
+    <target name="cpd" depends="compile" description="run cpd check" >
     </target>
     
     <target name="style" depends="compile" description="run style check" >
@@ -104,7 +110,26 @@
             <param name="output.dir" expression="${report.html}" />  
         </xslt>  
     </target>
-  
+    
+    <target name="findbugs" depends="compile" description="run findbugs">
+        <path id="findbugs.classpath">
+            <pathelement location="${build}"/>
+            <fileset dir="D:/P_TOOL/findbugs-2.0.2">
+                <include name="**/*.jar"/>
+            </fileset>
+        </path>
+        <taskdef name="findbugs" classname="edu.umd.cs.findbugs.anttask.FindBugsTask"
+                classpathref="findbugs.classpath"/>
+        <findbugs home="${findbugs}"
+                output="html"
+                outputFile="${report}/REPORT-findbugs.html" >
+            <sourcepath location="${src}" />
+            <class location="${build}" />
+        </findbugs>
+    </target>
+    
+    <target name="check" depends="style,pmd,findbugs,cpd" description="run all static code check" >
+    </target>
     <target name="clean"
             description="clean up" >
         <!-- Delete the ${build} and ${dist} directory trees -->
