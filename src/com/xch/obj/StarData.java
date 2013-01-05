@@ -1,52 +1,65 @@
 package com.xch.obj;
 
-public class StarData {
-	private int StarID;
-	private String StarName;
-	private int Gender;   //0为女，1为男
-	private String ComeFrom;
-	private String Team;
-	
-	public void setStarID(int indata)
-	{
-		this.StarID=indata;
-	}
-	public void setStarName(String indata)
-	{
-		this.StarName=indata;
-	}
-	public void setGender(int indata)
-	{
-		this.Gender=indata;
-	}
-	public void setComeFrom(String indata)
-	{
-		this.ComeFrom=indata;
-	}
-	public void setTeam(String indata)
-	{
-		this.Team=indata;
-	}
-	
-	public int getStarID()
-	{
-		return this.StarID;
-	}
-	public String getStarName()
-	{
-		return this.StarName;
-	}
-	public int getGender()
-	{
-		return this.Gender;
-	}
-	public String getComeFrom()
-	{
-		return this.ComeFrom;
-	}
-	public String getTeam()
-	{
-		return this.Team;
-	}
+public class StarData
+{
+    private int StarID;
+
+    private String StarName;
+
+    private int Gender; // 0为女，1为男
+
+    private String ComeFrom;
+
+    private String Team;
+
+    public void setStarID(final int indata)
+    {
+        StarID = indata;
+    }
+
+    public void setStarName(final String indata)
+    {
+        StarName = indata;
+    }
+
+    public void setGender(final int indata)
+    {
+        Gender = indata;
+    }
+
+    public void setComeFrom(final String indata)
+    {
+        ComeFrom = indata;
+    }
+
+    public void setTeam(final String indata)
+    {
+        Team = indata;
+    }
+
+    public int getStarID()
+    {
+        return StarID;
+    }
+
+    public String getStarName()
+    {
+        return StarName;
+    }
+
+    public int getGender()
+    {
+        return Gender;
+    }
+
+    public String getComeFrom()
+    {
+        return ComeFrom;
+    }
+
+    public String getTeam()
+    {
+        return Team;
+    }
 
 }

@@ -11,53 +11,72 @@ import java.awt.Rectangle;
  * º∆À„ ”∆µŒª÷√
  */
 
-class VideoLayout implements LayoutManager{
-	Player player;
-	VideoLayout(Player pl){
-		player=pl;
-	}
-	public void addLayoutComponent(String name, Component comp) {
+class VideoLayout implements LayoutManager
+{
+    Player player;
 
-	}
+    VideoLayout(final Player pl)
+    {
+        player = pl;
+    }
 
-	public void layoutContainer(Container c) {
-		int count = c.getComponentCount();
-		for (int i = 0 ; i < count ; i++) {
-			Component m = c.getComponent(i);
-			if(m.getName().equals("canvas")){
-				Canvas	canvas=(Canvas)m;
-				setCanvas(c,canvas);
-			}
-		}
-	}
+    @Override
+    public void addLayoutComponent(final String name, final Component comp)
+    {
 
-	public Dimension minimumLayoutSize(Container parent) {
-		return new Dimension(100,100);
-	}
+    }
 
-	public Dimension preferredLayoutSize(Container parent) {
-		return new Dimension(100,100);
-	}
+    @Override
+    public void layoutContainer(final Container c)
+    {
+        final int count = c.getComponentCount();
+        for (int i = 0; i < count; i++)
+        {
+            final Component m = c.getComponent(i);
+            if (m.getName().equals("canvas"))
+            {
+                final Canvas canvas = (Canvas) m;
+                setCanvas(c, canvas);
+            }
+        }
+    }
 
-	public void removeLayoutComponent(Component comp) {
+    @Override
+    public Dimension minimumLayoutSize(final Container parent)
+    {
+        return new Dimension(100, 100);
+    }
 
-	}
+    @Override
+    public Dimension preferredLayoutSize(final Container parent)
+    {
+        return new Dimension(100, 100);
+    }
 
-	@SuppressWarnings("static-access")
-	void setCanvas(Container c,Canvas	canvas){
-		float cx, cy = 0, cw, ch;
-		Container cp=c;
-		ch = cp.getBounds().height;
-		cw = ch *player.rate;
-		cx = (cp.getBounds().width - cw) / 2;
-		if (cw > cp.getBounds().width) {
-			cx = 0;
-			cw = cp.getBounds().width;
-			ch = cw /player.rate;
-		}
-		cy = (cp.getBounds().height - ch) / 2;
-		Rectangle rec=new Rectangle((int) cx, (int) cy, (int) cw, (int) ch+1);
-		canvas.setBounds(rec);
-	}
+    @Override
+    public void removeLayoutComponent(final Component comp)
+    {
+
+    }
+
+    @SuppressWarnings("static-access")
+    void setCanvas(final Container c, final Canvas canvas)
+    {
+        float cx, cy = 0, cw, ch;
+        final Container cp = c;
+        ch = cp.getBounds().height;
+        cw = ch * player.rate;
+        cx = (cp.getBounds().width - cw) / 2;
+        if (cw > cp.getBounds().width)
+        {
+            cx = 0;
+            cw = cp.getBounds().width;
+            ch = cw / player.rate;
+        }
+        cy = (cp.getBounds().height - ch) / 2;
+        final Rectangle rec = new Rectangle((int) cx, (int) cy, (int) cw,
+                (int) ch + 1);
+        canvas.setBounds(rec);
+    }
 
 }
