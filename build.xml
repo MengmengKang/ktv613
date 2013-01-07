@@ -7,10 +7,10 @@
     <property name="build" location="build"/>
     <property name="dist"  location="dist"/>
     <property name="lib"  location="lib"/>
-    
+
     <property name="report"  location="report"/>
     <property name="report.html"  location="${report}/html.style"/>
-    
+
     <property name="findbugs" value="D:\P_TOOL\findbugs-2.0.2" />
 
     <target name="init" depends="clean">
@@ -46,7 +46,7 @@
             </manifest>
         </jar>
     </target>
-    
+
     <target name="junit" depends="compile" description="run junit test" >
         <tstamp/>
         <mkdir dir="${report}"/>
@@ -71,7 +71,7 @@
             </batchtest>
         </junit>
     </target>
-    
+
     <target name="pmd" depends="compile" description="run pmd check" >
         <path id="pmd.classpath">
             <pathelement location="${build}"/>
@@ -81,36 +81,36 @@
         </path>
         <taskdef name="pmd" classname="net.sourceforge.pmd.ant.PMDTask" 
                 classpathref="pmd.classpath"/>
-        
+
         <pmd shortFilenames="true">          
             <ruleset>rulesets/java/design.xml</ruleset>
             <ruleset>java-basic</ruleset>
             <formatter type="html" toFile="${report}/REPORT_pmd.html"/>
             <fileset dir="${src}">
-                    <include name="**/*.java"/>
+                <include name="**/*.java"/>
             </fileset>
         </pmd>
     </target>
-    
+
     <target name="cpd" depends="compile" description="run cpd check" >
     </target>
-    
+
     <target name="style" depends="compile" description="run style check" >
         <property name="style"  location="D:/P_TOOL/checkstyle-5.6"/>
         <taskdef resource="checkstyletask.properties" classpath="${style}/checkstyle-5.6-all.jar"/>
-        
+
         <checkstyle config="${style}/sun_checks.xml" failOnViolation="false">
             <fileset dir="${src}" includes="**/*.java"/>
             <formatter type="plain"/>
             <formatter type="xml" toFile="${report}/checkstyle_report.xml"/>
         </checkstyle>
-        
+
         <xslt basedir="${report}" destdir="${report.html}" extension=".html" 
                 style="${style}/contrib/checkstyle-frames.xsl">  
             <param name="output.dir" expression="${report.html}" />  
         </xslt>  
     </target>
-    
+
     <target name="findbugs" depends="compile" description="run findbugs">
         <path id="findbugs.classpath">
             <pathelement location="${build}"/>
@@ -127,7 +127,7 @@
             <class location="${build}" />
         </findbugs>
     </target>
-    
+
     <target name="check" depends="style,pmd,findbugs,cpd" description="run all static code check" >
     </target>
     <target name="clean"
